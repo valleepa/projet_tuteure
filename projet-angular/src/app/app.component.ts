@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'projet';
+  constructor(
+    private keycloakService : KeycloakService){}
+
+  logout() {
+    this.keycloakService.logout();
+  }
+
+  getDroit() {
+
+  }
 }
+
