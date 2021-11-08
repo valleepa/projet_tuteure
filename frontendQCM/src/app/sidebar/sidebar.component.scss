@@ -2,7 +2,7 @@
   margin : 0;
 }
 #wrapper{
-  width: 15rem;
+  width: 13%;
   height: 100%;
   background-color:var(--primary);
 }
@@ -21,9 +21,27 @@
 #sidebar li a{
   text-decoration: none;
   color:var(--white);
-  background-color: #7CE73B;
+  background-color:var(--primary);
   max-width: 100%;
   padding-left: 1rem;
 }
 
+#sidebar-logo-text{
+  position: relative;
+  background-color: #3F51B5;
+  font-size: 200%;
+  text-align: center;
+}
 
+
+#trait{
+  margin-left: 10%;
+  height: 1px;
+  width: 80%;
+  position: relative;
+  background-color: white;
+}
+
+span{
+  margin-left: 5px;
+}
