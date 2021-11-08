@@ -1,0 +1,29 @@
+*{
+  margin : 0;
+}
+#wrapper{
+  width: 15rem;
+  height: 100%;
+  background-color:var(--primary);
+}
+#sidebar{
+  list-style-type:none;
+  padding: 0;
+}
+#sidebar ul{
+  background-color:black ;
+}
+#sidebar a{
+  color:var(--white);
+  display: block;
+}
+
+#sidebar li a{
+  text-decoration: none;
+  color:var(--white);
+  background-color: #7CE73B;
+  max-width: 100%;
+  padding-left: 1rem;
+}
+
+
