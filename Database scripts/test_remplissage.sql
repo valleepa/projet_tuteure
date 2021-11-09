@@ -10,7 +10,6 @@ set etudiant_id=5, nom = "Lebo", prenom = "Michel";
 SELECT prenom from etudiants where prof_id = 14;
 
 
-
 SELECT nom, prenom, classe from etudiants where prof_id=14; 
 --prendre le nom et prenom de l'étudiant affilié au prof qui est actuellement connecté
 
