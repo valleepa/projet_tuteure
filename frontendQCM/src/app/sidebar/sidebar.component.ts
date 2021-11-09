@@ -1,15 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, OnChanges} from '@angular/core';
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnChanges {
+  constructor() {}
 
-  constructor() { }
+  // @ts-ignore
+  @ViewChild('sidenav') public sidenav: MatSidenav;
 
-  ngOnInit(): void {
+
+  @Input()
+    // @ts-ignore
+  openNav: boolean;
+
+  ngOnChanges(): void {
+    console.log('ngOnChanges', this.openNav);
+    if (this.openNav) {
+      this.sidenav?.open();
+    } else {
+      this.sidenav?.close();
+    }
   }
 
 }

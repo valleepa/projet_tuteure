@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-topbar',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TopbarComponent implements OnInit {
 
+  @Output()
+  open: EventEmitter<boolean>=new EventEmitter()
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  clickMenu() {
+    this.open.emit(true);
+  }
 }

@@ -13,6 +13,8 @@ import { CreateComponent } from './create/create.component';
 import { ModifyComponent } from './modify/modify.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
   declarations: [
@@ -21,17 +23,19 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     SidebarComponent,
     TopbarComponent,
     CreateComponent,
-    ModifyComponent
+    ModifyComponent,
+    LayoutComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatDividerModule,
-        MatIconModule,
-        MatCardModule,
-        MatToolbarModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatDividerModule,
+    MatIconModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatSidenavModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
