@@ -11,6 +11,7 @@ import {MatIconModule} from "@angular/material/icon";
 import { TopbarComponent } from './topbar/topbar.component';
 import { CreateComponent } from './create/create.component';
 import { ModifyComponent } from './modify/modify.component';
+import {MatCardModule} from "@angular/material/card";
 
 @NgModule({
   declarations: [
@@ -21,13 +22,14 @@ import { ModifyComponent } from './modify/modify.component';
     CreateComponent,
     ModifyComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatDividerModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatDividerModule,
+        MatIconModule,
+        MatCardModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
