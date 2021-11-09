@@ -1,29 +1,23 @@
-
-
 #topbar{
-  margin-left: 13%;
   background-color: white;
-  height: 8%;
-  width: 87%;
+  display:flex;
+  justify-content: space-between;
 }
 
 #search{
   position: relative;
-  top: 30%;
-  margin-left: 4%;
+  margin-left:5%;
   height: 40%;
+  line-height: 3em;
 }
 
 input[type=text] {
   background-color: #EBECF0;
   border: 0px;
-  height: 100%;
 }
 
 #user{
-  position: relative;
-  float: right;
-  margin-right: 2%;
+  line-height: 3em;
   font-size: 100%;
   color: #3F51B5;
 }
