@@ -9,13 +9,17 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
 import { TopbarComponent } from './topbar/topbar.component';
+import { CreateComponent } from './create/create.component';
+import { ModifyComponent } from './modify/modify.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AccueilComponent,
     SidebarComponent,
-    TopbarComponent
+    TopbarComponent,
+    CreateComponent,
+    ModifyComponent
   ],
   imports: [
     BrowserModule,
