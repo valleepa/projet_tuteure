@@ -7,18 +7,23 @@ INSERT INTO etudiants (etudiant_id, nom, prenom) values (5, "Lebo", "Michel");
 UPDATE etudiants
 set etudiant_id=5, nom = "Lebo", prenom = "Michel";
 
-
-SELECT * FROM profs;
-SELECT * FROM etudiants;
-SELECT * FROM admin;
-
-SELECT prenom from etudiants where prof_id = 2;
+SELECT prenom from etudiants where prof_id = 14;
 
 
-UPDATE etudiants
-SET classe = "INFA2"
-WHERE etudiant_id=5;
 
-SELECT nom, prenom from etudiants where prof_id=user;
+SELECT nom, prenom, classe from etudiants where prof_id=14; 
+--prendre le nom et prenom de l'étudiant affilié au prof qui est actuellement connecté
 
---etudiant qcm statistiques
+SELECT path FROM qcm WHERE prof_id=14;
+--on chope le path du qcm afin de l'envoyer au front depuis le back
+
+
+--TRIGGER :
+
+CREATE OR REPLACE TRIGGER EtudiantTrig
+  before INSERT on ETUDIANTS
+  for each row
+begin
+  SELECT seq_etudiant.nextval into :NEW.etudiant_id from dual
+end
+/
