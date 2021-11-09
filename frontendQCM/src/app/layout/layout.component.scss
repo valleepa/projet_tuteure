@@ -1,0 +1,29 @@
+.wrapper{
+  display:flex;
+  flex-direction: row;
+  width:100%;
+}
+app-sidebar{
+  flex:1;
+  min-width: 13rem;
+  max-width: 13rem;
+  min-height: 100vh;
+}
+.right{
+  flex:2;
+  flex-grow:1;
+  display:flex;
+  flex-direction: column;
+}
+app-accueil{
+  flex:2;
+  flex-grow: 1;
+  margin-top: 5em;
+}
+app-topbar{
+  background-color: white;
+  flex:1;
+  max-height: 6vh;
+  min-height: 6vh;
+}
+
