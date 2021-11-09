@@ -12,6 +12,7 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { CreateComponent } from './create/create.component';
 import { ModifyComponent } from './modify/modify.component';
 import {MatCardModule} from "@angular/material/card";
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import {MatCardModule} from "@angular/material/card";
         BrowserAnimationsModule,
         MatDividerModule,
         MatIconModule,
-        MatCardModule
+        MatCardModule,
+        MatToolbarModule
     ],
   providers: [],
   bootstrap: [AppComponent]
