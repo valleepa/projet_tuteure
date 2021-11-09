@@ -5,8 +5,9 @@
 }
 app-sidebar{
   flex:1;
+  min-width: 13rem;
   max-width: 13rem;
-  min-height: 100%;
+  min-height: 100vh;
   background-color:var(--primary);
 }
 .right{
@@ -18,10 +19,14 @@ app-sidebar{
 app-accueil{
   flex:2;
   flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5em;
 }
 app-topbar{
   background-color: white;
   flex:1;
-  min-height: 3em;
+  max-height: 6vh;
+  min-height: 6vh;
 }
 
