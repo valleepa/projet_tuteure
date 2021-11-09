@@ -1,7 +1,7 @@
 # projet_tuteure
 
 # dans popsql : 
-- aller dans préférences/connection/<ladatabase>
+- aller dans préférences/connection/ladatabase
 - mettre <connection type> = directly from my computer
 
 # dans visual studio code : 
