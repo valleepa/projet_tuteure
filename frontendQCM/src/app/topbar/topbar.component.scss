@@ -1,4 +1,6 @@
 mat-toolbar{
+  position: relative;
+  line-height: 100%;
   background-color: white;
 }
 .example-spacer {
@@ -19,7 +21,6 @@ input[type=text] {
 mat-icon{
   color: #3F51B5;
 }
-
 
 button{
   border: 0px;

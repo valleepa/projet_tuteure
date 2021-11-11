@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
 
-
 @Component({
   selector: 'app-layout',
   templateUrl: './layout.component.html',
@@ -17,7 +16,6 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   ngAfterViewInit() {
     this.observer.observe(['(max-width: 80rem)']).subscribe((res) => {
       if (res.matches) {
@@ -27,7 +25,6 @@ export class LayoutComponent implements OnInit {
       }
     })
   }
-
 
   navOpen($event:any): void {
     // toggle condition here

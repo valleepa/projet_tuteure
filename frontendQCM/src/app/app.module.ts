@@ -15,6 +15,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { LayoutComponent } from './layout/layout.component';
+// import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { LayoutComponent } from './layout/layout.component';
     MatCardModule,
     MatToolbarModule,
     MatSidenavModule
+    // SweetAlert2Module.forChild()
   ],
   providers: [],
   bootstrap: [AppComponent]
