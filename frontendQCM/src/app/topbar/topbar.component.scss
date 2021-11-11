@@ -6,6 +6,7 @@ mat-toolbar{
 }
 
 input[type=text] {
+  margin-left: 20px;
   background-color: #EBECF0;
   border: 0px;
   height: 20px;
@@ -15,3 +16,11 @@ input[type=text] {
   color: #3F51B5;
 }
 
+mat-icon{
+  color: #3F51B5;
+}
+
+
+button{
+  border: 0px;
+}
