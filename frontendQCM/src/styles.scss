@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+.custom-dialog-container .mat-dialog-container {
+  padding: 0;
+}
 :root{
 --background: #EBECF0;
 --white: #FFFFFF;

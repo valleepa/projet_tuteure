@@ -15,9 +15,7 @@ app-sidebar{
   display:flex;
   flex-direction: column;
 }
-app-accueil{
-  flex:2;
-  flex-grow: 1;
+router-outlet{
   margin-top: 5em;
 }
 app-topbar{

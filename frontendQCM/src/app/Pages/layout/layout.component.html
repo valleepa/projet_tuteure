@@ -2,6 +2,6 @@
     <app-sidebar *ngIf="isOpen"></app-sidebar>
   <div class="right">
     <app-topbar (open)="navOpen($event)"></app-topbar>
-    <app-accueil></app-accueil>
+    <router-outlet></router-outlet>
   </div>
 </div>

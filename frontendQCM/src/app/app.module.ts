@@ -3,18 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AccueilComponent } from './accueil/accueil.component';
+import { AccueilComponent } from './Pages/accueil/accueil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarComponent } from './sidebar/sidebar.component';
+import { SidebarComponent } from './Component/sidebar/sidebar.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
-import { TopbarComponent } from './topbar/topbar.component';
-import { CreateComponent } from './create/create.component';
-import { ModifyComponent } from './modify/modify.component';
+import { TopbarComponent } from './Component/topbar/topbar.component';
+import { CreateComponent } from './Component/create/create.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
-import { LayoutComponent } from './layout/layout.component';
+import { LayoutComponent } from './Pages/layout/layout.component';
+import { InputDialogComponent } from './Component/input-dialog/input-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatButtonModule} from "@angular/material/button";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {CreationQCMComponent} from "./Pages/creation-qcm/creation-qcm.component";
+
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
@@ -24,8 +30,9 @@ import { LayoutComponent } from './layout/layout.component';
     SidebarComponent,
     TopbarComponent,
     CreateComponent,
-    ModifyComponent,
-    LayoutComponent
+    LayoutComponent,
+    InputDialogComponent,
+    CreationQCMComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,12 @@ import { LayoutComponent } from './layout/layout.component';
     MatIconModule,
     MatCardModule,
     MatToolbarModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDialogModule,
+    MatButtonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatFormFieldModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [],
