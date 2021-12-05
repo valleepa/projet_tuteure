@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-creation-qcm',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creation-qcm.component.scss']
 })
 export class CreationQCMComponent implements OnInit {
-
-  constructor() { }
+  name : string = "bam";
+  constructor(public route:ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
+    this.name = <string>this.route.snapshot.paramMap.get('name');
 
+  }
 }

@@ -27,7 +27,8 @@ export class CreateComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
         if(result)
-          this.router.navigate(['/creation/'+result])
+          localStorage.removeItem("selector");
+          this.router.navigate(['/creation',result])
           console.log(result);
       });
     }

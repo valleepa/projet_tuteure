@@ -5,21 +5,27 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AccueilComponent } from './Pages/accueil/accueil.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SidebarComponent } from './Component/sidebar/sidebar.component';
+import { SidebarComponent } from './Component/Layout/sidebar/sidebar.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatIconModule} from "@angular/material/icon";
-import { TopbarComponent } from './Component/topbar/topbar.component';
-import { CreateComponent } from './Component/create/create.component';
+import { TopbarComponent } from './Component/Layout/topbar/topbar.component';
+import { CreateComponent } from './Component/Accueil/create/create.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { LayoutComponent } from './Pages/layout/layout.component';
-import { InputDialogComponent } from './Component/input-dialog/input-dialog.component';
+import { InputDialogComponent } from './Component/Accueil/input-dialog/input-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatButtonModule} from "@angular/material/button";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {CreationQCMComponent} from "./Pages/creation-qcm/creation-qcm.component";
+import {RouterModule} from "@angular/router";
+import { CreationTitleComponent } from './Component/Creation/creation-title/creation-title.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { CreationTabComponent } from './Component/Creation/creation-tab/creation-tab.component';
+import { CreationTabTitleComponent } from './Component/Creation/creation-tab-title/creation-tab-title.component';
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -32,7 +38,10 @@ import {CreationQCMComponent} from "./Pages/creation-qcm/creation-qcm.component"
     CreateComponent,
     LayoutComponent,
     InputDialogComponent,
-    CreationQCMComponent
+    CreationQCMComponent,
+    CreationTitleComponent,
+    CreationTabComponent,
+    CreationTabTitleComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +57,9 @@ import {CreationQCMComponent} from "./Pages/creation-qcm/creation-qcm.component"
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
+    RouterModule,
+    MatTabsModule,
+    MatProgressBarModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [],

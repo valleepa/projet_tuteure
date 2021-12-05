@@ -1,0 +1,14 @@
+.tab-top{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.onglet{
+  min-width: 33.3%;
+  cursor: pointer;
+  color : white;
+
+}
+.progress{
+  min-width: 100px;
+}
