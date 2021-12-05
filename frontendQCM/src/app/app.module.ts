@@ -26,6 +26,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { CreationTabComponent } from './Component/Creation/creation-tab/creation-tab.component';
 import { CreationTabTitleComponent } from './Component/Creation/creation-tab-title/creation-tab-title.component';
+import { CreationQuestionsComponent } from './Component/Creation/creation-questions/creation-questions.component';
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -42,6 +43,7 @@ import { CreationTabTitleComponent } from './Component/Creation/creation-tab-tit
     CreationTitleComponent,
     CreationTabComponent,
     CreationTabTitleComponent,
+    CreationQuestionsComponent,
   ],
   imports: [
     BrowserModule,

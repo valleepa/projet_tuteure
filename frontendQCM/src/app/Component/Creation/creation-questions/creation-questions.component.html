@@ -1,0 +1,16 @@
+<div *ngIf="categoriesLength() == 0" class="main-div">
+    <mat-card (click)="openDialog()">
+        <mat-card-header>
+          <mat-card-title>{{titre}}</mat-card-title>
+        </mat-card-header>
+        <img src="{{image}}" alt="image" draggable="false">
+      </mat-card>
+</div>
+
+<div *ngIf="categoriesLength() > 0">
+    <h3>TODO - Affichage général des catégories et questions</h3>
+    <ul>
+        <li *ngFor="let categorie of categories">{{categorie}}</li>
+    </ul>
+</div>
+  

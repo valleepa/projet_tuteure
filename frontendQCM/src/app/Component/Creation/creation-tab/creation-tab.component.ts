@@ -9,6 +9,7 @@ export class CreationTabComponent implements OnInit {
 
   progress : number = 33.3;
   selector : string = 'QUESTIONS';
+  showQuestions  = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -23,18 +24,21 @@ export class CreationTabComponent implements OnInit {
     }
   }
   onQuestions() {
+    this.showQuestions = true;
     this.progress = 33.3;
     localStorage.setItem("selector","QUESTIONS");
     this.selector = <string>localStorage.getItem("selector");
   }
 
   onParametres() {
+    this.showQuestions = false;
     this.progress = 66.6;
     localStorage.setItem("selector","PARAMETRES");
     this.selector = <string>localStorage.getItem("selector");
   }
 
   onEdition() {
+    this.showQuestions = false;
     this.progress = 100;
     localStorage.setItem("selector","EDITION");
     this.selector = <string>localStorage.getItem("selector");

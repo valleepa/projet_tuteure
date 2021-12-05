@@ -7,4 +7,8 @@
   <div class="tab-bottom">
     <mat-progress-bar class="progress" mode="determinate" value="{{progress}}"></mat-progress-bar>
   </div>
+
+  <div *ngIf="showQuestions">
+    <app-creation-questions></app-creation-questions>
+  </div>
 </div>
