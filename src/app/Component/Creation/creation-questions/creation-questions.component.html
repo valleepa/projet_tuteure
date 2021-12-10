@@ -1,4 +1,5 @@
-<div *ngIf="categoriesLength() == 0" class="main-div">
+<div class="main-div">
+  <div *ngIf="categoriesLength() == 0" class="main-div">
     <mat-card (click)="openDialog()">
         <mat-card-header>
           <mat-card-title>{{titre}}</mat-card-title>
@@ -8,9 +9,16 @@
 </div>
 
 <div *ngIf="categoriesLength() > 0">
-    <h3>TODO - Affichage général des catégories et questions</h3>
-    <ul>
-        <li *ngFor="let categorie of categories">{{categorie}}</li>
-    </ul>
+    <h3 style="text-align: center; justify-content: center;">Catégories</h3>
+    <mat-button-toggle-group name="boutonsCategorie" aria-label="Catégories de questions">
+      
+      <mat-button-toggle *ngFor="let categorie of categories">
+        <h4>{{categorie}}</h4>
+      </mat-button-toggle>
+      
+    </mat-button-toggle-group>
+    <button id="btnCategorie" mat-button color="primary" (click)="openDialog()">(+)</button>
 </div>
+</div>
+
   

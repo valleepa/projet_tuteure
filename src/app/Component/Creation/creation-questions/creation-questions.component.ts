@@ -39,9 +39,6 @@ export class CreationQuestionsComponent implements OnInit {
         console.log(result);
         this.ajoutCategorie(result);
       }
-      else{
-        this.categories = [];
-      }
     });
   }
 

@@ -27,6 +27,7 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { CreationTabComponent } from './Component/Creation/creation-tab/creation-tab.component';
 import { CreationTabTitleComponent } from './Component/Creation/creation-tab-title/creation-tab-title.component';
 import { CreationQuestionsComponent } from './Component/Creation/creation-questions/creation-questions.component';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -62,6 +63,7 @@ import { CreationQuestionsComponent } from './Component/Creation/creation-questi
     RouterModule,
     MatTabsModule,
     MatProgressBarModule,
+    MatButtonToggleModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [],
