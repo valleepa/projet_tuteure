@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-creation-tab',
@@ -9,7 +10,9 @@ export class CreationTabComponent implements OnInit {
 
   progress : number = 33.3;
   selector : string = 'QUESTIONS';
-  showQuestions  = false;
+  o: any;
+  @Output() selecteur = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit(): void {
@@ -22,25 +25,39 @@ export class CreationTabComponent implements OnInit {
       else if(localStorage.getItem("selector")==="EDITION")
         this.onEdition();
     }
+    const obs = new Observable(
+      (o) => {
+        this.o = o;
+      }
+    );
+
+    //
+
+    obs.subscribe(i => console.log(i));
   }
   onQuestions() {
-    this.showQuestions = true;
     this.progress = 33.3;
     localStorage.setItem("selector","QUESTIONS");
+    this.o.next(1);
     this.selector = <string>localStorage.getItem("selector");
+    this.addNewItem("QUESTIONS");
   }
 
   onParametres() {
-    this.showQuestions = false;
     this.progress = 66.6;
     localStorage.setItem("selector","PARAMETRES");
     this.selector = <string>localStorage.getItem("selector");
+    this.addNewItem("PARAMETRES");
   }
 
   onEdition() {
-    this.showQuestions = false;
     this.progress = 100;
     localStorage.setItem("selector","EDITION");
     this.selector = <string>localStorage.getItem("selector");
+    this.addNewItem("EDITION");
+  }
+
+  addNewItem(change : string){
+    this.selecteur.emit(change);
   }
 }

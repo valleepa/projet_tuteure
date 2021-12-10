@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChange } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
@@ -8,10 +8,16 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class CreationQCMComponent implements OnInit {
   name : string = "bam";
+
   constructor(public route:ActivatedRoute) { }
 
   ngOnInit(): void {
     this.name = <string>this.route.snapshot.paramMap.get('name');
-
   }
+
+  public checkSelectorQuestions()
+  {
+    return localStorage.getItem('selector') == "QUESTIONS";
+  }
+  
 }

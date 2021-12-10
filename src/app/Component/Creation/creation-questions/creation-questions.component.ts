@@ -14,7 +14,12 @@ export class CreationQuestionsComponent implements OnInit {
   image = 'assets/img/1.svg';
   titre = 'AJOUTER UNE CATEGORIE';
 
-  constructor(public dialog: MatDialog, public router: Router) { }
+  constructor(public dialog: MatDialog, public router: Router) { 
+    router.events.subscribe((val) => 
+    {
+      this.clearStorage();
+    });
+  }
 
   ngOnInit(): void {
     this.loadCategoriesFromStorage();

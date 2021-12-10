@@ -1,5 +1,7 @@
 <div class="wrapper">
   <app-creation-title [title]="name" class="title"></app-creation-title>
   <app-creation-tab></app-creation-tab>
-
+  <div *ngIf="checkSelectorQuestions()">
+    <app-creation-questions></app-creation-questions>
+  </div>
 </div>
