@@ -6,19 +6,84 @@
         </mat-card-header>
         <img src="{{image}}" alt="image" draggable="false">
       </mat-card>
-</div>
+  </div>
 
-<div *ngIf="categoriesLength() > 0">
-    <h3 style="text-align: center; justify-content: center;">Catégories</h3>
-    <mat-button-toggle-group name="boutonsCategorie" aria-label="Catégories de questions">
+  <div *ngIf="categoriesLength() > 0" class="parent">
+      <div>
+        <h3 style="text-align: center; justify-content: center;">Catégories</h3>
+      <mat-button-toggle-group name="boutonsCategorie" aria-label="Catégories de questions">
+        
+        <mat-button-toggle *ngFor="let categorie of categories">
+          <h4>{{categorie}}</h4>
+        </mat-button-toggle>
+        <button class="bouton" mat-button color="primary" (click)="openDialog()"><mat-icon>add_circle_outline</mat-icon></button>
+      </mat-button-toggle-group>
       
-      <mat-button-toggle *ngFor="let categorie of categories">
-        <h4>{{categorie}}</h4>
-      </mat-button-toggle>
-      
-    </mat-button-toggle-group>
-    <button id="btnCategorie" mat-button color="primary" (click)="openDialog()">(+)</button>
-</div>
-</div>
+      </div>
+      <br>
+      <div>
+        <h3 style="text-align: center; justify-content: center;">Questions</h3>
+        <mat-button-toggle-group name="boutonsQuestion" aria-label="Questions">
+          <div *ngFor="let question of questions">
+            <mat-button-toggle (click)="remplaceFormWithCurrentQuestion(question.id)">
+              <h4>{{question.intitule}}</h4>
+            </mat-button-toggle>
+          </div>
+          
+          <button class="bouton" mat-button color="primary" (click)="addQuestion()"><mat-icon>add_circle_outline</mat-icon></button>
+        </mat-button-toggle-group>
+      </div>
+      <div *ngIf="showForm" style="justify-content: center;">
+        <form [formGroup]="questionForm" (ngSubmit)="saveQuestion(questionForm)">
 
+          <mat-form-field appearance="fill">
+            <mat-label>Nom de la question</mat-label>
+            <input matInput placeholder="Nom de la question" formControlName="nom">
+          </mat-form-field>
+          <br>
   
+          <mat-form-field appearance="fill">
+            <mat-label>Question?</mat-label>
+            <textarea matInput formControlName="contenu"></textarea>
+          </mat-form-field>
+          <br>
+  
+          <mat-form-field appearance="fill">
+            <mat-label>Type de question</mat-label>
+            <mat-select formControlName="type">
+              <div *ngFor="let typeQuestion of typesQuestion">
+                <mat-option [value]="typeQuestion.value" (click)="onChangementTypeQuestion(typeQuestion.value)"> {{typeQuestion.viewValue}}</mat-option>
+              </div>
+            </mat-select>
+          </mat-form-field>
+          <br>
+          
+          <!-- <div *ngIf="typeQuestionSelected === 'DEFAUT'"> 
+            <app-creation-questions-defaut></app-creation-questions-defaut>
+          </div>
+          <div *ngIf="typeQuestionSelected === 'NUMERIQUE'">
+            <app-creation-questions-numerique></app-creation-questions-numerique>
+          </div>
+          <div *ngIf="typeQuestionSelected === 'OUVERTE'">
+            <app-creation-questions-ouverte></app-creation-questions-ouverte>
+          </div> -->
+
+          <button class="bouton" mat-button color="primary" >NOTATION</button>
+          <mat-form-field  appearance="fill">
+            <mat-label></mat-label>
+            <input matInput type="number" min="0" value="1" formControlName="notation">
+          </mat-form-field>
+          
+          <br>
+          <button mat-raised-button color="primary" type="submit" [disabled]="!questionForm.valid">Sauvegarder la question</button>
+          <button mat-fab color="warn" aria-label="suppr" (click)="deleteQuestion()">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </form> 
+
+        
+      </div>
+  </div>
+</div> 
+
+<button (click)="debug()">debug</button>

@@ -28,7 +28,11 @@ import { CreationTabComponent } from './Component/Creation/creation-tab/creation
 import { CreationTabTitleComponent } from './Component/Creation/creation-tab-title/creation-tab-title.component';
 import { CreationQuestionsComponent } from './Component/Creation/creation-questions/creation-questions.component';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
-
+import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
+import { CreationQuestionsDefautComponent } from './Component/Creation/creation-questions/components/creation-questions-defaut/creation-questions-defaut.component';
+import { CreationQuestionsNumeriqueComponent } from './Component/Creation/creation-questions/components/creation-questions-numerique/creation-questions-numerique.component';
+import { CreationQuestionsOuverteComponent } from './Component/Creation/creation-questions/components/creation-questions-ouverte/creation-questions-ouverte.component';
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({
@@ -45,6 +49,9 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     CreationTabComponent,
     CreationTabTitleComponent,
     CreationQuestionsComponent,
+    CreationQuestionsDefautComponent,
+    CreationQuestionsNumeriqueComponent,
+    CreationQuestionsOuverteComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +71,8 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatTabsModule,
     MatProgressBarModule,
     MatButtonToggleModule,
+    MatSelectModule,
+    MatInputModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [],

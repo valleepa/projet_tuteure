@@ -7,10 +7,9 @@ export class QCM
     entete?: string;
     isRandomized?: boolean;
     SujetsDeQuestions?: string[];
-    //questions? = Question[];
+    // questions = Question[];
 
     public QCM()
     {
-        
     }
 }
