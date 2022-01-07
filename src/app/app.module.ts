@@ -32,6 +32,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
+import { CreationEditionsComponent } from './Component/Creation/creation-editions/creation-editions.component';
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -50,6 +51,7 @@ import {MatTableModule} from "@angular/material/table";
     CreationTabTitleComponent,
     CreationQuestionsComponent,
     CreationParametresComponent,
+    CreationEditionsComponent,
   ],
   imports: [
     BrowserModule,
