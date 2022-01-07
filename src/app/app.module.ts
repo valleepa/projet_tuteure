@@ -36,6 +36,7 @@ import { CreationEditionsComponent } from './Component/Creation/creation-edition
 import {MesQCMComponent} from "./Pages/mes-qcm/mes-qcm.component";
 import {MesEtudiantsComponent} from "./Pages/mes-etudiants/mes-etudiants.component";
 import {TableauComponent} from "./Component/tableau/tableau.component";
+import { TableauEtudiantsComponent } from './Component/tableau-etudiants/tableau-etudiants.component';
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -58,6 +59,7 @@ import {TableauComponent} from "./Component/tableau/tableau.component";
     MesQCMComponent,
     MesEtudiantsComponent,
     TableauComponent,
+    TableauEtudiantsComponent,
   ],
   imports: [
     BrowserModule,
