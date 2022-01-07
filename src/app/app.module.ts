@@ -27,6 +27,11 @@ import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { CreationTabComponent } from './Component/Creation/creation-tab/creation-tab.component';
 import { CreationTabTitleComponent } from './Component/Creation/creation-tab-title/creation-tab-title.component';
 import { CreationQuestionsComponent } from './Component/Creation/creation-questions/creation-questions.component';
+import { CreationParametresComponent } from './Component/Creation/creation-parametres/creation-parametres.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import {MatInputModule} from "@angular/material/input";
+import {MatTableModule} from "@angular/material/table";
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -44,6 +49,7 @@ import { CreationQuestionsComponent } from './Component/Creation/creation-questi
     CreationTabComponent,
     CreationTabTitleComponent,
     CreationQuestionsComponent,
+    CreationParametresComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +68,10 @@ import { CreationQuestionsComponent } from './Component/Creation/creation-questi
     RouterModule,
     MatTabsModule,
     MatProgressBarModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatInputModule,
+    MatTableModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [],
