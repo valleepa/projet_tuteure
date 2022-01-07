@@ -33,6 +33,9 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import { CreationEditionsComponent } from './Component/Creation/creation-editions/creation-editions.component';
+import {MesQCMComponent} from "./Pages/mes-qcm/mes-qcm.component";
+import {MesEtudiantsComponent} from "./Pages/mes-etudiants/mes-etudiants.component";
+import {TableauComponent} from "./Component/tableau/tableau.component";
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -52,6 +55,9 @@ import { CreationEditionsComponent } from './Component/Creation/creation-edition
     CreationQuestionsComponent,
     CreationParametresComponent,
     CreationEditionsComponent,
+    MesQCMComponent,
+    MesEtudiantsComponent,
+    TableauComponent,
   ],
   imports: [
     BrowserModule,
