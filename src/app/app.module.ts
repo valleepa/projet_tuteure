@@ -37,6 +37,9 @@ import {MesQCMComponent} from "./Pages/mes-qcm/mes-qcm.component";
 import {MesEtudiantsComponent} from "./Pages/mes-etudiants/mes-etudiants.component";
 import {TableauComponent} from "./Component/tableau/tableau.component";
 import { TableauEtudiantsComponent } from './Component/tableau-etudiants/tableau-etudiants.component';
+import { CreationCardComponent } from './Component/Creation/creation-card/creation-card.component';
+import { CreationAddComponent } from './Component/Creation/creation-add/creation-add.component';
+import { CreationQuestionComponent } from './Component/Creation/creation-question/creation-question.component';
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -60,6 +63,9 @@ import { TableauEtudiantsComponent } from './Component/tableau-etudiants/tableau
     MesEtudiantsComponent,
     TableauComponent,
     TableauEtudiantsComponent,
+    CreationCardComponent,
+    CreationAddComponent,
+    CreationQuestionComponent,
   ],
   imports: [
     BrowserModule,

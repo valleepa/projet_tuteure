@@ -8,7 +8,7 @@
     <mat-progress-bar class="progress" mode="determinate" value="{{progress}}"></mat-progress-bar>
   </div>
 </div>
-<div *ngIf="selector==='QUESTIONS'">
+<!--<div *ngIf="selector==='QUESTIONS'">
   <app-creation-questions></app-creation-questions>
 </div>
 <div *ngIf="selector==='PARAMETRES'">
@@ -16,4 +16,5 @@
 </div>
 <div *ngIf="selector==='EDITION'">
   <app-creation-editions></app-creation-editions>
-</div>
+</div>-->
+<router-outlet></router-outlet>

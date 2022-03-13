@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-creation-tab',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creation-tab.component.scss']
 })
 export class CreationTabComponent implements OnInit {
-
+  @Input() title : string = '';
   progress : number = 33.3;
   selector : string = 'QUESTIONS';
   showQuestions  = false;
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit(): void {
     if(!localStorage.getItem("selector")){
@@ -28,6 +29,7 @@ export class CreationTabComponent implements OnInit {
     this.progress = 33.3;
     localStorage.setItem("selector","QUESTIONS");
     this.selector = <string>localStorage.getItem("selector");
+    this.router.navigate(['creation/'+ this.title +'/questions']);
   }
 
   onParametres() {
@@ -35,6 +37,7 @@ export class CreationTabComponent implements OnInit {
     this.progress = 66.6;
     localStorage.setItem("selector","PARAMETRES");
     this.selector = <string>localStorage.getItem("selector");
+    this.router.navigate(['creation/'+ this.title +'/parametres']);
   }
 
   onEdition() {
@@ -42,5 +45,6 @@ export class CreationTabComponent implements OnInit {
     this.progress = 100;
     localStorage.setItem("selector","EDITION");
     this.selector = <string>localStorage.getItem("selector");
+    this.router.navigate(['creation/'+ this.title +'/edition']);
   }
 }

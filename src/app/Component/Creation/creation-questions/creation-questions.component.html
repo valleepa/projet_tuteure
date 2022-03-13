@@ -1,5 +1,5 @@
 <div *ngIf="categoriesLength() == 0" class="main-div">
-    <mat-card (click)="openDialog()">
+    <mat-card (click)="addCategorie()">
         <mat-card-header>
           <mat-card-title>{{titre}}</mat-card-title>
         </mat-card-header>
@@ -7,10 +7,14 @@
       </mat-card>
 </div>
 
-<div *ngIf="categoriesLength() > 0">
-    <h3>TODO - Affichage général des catégories et questions</h3>
-    <ul>
-        <li *ngFor="let categorie of categories">{{categorie}}</li>
-    </ul>
+<div *ngIf="categoriesLength() > 0" class="wrapper">
+  <div class="categories">
+    <app-creation-card *ngFor="let categorie of categories" [title]="categorie.name" [selector]="selector.name" class="categorie" (click)="setCategorie(categorie)"></app-creation-card>
+    <app-creation-add class="categorie" (click)="addCategorie()"></app-creation-add>
+  </div>
+  <div *ngIf="questions.length > 0" class="categories">
+    <app-creation-card *ngFor="let question of questions" [title]="question.name" [selector]="selectorQ.name" class="categorie" (click)="setQuestion(question)"></app-creation-card>
+    <app-creation-add class="categorie" (click)="addQuestion()"></app-creation-add>
+  </div>
+  <app-creation-question [categorieName]="selector.name" [questionName]="selectorQ.name"></app-creation-question>
 </div>
-  

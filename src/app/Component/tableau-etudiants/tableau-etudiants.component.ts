@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import {ETUDIANTS} from "../../ETUDIANTS";
+import {Etudiant, IEtudiant} from "../../ETUDIANTS";
 
 @Component({
   selector: 'app-tableau-etudiants',
@@ -8,19 +8,16 @@ import {ETUDIANTS} from "../../ETUDIANTS";
   styleUrls: ['./tableau-etudiants.component.scss']
 })
 export class TableauEtudiantsComponent implements OnInit {
-  etudiants: ETUDIANTS[] = [];
-  etudiant = <ETUDIANTS>{};
-  dataSource!: MatTableDataSource<ETUDIANTS>;
+  etudiants: IEtudiant[] = [];
+  etudiant = new Etudiant("FA2", "B", "Damien Stengel");
+  dataSource!: MatTableDataSource<IEtudiant>;
   displayedColumns: string[] = ['name', 'class', 'group', 'profil'];
 
   constructor() { }
 
   ngOnInit(): void {
-    this.etudiant.name = "Damien Stengel";
-    this.etudiant.class = "FA2";
-    this.etudiant.group = "FA2-1";
     this.etudiants.push(this.etudiant);
-    this.dataSource = new MatTableDataSource<ETUDIANTS>(this.etudiants)
+    this.dataSource = new MatTableDataSource<IEtudiant>(this.etudiants)
   }
 
   applyFilter(event: Event) {

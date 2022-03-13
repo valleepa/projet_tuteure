@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 .custom-dialog-container .mat-dialog-container {
   padding: 0;
+  margin: 0;
 }
 :root{
 --background: #EBECF0;
@@ -13,6 +14,10 @@
 --error: #EB5945;
 --warning: #F6BB42;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #EBECF0 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #EBECF0 }
 
