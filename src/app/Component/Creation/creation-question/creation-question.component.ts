@@ -2,6 +2,11 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Categorie} from "../../../CATEGORIE";
 import {Question} from "../../../QUESTION";
 
+interface Choix {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-creation-question',
   templateUrl: './creation-question.component.html',
@@ -13,6 +18,14 @@ export class CreationQuestionComponent implements OnInit {
   question!: Question;
   @Input() categorieName : string = '';
   @Input() questionName : string = '';
+
+  choix: Choix[] = [
+    {value: 'defaut-0', viewValue: 'Par défaut'},
+    {value: 'numerique-1', viewValue: 'Numérique'},
+    {value: 'ouverte-2', viewValue: 'Ouverte'},
+  ];
+
+
   constructor() {
     this.categories = JSON.parse(localStorage.getItem('categories')!);
   }

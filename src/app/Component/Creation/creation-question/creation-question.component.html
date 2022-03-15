@@ -1,9 +1,73 @@
+<!--<mat-card>-->
+<!--  <mat-card-title>-->
+<!--    {{questionName}}-->
+<!--  </mat-card-title>-->
+<!--  <mat-form-field appearance="fill" id="question">-->
+<!--    <mat-label>Question?</mat-label>-->
+<!--    <input matInput [(ngModel)]="questionName" placeholder="ma question?">-->
+<!--  </mat-form-field>-->
+<!--  <mat-form-field appearance="fill" id="type">-->
+<!--    <mat-label>Type</mat-label>-->
+<!--    <mat-select>-->
+<!--      <mat-option *ngFor="let choi of choix" [value]="choi.value">-->
+<!--        {{choi.viewValue}}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--  </mat-form-field>-->
+<!--  <div class="notation">-->
+<!--    <div class="gauche">-->
+<!--      <mat-card>Notation</mat-card>-->
+<!--      <mat-form-field appearance="fill" id="notation">-->
+<!--        <input matInput type="number" placeholder="1">-->
+<!--      </mat-form-field>-->
+<!--    </div>-->
+<!--    <div class="droite">-->
+<!--      <mat-card>Bonne réponse</mat-card>-->
+<!--    </div>-->
+
+<!--  </div>-->
+<!--  <mat-form-field appearance="fill" id="r1">-->
+<!--    <mat-label>Réponse 1</mat-label>-->
+<!--    <input matInput>-->
+<!--  </mat-form-field>-->
+<!--</mat-card>-->
+
+
 <mat-card>
-  <mat-card-title>
-    {{questionName}}
-  </mat-card-title>
-  <mat-form-field appearance="fill" id="question">
-    <mat-label>Question?</mat-label>
-    <input matInput [(ngModel)]="questionName" placeholder="ma question?">
-  </mat-form-field>
+  <div class="div1">
+    <mat-card-title>
+          {{questionName}}
+    </mat-card-title>
+  </div>
+  <div class="div2">
+    <mat-form-field appearance="fill" id="question">
+          <mat-label>Question?</mat-label>
+          <input matInput [(ngModel)]="questionName" placeholder="ma question?">
+        </mat-form-field>
+  </div>
+  <div class="div3">
+    <mat-form-field appearance="fill" id="type">
+          <mat-label>Type</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let choi of choix" [value]="choi.value">
+              {{choi.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  </div>
+  <div class="div4">
+          <mat-form-field appearance="fill" id="notation">
+            <mat-label>Notation</mat-label>
+            <input matInput type="number">
+          </mat-form-field>
+  </div>
+  <div class="div5">
+    <mat-form-field appearance="fill" id="r1">
+        <mat-label>Réponse 1</mat-label>
+        <input matInput>
+      </mat-form-field>
+  </div>
+  <div class="div6">
+    <mat-card class="mat-card mat-focus-indicator" id="good">Bonne réponse</mat-card>
+  </div>
 </mat-card>
