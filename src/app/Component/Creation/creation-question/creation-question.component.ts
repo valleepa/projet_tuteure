@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Categorie} from "../../../CATEGORIE";
 import {Question} from "../../../QUESTION";
+import {Reponse} from "../../../REPONSE";
 
 interface Choix {
   value: string;
@@ -16,23 +17,35 @@ export class CreationQuestionComponent implements OnInit {
   categories : Categorie[];
   categorie!: Categorie;
   question!: Question;
+  id = 2
+
   @Input() categorieName : string = '';
   @Input() questionName : string = '';
 
-  choix: Choix[] = [
-    {value: 'defaut-0', viewValue: 'Par défaut'},
-    {value: 'numerique-1', viewValue: 'Numérique'},
-    {value: 'ouverte-2', viewValue: 'Ouverte'},
-  ];
 
+
+choix: Choix[] = [
+  {value: 'defaut-0', viewValue: 'Par défaut'},
+  {value: 'numerique-1', viewValue: 'Numérique'},
+  {value: 'ouverte-2', viewValue: 'Ouverte'},
+];
+
+  reponses: Reponse[] = [];
 
   constructor() {
     this.categories = JSON.parse(localStorage.getItem('categories')!);
   }
 
+
   ngOnInit(): void {
     this.findCategorie(this.categorieName);
     this.findQuestion(this.questionName);
+  }
+
+  addAnswer(){
+    let reponse = new Reponse("", this.id);
+    this.question.reponses.push(reponse);
+    this.id +=1;
   }
 
   findCategorie(name:string){

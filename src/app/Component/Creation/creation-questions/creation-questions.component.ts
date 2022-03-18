@@ -15,7 +15,7 @@ export class CreationQuestionsComponent implements OnInit {
   public categories : Categorie[] = [];
   image = 'assets/img/1.svg';
   titre = 'AJOUTER UNE CATEGORIE';
-  selector : Categorie = new Categorie("null", [new Question("Question 1", "unique")]);
+  selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [])]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
   constructor(public dialog: MatDialog, public router: Router) { }
@@ -65,15 +65,15 @@ export class CreationQuestionsComponent implements OnInit {
   categoriesLength(){
     return this.categories.length;
   }
-
   ajoutCategorie(categorieName : string)
   {
-    let categorie = new Categorie(categorieName, [new Question("Question 1", "unique")])
+    let categorie = new Categorie(categorieName, [new Question("Question 1", "unique", [])])
     this.selector = categorie;
     this.categories.push(categorie);
     localStorage.setItem('categories',JSON.stringify(this.categories));
     this.questions = categorie.questions;
   }
+
 
   loadCategoriesFromStorage()
   {
@@ -97,7 +97,7 @@ export class CreationQuestionsComponent implements OnInit {
   }
 
   private ajoutQuestion(name: string) {
-    let question = new Question(name, "unique");
+    let question = new Question(name, "unique", []);
     this.selector.questions.push(question);
     this.selectorQ = question;
     localStorage.setItem('categories',JSON.stringify(this.categories));

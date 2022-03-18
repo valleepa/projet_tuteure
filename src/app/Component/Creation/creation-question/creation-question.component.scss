@@ -1,23 +1,9 @@
-mat-card {
-  padding: 5%;
-  height: 30rem;
-  display: grid;
-  grid-template-columns: 60% 30%;
-  grid-template-rows: repeat(6, 15%);
-  grid-column-gap: 10%;
-  grid-row-gap: 2%;
-
-  mat-form-field{
-    width: 100%;
-  }
-}
-
 .div1 { grid-area: 1 / 1 / 2 / 3; text-align: center;}
 .div2 { grid-area: 2 / 1 / 2 / 3;}
 .div3 { grid-area: 3 / 1 / 4 / 2;}
-.div4 { grid-area: 4 / 1 / 5 / 2; display: flex}
+.div4 { grid-area: 4 / 1 / 5 / 2;}
 .div5 { grid-area: 5 / 1 / 6 / 2;}
-.div6 { grid-area: 4 / 2 / 5 / 3;text-align: center;}
+.div6 { grid-area: 5 / 2;}
 .div7 { grid-area: 6 / 1 / 7 / 2;
   mat-card{
     text-align: center;
@@ -36,15 +22,17 @@ mat-card {
 
 #good{
   color: white;
-  text-align: center;
-  border-radius: 4px 4px 0 0;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   user-select: none;
   background-color: #3F51B5;
-  line-height: 2rem;
-  height: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 2rem;
+  cursor: pointer;
+}
+
+.categorie{
+
 }
