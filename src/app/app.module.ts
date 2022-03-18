@@ -40,6 +40,9 @@ import { TableauEtudiantsComponent } from './Component/tableau-etudiants/tableau
 import { CreationCardComponent } from './Component/Creation/creation-card/creation-card.component';
 import { CreationAddComponent } from './Component/Creation/creation-add/creation-add.component';
 import { CreationQuestionComponent } from './Component/Creation/creation-question/creation-question.component';
+import { CreationQuestionDefautComponent } from './Component/Creation/creation-question/creation-question-defaut/creation-question-defaut.component';
+import { CreationQuestionOuverteComponent } from './Component/Creation/creation-question/creation-question-ouverte/creation-question-ouverte.component';
+import { CreationQuestionNumeriqueComponent } from './Component/Creation/creation-question/creation-question-numerique/creation-question-numerique.component';
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
@@ -66,6 +69,9 @@ import { CreationQuestionComponent } from './Component/Creation/creation-questio
     CreationCardComponent,
     CreationAddComponent,
     CreationQuestionComponent,
+    CreationQuestionDefautComponent,
+    CreationQuestionOuverteComponent,
+    CreationQuestionNumeriqueComponent,
   ],
   imports: [
     BrowserModule,

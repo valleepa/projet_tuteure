@@ -13,32 +13,37 @@
   <div class="div3">
     <mat-form-field appearance="fill" id="type">
           <mat-label>Type</mat-label>
-          <mat-select>
+          <mat-select  [(value)]="selected">
             <mat-option *ngFor="let choi of choix" [value]="choi.value">
               {{choi.viewValue}}
             </mat-option>
           </mat-select>
         </mat-form-field>
   </div>
+<!--  <div class="div4">-->
+<!--          <mat-form-field appearance="fill" id="notation">-->
+<!--            <mat-label>Notation</mat-label>-->
+<!--            <input matInput type="number">-->
+<!--          </mat-form-field>-->
+<!--  </div>-->
+<!--  <div class="div5">-->
+<!--    <mat-form-field appearance="fill">-->
+<!--        <mat-label>Réponse 1</mat-label>-->
+<!--        <input matInput>-->
+<!--      </mat-form-field>-->
+<!--  </div>-->
+<!--  <div class="div6">-->
+<!--    <mat-card class="mat-card mat-focus-indicator" id="good">Bonne réponse</mat-card>-->
+<!--  </div>-->
+<!--  <div class="div7">-->
+<!--    <mat-form-field *ngFor="let reponse of question.reponses" class="categorie" appearance="fill">-->
+<!--      <mat-label>Réponse {{reponse.id}}</mat-label>-->
+<!--      <input matInput></mat-form-field>-->
+<!--      <app-creation-add class="categorie" (click)="addAnswer()"></app-creation-add>-->
+<!--  </div>-->
   <div class="div4">
-          <mat-form-field appearance="fill" id="notation">
-            <mat-label>Notation</mat-label>
-            <input matInput type="number">
-          </mat-form-field>
-  </div>
-  <div class="div5">
-    <mat-form-field appearance="fill">
-        <mat-label>Réponse 1</mat-label>
-        <input matInput>
-      </mat-form-field>
-  </div>
-  <div class="div6">
-    <mat-card class="mat-card mat-focus-indicator" id="good">Bonne réponse</mat-card>
-  </div>
-  <div class="div7">
-    <mat-form-field *ngFor="let reponse of question.reponses" class="categorie" appearance="fill">
-      <mat-label>Réponse {{reponse.id}}</mat-label>
-      <input matInput></mat-form-field>
-      <app-creation-add class="categorie" (click)="addAnswer()"></app-creation-add>
+    <app-creation-question-defaut *ngIf="selected=='defaut-0'"></app-creation-question-defaut>
+    <app-creation-question-numerique *ngIf="selected=='numerique-1'"></app-creation-question-numerique>
+    <app-creation-question-ouverte *ngIf="selected=='ouverte-2'"></app-creation-question-ouverte>
   </div>
 </mat-card>

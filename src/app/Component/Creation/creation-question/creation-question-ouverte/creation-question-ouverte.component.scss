@@ -1,0 +1,28 @@
+.body {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: repeat(2, 8vh);
+  grid-column-gap: 3%;
+  mat-form-field{
+    width: 100%;
+  }
+}
+
+.div1 { grid-area: 1 / 1 / 1 / 4;}
+.div2 { grid-area: 2 / 1;}
+.div3 { grid-area: 2 / 2;}
+.div4 { grid-area: 2 / 3;}
+
+#note{
+  color: white;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #3F51B5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.5rem;
+  cursor: pointer;
+}

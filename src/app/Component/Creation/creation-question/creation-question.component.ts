@@ -18,6 +18,7 @@ export class CreationQuestionComponent implements OnInit {
   categorie!: Categorie;
   question!: Question;
   id = 2
+  selected = '';
 
   @Input() categorieName : string = '';
   @Input() questionName : string = '';
