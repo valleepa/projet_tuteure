@@ -44,6 +44,7 @@ import { CreationQuestionDefautComponent } from './Component/Creation/creation-q
 import { CreationQuestionOuverteComponent } from './Component/Creation/creation-question/creation-question-ouverte/creation-question-ouverte.component';
 import { CreationQuestionNumeriqueComponent } from './Component/Creation/creation-question/creation-question-numerique/creation-question-numerique.component';
 
+
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
 
 @NgModule({

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { InputDialogComponent } from '../../Accueil/input-dialog/input-dialog.component';
 import {Categorie, ICategorie} from "../../../CATEGORIE";
 import {Question} from "../../../QUESTION";
+import {QuestionService} from "../../../question.service";
 
 @Component({
   selector: 'app-creation-questions',
@@ -18,7 +19,7 @@ export class CreationQuestionsComponent implements OnInit {
   selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [])]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
-  constructor(public dialog: MatDialog, public router: Router) { }
+  constructor(public dialog: MatDialog, public router: Router, private questionService: QuestionService) { }
 
   ngOnInit(): void {
     this.loadCategoriesFromStorage();
@@ -100,6 +101,7 @@ export class CreationQuestionsComponent implements OnInit {
     let question = new Question(name, "unique", []);
     this.selector.questions.push(question);
     this.selectorQ = question;
+    this.questionService.questionActuel.next(question);
     localStorage.setItem('categories',JSON.stringify(this.categories));
   }
 
@@ -111,5 +113,10 @@ export class CreationQuestionsComponent implements OnInit {
 
   setQuestion(question: Question) {
     this.selectorQ = question;
+    this.questionService.questionActuel.next(question);
+  }
+
+  dialogModify() {
+
   }
 }

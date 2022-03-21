@@ -16,5 +16,5 @@
     <app-creation-card *ngFor="let question of questions" [title]="question.name" [selector]="selectorQ.name" class="categorie" (click)="setQuestion(question)"></app-creation-card>
     <app-creation-add class="categorie" (click)="addQuestion()"></app-creation-add>
   </div>
-  <app-creation-question [categorieName]="selector.name" [questionName]="selectorQ.name"></app-creation-question>
+  <app-creation-question></app-creation-question>
 </div>
