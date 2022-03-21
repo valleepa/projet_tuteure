@@ -23,8 +23,6 @@ export class CreationQuestionComponent implements OnInit {
   @Input() categorieName : string = '';
   @Input() questionName : string = '';
 
-
-
 choix: Choix[] = [
   {value: 'defaut-0', viewValue: 'Par défaut'},
   {value: 'numerique-1', viewValue: 'Numérique'},
