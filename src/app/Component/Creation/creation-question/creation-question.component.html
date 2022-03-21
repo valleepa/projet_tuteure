@@ -1,20 +1,20 @@
 <mat-card>
   <div class="div1">
-    <mat-card-title>
-          {{questionName}}
+    <mat-card-title (click)="modifyName()">
+          {{question.name}}
     </mat-card-title>
   </div>
   <div class="div2">
     <mat-form-field appearance="fill" id="question">
           <mat-label>Question?</mat-label>
-          <input matInput [(ngModel)]="questionName" placeholder="ma question?">
+          <input matInput [(ngModel)]="question.name" placeholder="ma question?">
         </mat-form-field>
   </div>
   <div class="div3">
     <mat-form-field appearance="fill" id="type">
           <mat-label>Type</mat-label>
           <mat-select  [(value)]="selected">
-            <mat-option *ngFor="let choi of choix" [value]="choi.value">
+            <mat-option *ngFor="let choi of choix" [value]="choi.value" (click)="setType()">
               {{choi.viewValue}}
             </mat-option>
           </mat-select>
@@ -46,9 +46,8 @@
 <!--      <app-creation-add class="categorie" (click)="addAnswer()"></app-creation-add>-->
 <!--  </div>-->
   <div class="div4">
-    <app-creation-question-defaut *ngIf="selected==''"></app-creation-question-defaut>
-    <app-creation-question-defaut *ngIf="selected=='defaut-0'"></app-creation-question-defaut>
-    <app-creation-question-numerique *ngIf="selected=='numerique-1'"></app-creation-question-numerique>
-    <app-creation-question-ouverte *ngIf="selected=='ouverte-2'"></app-creation-question-ouverte>
+    <app-creation-question-defaut *ngIf="selected=='defaut'"></app-creation-question-defaut>
+    <app-creation-question-numerique *ngIf="selected=='numerique'"></app-creation-question-numerique>
+    <app-creation-question-ouverte *ngIf="selected=='ouverte'"></app-creation-question-ouverte>
   </div>
 </mat-card>
