@@ -1,9 +1,25 @@
-<mat-toolbar xmlns="http://www.w3.org/1999/html">
-  <button mat-icon-button (click)="clickMenu()">
-    <mat-icon>menu</mat-icon>
-  </button>
-  <div id="search"><input type="text" placeholder="Chercher un QCM..."></div>
-<!--  <button [swal]="{title: 'MON QCM', input: 'text'}"> Création </button>-->
+<mat-toolbar>
+  <img src="assets/img/logoDeptaFull.png" alt="logo" draggable="false">
+  <span class="example-spacer"></span>
+  <ul>
+    <li class="nav-item-accueil">
+      <a class="" routerLink="/accueil">
+        <span>ACCUEIL</span></a>
+    </li>
+    <li class="nav-item-mesQCM">
+      <a class="" routerLink="/mesqcm">
+        <span>MES QCM</span></a>
+    </li>
+    <li class="nav-item-mesEtudiants">
+      <a class="" routerLink="/etudiants">
+        <span>MES ETUDIANTS</span></a>
+    </li>
+    <!-- Nav Item - Mes Statistiques-->
+    <li class="nav-item-mesStatistiques">
+      <a class="" routerLink="/statistiques">
+        <span>MES STATISTIQUES</span></a>
+    </li>
+  </ul>
   <span class="example-spacer"></span>
   <div id="user">TROGNON Thomas <i class="fas fa-user-circle" id="ico"></i> </div>
 </mat-toolbar>

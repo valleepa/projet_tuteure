@@ -1,19 +1,32 @@
 mat-toolbar{
-  position: relative;
+  display: flex;
   line-height: 100%;
-  background-color: white;
+  color:#3F51B5;
+  justify-content: center;
+  background-color: #FFFFFF;
+  margin-bottom: 2.5%;
 }
+
+img{
+  width: 10%;
+}
+
+ul{
+  margin: auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+}
+
 .example-spacer {
   flex: 1 1 auto;
 }
 
-input[type=text] {
-  margin-left: 20px;
-  background-color: #EBECF0;
-  border: 0px;
-  height: 20px;
+li a{
+  text-decoration: none;
+  color: var(--primary);
 }
-
 #user{
   color: #3F51B5;
 }
@@ -22,6 +35,3 @@ mat-icon{
   color: #3F51B5;
 }
 
-button{
-  border: 0px;
-}

@@ -1,7 +1,2 @@
-<div class="wrapper">
-    <app-sidebar *ngIf="isOpen"></app-sidebar>
-  <div class="right">
-    <app-topbar (open)="navOpen($event)"></app-topbar>
-    <router-outlet></router-outlet>
-  </div>
-</div>
+<app-topbar></app-topbar>
+<router-outlet></router-outlet>

@@ -15,10 +15,10 @@
     <mat-card class="mat-card mat-focus-indicator" id="good">Bonne réponse</mat-card>
   </div>
   <div class="div4">
-    <mat-form-field class="categorie" appearance="fill">
-    <mat-label>Réponse 2</mat-label>
-    <input matInput></mat-form-field>
-    <app-creation-add class="categorie"></app-creation-add>
+    <mat-form-field *ngFor="let reponse of question.reponses" class="categorie" appearance="fill">
+      <mat-label>Réponse {{reponse.id}}</mat-label>
+      <input matInput></mat-form-field>
+      <app-creation-add class="categorie" (click)="addAnswer()"></app-creation-add>
   </div>
 </div>
 

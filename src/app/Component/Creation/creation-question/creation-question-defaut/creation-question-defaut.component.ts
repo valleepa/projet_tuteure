@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Question} from "../../../../QUESTION";
 import {Reponse} from "../../../../REPONSE";
 import {Categorie} from "../../../../CATEGORIE";
+import {QuestionService} from "../../../../question.service";
 
 @Component({
   selector: 'app-creation-question-defaut',
@@ -10,20 +11,22 @@ import {Categorie} from "../../../../CATEGORIE";
 })
 
 export class CreationQuestionDefautComponent implements OnInit {
-  question!: Question;
-  id = 2;
-  reponses: Reponse[] = [];
+  question!:Question;
+  id:number=1;
 
-
-  constructor() {
+  constructor(private questionService: QuestionService) {
   }
 
   ngOnInit(): void {
+    this.questionService.questionActuel.subscribe(value => {
+      this.question=value;
+      this.id = value.reponses.length + 2;
+    });
   }
 
   addAnswer(){
-    // let reponse = new Reponse("", this.id);
-    // this.question.reponses.push(reponse);
-    this.id +=1;
+    this.question.reponses.push(new Reponse('', this.id));
+    this.id = this.question.reponses.length + 2;
+    console.log(this.question.reponses);
   }
 }
