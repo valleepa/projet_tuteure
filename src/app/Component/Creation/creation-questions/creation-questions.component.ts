@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InputDialogComponent } from '../../Accueil/input-dialog/input-dialog.component';
@@ -19,6 +19,8 @@ export class CreationQuestionsComponent implements OnInit {
   selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [])]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
+  categorieType: string = "categorie";
+  questionType: string = "question";
   constructor(public dialog: MatDialog, public router: Router, private questionService: QuestionService) { }
 
   ngOnInit(): void {
@@ -69,7 +71,9 @@ export class CreationQuestionsComponent implements OnInit {
   ajoutCategorie(categorieName : string)
   {
     let categorie = new Categorie(categorieName, [new Question("Question 1", "unique", [])])
-    this.selector = categorie;
+    this.questionService.categorieActuel.next(categorie);
+    this.questionService.questionActuel.next(categorie.questions[0])
+    this.questionService.categorieActuel.subscribe(res => this.selector = res);
     this.categories.push(categorie);
     localStorage.setItem('categories',JSON.stringify(this.categories));
     this.questions = categorie.questions;
@@ -87,8 +91,9 @@ export class CreationQuestionsComponent implements OnInit {
     {
       this.categories = tabCategories;
       this.questions = this.categories[0].questions;
-      this.selector = this.categories[0];
-      this.selectorQ = this.categories[0].questions[0];
+      this.questionService.categorieActuel.next(this.categories[0]);
+      this.questionService.questionActuel.next(this.categories[0].questions[0])
+      this.questionService.questionActuel.subscribe(res => this.selectorQ = res);
     }
   }
 
@@ -100,7 +105,6 @@ export class CreationQuestionsComponent implements OnInit {
   private ajoutQuestion(name: string) {
     let question = new Question(name, "unique", []);
     this.selector.questions.push(question);
-    this.selectorQ = question;
     this.questionService.questionActuel.next(question);
     localStorage.setItem('categories',JSON.stringify(this.categories));
   }
@@ -108,15 +112,10 @@ export class CreationQuestionsComponent implements OnInit {
   setCategorie(categorie: Categorie) {
     this.selector = categorie;
     this.questions = categorie.questions;
-    this.selectorQ = categorie.questions[0];
+    this.questionService.categorieActuel.next(categorie);
   }
 
   setQuestion(question: Question) {
-    this.selectorQ = question;
     this.questionService.questionActuel.next(question);
-  }
-
-  dialogModify() {
-
   }
 }

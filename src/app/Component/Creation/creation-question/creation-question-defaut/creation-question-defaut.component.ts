@@ -27,6 +27,5 @@ export class CreationQuestionDefautComponent implements OnInit {
   addAnswer(){
     this.question.reponses.push(new Reponse('', this.id));
     this.id = this.question.reponses.length + 2;
-    console.log(this.question.reponses);
   }
 }

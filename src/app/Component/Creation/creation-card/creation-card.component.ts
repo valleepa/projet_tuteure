@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {QuestionService} from "../../../question.service";
 
 @Component({
   selector: 'app-creation-card',
@@ -7,10 +8,17 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class CreationCardComponent implements OnInit {
   @Input() title : string = '';
-  @Input() selector : string = <string>localStorage.getItem("selector");
-  constructor() { }
+  @Input() type : string = '';
+  selector !: string;
+  constructor(private questionService: QuestionService) { }
 
   ngOnInit(): void {
+    if( !(this.type === "question")){
+      this.questionService.categorieActuel.subscribe(res => this.selector = res.name);
+    }
+    else{
+      this.questionService.questionActuel.subscribe(res => this.selector = res.name);
+    }
   }
 
 }

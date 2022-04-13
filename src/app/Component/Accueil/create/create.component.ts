@@ -30,7 +30,6 @@ export class CreateComponent implements OnInit {
           localStorage.removeItem("selector");
           localStorage.removeItem('categories');
           this.router.navigate(['/creation',result])
-          console.log(result);
       });
     }
 
