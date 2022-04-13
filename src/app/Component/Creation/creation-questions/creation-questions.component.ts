@@ -5,6 +5,7 @@ import { InputDialogComponent } from '../../Accueil/input-dialog/input-dialog.co
 import {Categorie, ICategorie} from "../../../CATEGORIE";
 import {Question} from "../../../QUESTION";
 import {QuestionService} from "../../../question.service";
+import {QCM} from "../../../QCM";
 
 @Component({
   selector: 'app-creation-questions',
@@ -16,7 +17,8 @@ export class CreationQuestionsComponent implements OnInit {
   public categories : Categorie[] = [];
   image = 'assets/img/1.svg';
   titre = 'AJOUTER UNE CATEGORIE';
-  selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [])]);
+  QCM = new QCM([new Categorie('null', [new Question('null', 'null', [],"")])],'null',0,false,'null','null');
+  selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [],"")]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
   categorieType: string = "categorie";
@@ -24,7 +26,7 @@ export class CreationQuestionsComponent implements OnInit {
   constructor(public dialog: MatDialog, public router: Router, private questionService: QuestionService) { }
 
   ngOnInit(): void {
-    this.loadCategoriesFromStorage();
+    this.loadQCMFromStorage();
   }
 
   addCategorie(): void {
@@ -70,49 +72,57 @@ export class CreationQuestionsComponent implements OnInit {
   }
   ajoutCategorie(categorieName : string)
   {
-    let categorie = new Categorie(categorieName, [new Question("Question 1", "unique", [])])
+    let categorie = new Categorie(categorieName, [new Question("Question 1", "unique", [],"")])
     this.questionService.categorieActuel.next(categorie);
     this.questionService.questionActuel.next(categorie.questions[0])
     this.questionService.categorieActuel.subscribe(res => this.selector = res);
     this.categories.push(categorie);
-    localStorage.setItem('categories',JSON.stringify(this.categories));
+    this.QCM.categories = this.categories
+    //localStorage.setItem('categories',JSON.stringify(this.categories));
+    this.questionService.QCMActuel.next(this.QCM);
     this.questions = categorie.questions;
   }
 
 
-  loadCategoriesFromStorage()
+  loadQCMFromStorage()
   {
-    var tabCategories = JSON.parse(localStorage.getItem('categories')!);
+    const tabCategories = JSON.parse(localStorage.getItem('QCM')!);
     if(tabCategories == null || tabCategories.length == 0)
     {
       this.categories = [];
+      console.log(" b");
+      this.questionService.QCMActuel.subscribe(res => {
+        this.QCM = res;
+        this.QCM.name = this.titre;
+      });
     }
     else
     {
-      this.categories = tabCategories;
+      console.log(tabCategories);
+      this.QCM = tabCategories;
+      this.categories = this.QCM.categories;
       this.questions = this.categories[0].questions;
       this.questionService.categorieActuel.next(this.categories[0]);
       this.questionService.questionActuel.next(this.categories[0].questions[0])
       this.questionService.questionActuel.subscribe(res => this.selectorQ = res);
+      this.questionService.QCMActuel.next(tabCategories);
+      this.questionService.QCMActuel.subscribe(res => this.QCM = res);
     }
   }
 
-  clearStorage()
-  {
-    localStorage.removeItem('categories');
-  }
-
   private ajoutQuestion(name: string) {
-    let question = new Question(name, "unique", []);
+    let question = new Question(name, "unique", [],"");
     this.selector.questions.push(question);
     this.questionService.questionActuel.next(question);
-    localStorage.setItem('categories',JSON.stringify(this.categories));
+    this.questionService.QCMActuel.next(this.QCM);
+    //localStorage.setItem('categories',JSON.stringify(this.categories));
   }
 
   setCategorie(categorie: Categorie) {
     this.selector = categorie;
     this.questions = categorie.questions;
     this.questionService.categorieActuel.next(categorie);
+    this.questionService.questionActuel.next(categorie.questions[0]);
   }
 
   setQuestion(question: Question) {

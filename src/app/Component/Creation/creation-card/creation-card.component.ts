@@ -16,7 +16,7 @@ export class CreationCardComponent implements OnInit {
     if( !(this.type === "question")){
       this.questionService.categorieActuel.subscribe(res => this.selector = res.name);
     }
-    else{
+    else if(this.type === "question"){
       this.questionService.questionActuel.subscribe(res => this.selector = res.name);
     }
   }

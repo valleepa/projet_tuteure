@@ -1,13 +1,13 @@
 <mat-card>
   <div class="div1">
-    <mat-card-title (click)="modifyName()">
+    <mat-card-title class="curseur" (click)="modifyName()">
           {{question.name}}
     </mat-card-title>
   </div>
   <div class="div2">
     <mat-form-field appearance="fill" id="question">
           <mat-label>Question?</mat-label>
-          <input matInput [(ngModel)]="question.name" placeholder="ma question?">
+          <input #questionSt matInput (keyup)="modifyQuestion(questionSt.value)" placeholder="ma question?" value="{{question.val}}">
         </mat-form-field>
   </div>
   <div class="div3">
@@ -24,27 +24,6 @@
     <mat-card-title>Notation</mat-card-title>
     <mat-divider></mat-divider>
   </div>
-<!--  <div class="div4">-->
-<!--          <mat-form-field appearance="fill" id="notation">-->
-<!--            <mat-label>Notation</mat-label>-->
-<!--            <input matInput type="number">-->
-<!--          </mat-form-field>-->
-<!--  </div>-->
-<!--  <div class="div5">-->
-<!--    <mat-form-field appearance="fill">-->
-<!--        <mat-label>Réponse 1</mat-label>-->
-<!--        <input matInput>-->
-<!--      </mat-form-field>-->
-<!--  </div>-->
-<!--  <div class="div6">-->
-<!--    <mat-card class="mat-card mat-focus-indicator" id="good">Bonne réponse</mat-card>-->
-<!--  </div>-->
-<!--  <div class="div7">-->
-<!--    <mat-form-field *ngFor="let reponse of question.reponses" class="categorie" appearance="fill">-->
-<!--      <mat-label>Réponse {{reponse.id}}</mat-label>-->
-<!--      <input matInput></mat-form-field>-->
-<!--      <app-creation-add class="categorie" (click)="addAnswer()"></app-creation-add>-->
-<!--  </div>-->
   <div class="div4">
     <app-creation-question-defaut *ngIf="selected=='defaut'"></app-creation-question-defaut>
     <app-creation-question-numerique *ngIf="selected=='numerique'"></app-creation-question-numerique>

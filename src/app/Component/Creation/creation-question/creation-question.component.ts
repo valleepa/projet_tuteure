@@ -5,6 +5,7 @@ import {Reponse} from "../../../REPONSE";
 import {InputDialogComponent} from "../../Accueil/input-dialog/input-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
 import {QuestionService} from "../../../question.service";
+import {QCM} from "../../../QCM";
 
 interface Choix {
   value: string;
@@ -17,7 +18,7 @@ interface Choix {
   styleUrls: ['./creation-question.component.scss']
 })
 export class CreationQuestionComponent implements OnInit {
-  categories : Categorie[];
+  QCM !: QCM;
   categorie!: Categorie;
   question!: Question;
   id = 2
@@ -32,7 +33,7 @@ choix: Choix[] = [
   reponses: Reponse[] = [];
 
   constructor(public dialog: MatDialog, private questionService: QuestionService) {
-    this.categories = JSON.parse(localStorage.getItem('categories')!);
+
     this.questionService.questionActuel.subscribe(val =>{
       if(val.type !== 'unique' && val.type !== 'multiple'){
         this.selected = val.type;
@@ -40,12 +41,29 @@ choix: Choix[] = [
       else{
         this.selected ='defaut';
       }
+      this.question = val;
     })
   }
 
 
   ngOnInit(): void {
-    this.questionService.questionActuel.subscribe(val => this.question = val);
+    this.questionService.QCMActuel.subscribe(value => {
+      this.QCM = value;
+      this.questionService.categorieActuel.subscribe(val =>{
+        this.categorie = val;
+        this.QCM.categories.forEach(x=>{
+          if(x.name === this.categorie.name){
+            x.questions.forEach(y=>{
+              if(y.name === this.question.name){
+                this.question = y;
+              }
+                });
+          }
+        });
+      });
+
+    });
+
   }
 
   addAnswer(){
@@ -71,9 +89,20 @@ choix: Choix[] = [
 
   modifyQuestionName(newName:any) {
     this.question.name = newName;
+    this.questionService.questionActuel.next(this.question);
+    this.reloadQCM();
   }
 
   setType() {
     this.question.type = this.selected;
+    this.reloadQCM();
+  }
+
+  modifyQuestion(questionSt: string) {
+    this.question.val = questionSt;
+    this.reloadQCM();
+  }
+  reloadQCM(){
+    this.questionService.QCMActuel.next(this.QCM);
   }
 }

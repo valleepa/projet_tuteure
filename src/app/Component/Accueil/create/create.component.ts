@@ -28,7 +28,7 @@ export class CreateComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         if(result)
           localStorage.removeItem("selector");
-          localStorage.removeItem('categories');
+          localStorage.removeItem('QCM');
           this.router.navigate(['/creation',result])
       });
     }
