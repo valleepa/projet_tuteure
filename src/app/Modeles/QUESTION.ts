@@ -1,22 +1,22 @@
-import {IOption} from "./OPTION";
+import {IOption, Option} from "./OPTION";
 import {Reponse} from "./REPONSE";
 
 export interface IQuestion{
   name: string;
   type: string;
   val: string;
-  option: IOption[] | undefined;
+  options: Option[] | undefined;
   reponses: Reponse[];
 }
 export class Question implements IQuestion{
   name: string;
-  option: IOption[] | undefined;
+  options: Option[] | undefined;
   type: string;
   val: string;
   reponses: Reponse[];
-  constructor(name:string,type:string, reponse:Reponse[], val: string) {
+  constructor(name:string,type:string, reponse:Reponse[], val: string, options?:Option[]) {
     this.name = name;
-    this.option = undefined
+    this.options = options;
     this.type = type;
     this.reponses = reponse;
     this.val = val;

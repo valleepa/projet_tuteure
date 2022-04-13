@@ -1,8 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Question} from "../../../../QUESTION";
-import {Reponse} from "../../../../REPONSE";
-import {Categorie} from "../../../../CATEGORIE";
-import {QuestionService} from "../../../../question.service";
+import {Question} from "../../../../Modeles/QUESTION";
+import {Reponse} from "../../../../Modeles/REPONSE";
+import {Categorie} from "../../../../Modeles/CATEGORIE";
+import {QuestionService} from "../../../../Services/question.service";
 
 @Component({
   selector: 'app-creation-question-defaut',
@@ -25,7 +25,7 @@ export class CreationQuestionDefautComponent implements OnInit {
   }
 
   addAnswer(){
-    this.question.reponses.push(new Reponse('', this.id));
+    this.question.reponses.push(new Reponse('', false));
     this.id = this.question.reponses.length + 2;
   }
 }

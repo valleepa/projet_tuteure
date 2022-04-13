@@ -2,10 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InputDialogComponent } from '../../Accueil/input-dialog/input-dialog.component';
-import {Categorie, ICategorie} from "../../../CATEGORIE";
-import {Question} from "../../../QUESTION";
-import {QuestionService} from "../../../question.service";
-import {QCM} from "../../../QCM";
+import {Categorie, ICategorie} from "../../../Modeles/CATEGORIE";
+import {Question} from "../../../Modeles/QUESTION";
+import {QuestionService} from "../../../Services/question.service";
+import {QCM} from "../../../Modeles/QCM";
 
 @Component({
   selector: 'app-creation-questions',

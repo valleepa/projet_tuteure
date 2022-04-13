@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import {Etudiant, IEtudiant} from "../../ETUDIANTS";
+import {Etudiant, IEtudiant} from "../../Modeles/ETUDIANTS";
 
 @Component({
   selector: 'app-tableau-etudiants',

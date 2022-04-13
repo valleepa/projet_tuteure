@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
-import {QCM} from "../../QCM";
+import {QCM} from "../../Modeles/QCM";
 
 @Component({
   selector: 'app-tableau',

@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormControl, Validators} from "@angular/forms";
-import {QuestionService} from "../../../question.service";
-import {Categorie} from "../../../CATEGORIE";
+import {QuestionService} from "../../../Services/question.service";
+import {Categorie} from "../../../Modeles/CATEGORIE";
 import {BooleanInput} from "@angular/cdk/coercion";
 
 @Component({

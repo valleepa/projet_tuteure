@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Question} from "./QUESTION";
+import {Question} from "../Modeles/QUESTION";
 import {BehaviorSubject} from "rxjs";
-import {Categorie} from "./CATEGORIE";
-import {QCM} from "./QCM";
+import {Categorie} from "../Modeles/CATEGORIE";
+import {QCM} from "../Modeles/QCM";
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +18,8 @@ export class QuestionService {
       }
 
     });
+  }
+  reloadQCM(QCM : QCM) {
+    this.QCMActuel.next(QCM);
   }
 }

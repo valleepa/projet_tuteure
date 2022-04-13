@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {QuestionService} from "../../../question.service";
+import {QuestionService} from "../../../Services/question.service";
 
 @Component({
   selector: 'app-creation-card',

@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Categorie} from "../../../CATEGORIE";
-import {Question} from "../../../QUESTION";
-import {Reponse} from "../../../REPONSE";
+import {Categorie} from "../../../Modeles/CATEGORIE";
+import {Question} from "../../../Modeles/QUESTION";
+import {Reponse} from "../../../Modeles/REPONSE";
 import {InputDialogComponent} from "../../Accueil/input-dialog/input-dialog.component";
 import {MatDialog} from "@angular/material/dialog";
-import {QuestionService} from "../../../question.service";
-import {QCM} from "../../../QCM";
+import {QuestionService} from "../../../Services/question.service";
+import {QCM} from "../../../Modeles/QCM";
 
 interface Choix {
   value: string;
@@ -29,8 +29,6 @@ choix: Choix[] = [
   {value: 'numerique', viewValue: 'Numérique'},
   {value: 'ouverte', viewValue: 'Ouverte'},
 ];
-
-  reponses: Reponse[] = [];
 
   constructor(public dialog: MatDialog, private questionService: QuestionService) {
 
@@ -66,12 +64,6 @@ choix: Choix[] = [
 
   }
 
-  addAnswer(){
-    let reponse = new Reponse("", this.id);
-    this.question.reponses.push(reponse);
-    this.id +=1;
-  }
-
   modifyName() {
     const dialogRef = this.dialog.open(InputDialogComponent, {
       width: '35%',
@@ -90,19 +82,16 @@ choix: Choix[] = [
   modifyQuestionName(newName:any) {
     this.question.name = newName;
     this.questionService.questionActuel.next(this.question);
-    this.reloadQCM();
+    this.questionService.reloadQCM(this.QCM);
   }
 
   setType() {
     this.question.type = this.selected;
-    this.reloadQCM();
+    this.questionService.reloadQCM(this.QCM);
   }
 
   modifyQuestion(questionSt: string) {
     this.question.val = questionSt;
-    this.reloadQCM();
-  }
-  reloadQCM(){
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
   }
 }
