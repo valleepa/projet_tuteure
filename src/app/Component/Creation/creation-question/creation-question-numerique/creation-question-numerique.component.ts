@@ -85,7 +85,7 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
 
   modifyNotation(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options){
+      if(this.question.options && this.question.options.length>0){
         this.question.options[0].valeur = value;
       }
       else{
@@ -93,12 +93,29 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
       }
       // @ts-ignore
       this.notationNum = this.question.options[0].valeur;
-      console.log(this.QCM.categories[0].questions)
       this.questionService.reloadQCM(this.QCM);
     }
     else{
       // @ts-ignore
       document.getElementById("nota").value = this.notationNum;
+    }
+  }
+
+  deleteReponse() {
+    if(this.reponseNum.length===1){
+      // @ts-ignore
+      this.question.reponses[0].contain = '';
+      this.reponseNum = '';
+      this.questionService.reloadQCM(this.QCM);
+    }
+  }
+
+  deleteNotation() {
+    if(this.notationNum.length===1){
+      // @ts-ignore
+      this.question.options[0].valeur = '';
+      this.notationNum = '';
+      this.questionService.reloadQCM(this.QCM);
     }
   }
 }

@@ -1,6 +1,6 @@
 <mat-card>
   <div class="div1">
-    <mat-card-title class="curseur" (click)="modifyName()">
+    <mat-card-title class="curseur name" (click)="modifyName()">
           {{question.name}}
     </mat-card-title>
   </div>
@@ -13,7 +13,7 @@
   <div class="div3">
     <mat-form-field appearance="fill" id="type">
           <mat-label>Type</mat-label>
-          <mat-select  [(value)]="selected">
+          <mat-select  #t [(value)]="selected" (selectionChange)="typeChange()">
             <mat-option *ngFor="let choi of choix" [value]="choi.value" (click)="setType()">
               {{choi.viewValue}}
             </mat-option>

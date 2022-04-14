@@ -29,7 +29,6 @@ export class LayoutComponent implements OnInit {
   navOpen($event:any): void {
     // toggle condition here
     this.isOpen = !this.isOpen;
-    console.log('$navOpen');
   }
 }
 

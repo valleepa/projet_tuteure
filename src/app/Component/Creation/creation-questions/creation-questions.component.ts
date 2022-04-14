@@ -90,7 +90,6 @@ export class CreationQuestionsComponent implements OnInit {
     if(tabCategories == null || tabCategories.length == 0)
     {
       this.categories = [];
-      console.log(" b");
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
         this.QCM.name = this.titre;
@@ -98,10 +97,9 @@ export class CreationQuestionsComponent implements OnInit {
     }
     else
     {
-      console.log(tabCategories);
       this.QCM = tabCategories;
       this.categories = this.QCM.categories;
-      this.questions = this.categories[0].questions;
+      this.questions = this.QCM.categories[0].questions;
       this.questionService.categorieActuel.next(this.categories[0]);
       this.questionService.questionActuel.next(this.categories[0].questions[0])
       this.questionService.questionActuel.subscribe(res => this.selectorQ = res);
@@ -112,7 +110,7 @@ export class CreationQuestionsComponent implements OnInit {
 
   private ajoutQuestion(name: string) {
     let question = new Question(name, "unique", [],"");
-    this.selector.questions.push(question);
+    this.questions.push(question);
     this.questionService.questionActuel.next(question);
     this.questionService.QCMActuel.next(this.QCM);
     //localStorage.setItem('categories',JSON.stringify(this.categories));

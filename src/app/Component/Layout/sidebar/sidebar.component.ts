@@ -18,7 +18,6 @@ export class SidebarComponent implements OnChanges {
   openNav: boolean;
 
   ngOnChanges(): void {
-    console.log('ngOnChanges', this.openNav);
     if (this.openNav) {
       this.sidenav?.open();
     } else {

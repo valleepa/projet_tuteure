@@ -2,19 +2,19 @@
   <div class="div1">
     <mat-form-field appearance="fill" id="faux">
       <mat-label>Faux</mat-label>
-      <input matInput>
+      <input id="notaF" matInput #notationF (keyup)="modifyNotationF(notationF.value)" (keyup.backspace)="deleteNotationF()" value="{{notationNumF}}" type="number">
     </mat-form-field>
   </div>
   <div class="div2">
     <mat-form-field appearance="fill" id="ab">
       <mat-label>Assez Bien</mat-label>
-      <input matInput>
+      <input id="notaAB" matInput #notationAB (keyup)="modifyNotationAB(notationAB.value)" (keyup.backspace)="deleteNotationAB()" value="{{notationNumAB}}" type="number">
     </mat-form-field>
   </div>
   <div class="div3">
     <mat-form-field appearance="fill" id="tb">
       <mat-label>Très Bien</mat-label>
-      <input matInput>
+      <input id="notaTB" matInput #notationTB (keyup)="modifyNotationTB(notationTB.value)" (keyup.backspace)="deleteNotationTB()" value="{{notationNumTB}}" type="number">
     </mat-form-field>
   </div>
 </div>

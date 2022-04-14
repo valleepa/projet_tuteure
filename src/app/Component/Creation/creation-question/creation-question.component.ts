@@ -94,4 +94,9 @@ choix: Choix[] = [
     this.question.val = questionSt;
     this.questionService.reloadQCM(this.QCM);
   }
+
+  typeChange() {
+    this.question.options = [];
+    this.question.reponses = [];
+  }
 }

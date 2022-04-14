@@ -1,24 +1,26 @@
 <div class="body">
-  <div class="div1">
+  <div class="divLeft">
+    <div *ngFor="let reponse of question.reponses" class="reponses">
+      <div class="reponse">
+        <div class="mat1" [ngClass]="editMode === true ? 'curseur':''" (click)="modifyIsGodd(reponse)">
+          <div class="mat" [ngClass]="editMode ===true ? 'not-selectable': ''">
+            <mat-form-field [ngClass]="reponse.isGood ? 'selected' : ''" class="form-reponse" appearance="fill">
+              <mat-label>Réponse {{question.reponses.indexOf(reponse)+1}}</mat-label>
+              <input #inputRep matInput value="{{reponse.contain}}" (keyup)="modifyReponse(reponse, inputRep.value)">
+            </mat-form-field>
+          </div>
+        </div>
+        <mat-card class="curseur delete" (click)="deleteAnswer(reponse)"><img src="assets/img/icons8-cross-mark-96.png" alt=""></mat-card>
+      </div>
+    </div>
+    <app-creation-add (click)="addAnswer()"></app-creation-add>
+  </div>
+  <div class="divRight">
     <mat-form-field appearance="fill" id="notation">
       <mat-label>Notation</mat-label>
-      <input matInput type="number">
+      <input id="nota" matInput #notation (keyup)="modifyNotation(notation.value)" (keyup.backspace)="deleteNotation()" value="{{notationNum}}" type="number">
     </mat-form-field>
-  </div>
-  <div class="div2">
-    <mat-form-field appearance="fill">
-      <mat-label>Réponse 1</mat-label>
-      <input matInput>
-    </mat-form-field>
-  </div>
-  <div class="div3">
-    <mat-card class="mat-card mat-focus-indicator" id="good">Bonne réponse</mat-card>
-  </div>
-  <div class="div4">
-    <mat-form-field *ngFor="let reponse of question.reponses" class="categorie" appearance="fill">
-      <mat-label>Réponse {{reponse.id}}</mat-label>
-      <input matInput></mat-form-field>
-      <app-creation-add class="categorie" (click)="addAnswer()"></app-creation-add>
+    <mat-card  [ngClass]="editMode ? 'good goodClick' : 'good goodIdle'" (click)="editMode ? editMode = false : editMode = true">Bonne réponse</mat-card>
   </div>
 </div>
 
