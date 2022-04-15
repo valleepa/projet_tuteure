@@ -2,13 +2,13 @@
 
   <mat-form-field appearance="fill" id="texte">
     <mat-label>Texte d'entête du QCM</mat-label>
-    <textarea matInput placeholder="Ex. Contrôle de Maths"></textarea>
+    <textarea matInput #entete (keyup)="modifyEntete(entete.value)" value="{{QCM.entete}}" placeholder="Ex. Contrôle de Maths"></textarea>
   </mat-form-field>
 
   <div class="center">
     <mat-form-field appearance="fill">
       <mat-label>Mélanger</mat-label>
-      <mat-select>
+      <mat-select [(value)]="selected" (selectionChange)="melangeChange()">
         <mat-option *ngFor="let choi of choix" [value]="choi.value">
           {{choi.viewValue}}
         </mat-option>
