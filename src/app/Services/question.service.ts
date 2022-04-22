@@ -20,7 +20,6 @@ export class QuestionService {
     }
     this.QCMActuel.subscribe(res => {
       if(res.name!=='null'){
-        console.log("QCM");
         localStorage.setItem("QCM",JSON.stringify(res));
       }
 

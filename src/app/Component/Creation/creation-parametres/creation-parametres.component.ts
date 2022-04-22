@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit} from '@angular/core';
 import {QuestionService} from "../../../Services/question.service";
 import {Categorie} from "../../../Modeles/CATEGORIE";
 import {Question} from "../../../Modeles/QUESTION";
@@ -39,7 +39,6 @@ export class CreationParametresComponent implements OnInit {
   selected: string = 'non-1';
 
   constructor( private questionService: QuestionService) { }
-
   ngOnInit(): void {
     this.questionService.QCMActuel.subscribe(value => {
       this.QCM = value;
