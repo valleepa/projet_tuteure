@@ -28,6 +28,6 @@ export class QCM implements IQCM {
 
   static createEmptyQCM() : QCM
   {
-    return new QCM([new Categorie('null', [new Question('null', 'null', [],"")])],'',0,false,'null','null');
+    return new QCM([],'',0,false,'null','null');
   }
 }

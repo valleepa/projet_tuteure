@@ -87,8 +87,16 @@ export class CreationQuestionsComponent implements OnInit {
   loadQCMFromStorage()
   {
     const tabCategories = JSON.parse(localStorage.getItem('QCM')!);
+    console.log(tabCategories);
     if(tabCategories == null || tabCategories.length == 0)
     {
+      this.categories = [];
+      this.questionService.QCMActuel.subscribe(res => {
+        this.QCM = res;
+        this.QCM.name = this.titre;
+      });
+    }
+    else if(tabCategories.categories.length<1){
       this.categories = [];
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
