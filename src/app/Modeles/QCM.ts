@@ -1,4 +1,5 @@
-import {ICategorie} from "./CATEGORIE";
+import {Categorie, ICategorie} from "./CATEGORIE";
+import { Question } from "./QUESTION";
 
 export interface IQCM {
   id: number;
@@ -23,5 +24,10 @@ export class QCM implements IQCM {
     this.isRandomized = isRandomized;
     this.name = name;
     this.user = user;
+  }
+
+  static createEmptyQCM() : QCM
+  {
+    return new QCM([new Categorie('null', [new Question('null', 'null', [],"")])],'',0,false,'null','null');
   }
 }
