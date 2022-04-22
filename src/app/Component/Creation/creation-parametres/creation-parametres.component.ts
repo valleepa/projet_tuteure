@@ -43,7 +43,6 @@ export class CreationParametresComponent implements OnInit {
   ngOnInit(): void {
     this.questionService.QCMActuel.subscribe(value => {
       this.QCM = value;
-      console.log(this.QCM);
       this.questionService.categorieActuel.subscribe(val =>{
         this.categorie = val;
       });
