@@ -22,7 +22,7 @@
   </div>
 
 
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <table *ngIf="QCM.categories.length>0" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
       <ng-container matColumnDef="nom">
         <th mat-header-cell *matHeaderCellDef> Nom de la catégorie </th>
