@@ -17,7 +17,7 @@ export class CreationQuestionsComponent implements OnInit {
   public categories : Categorie[] = [];
   image = 'assets/img/1.svg';
   titre = 'AJOUTER UNE CATEGORIE';
-  QCM = new QCM([new Categorie('null', [new Question('null', 'null', [],"")])],'null',0,false,'null','null');
+  QCM = new QCM([],'null',0,false,'null','null');
   selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [],"")]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
@@ -89,6 +89,13 @@ export class CreationQuestionsComponent implements OnInit {
     const tabCategories = JSON.parse(localStorage.getItem('QCM')!);
     if(tabCategories == null || tabCategories.length == 0)
     {
+      this.categories = [];
+      this.questionService.QCMActuel.subscribe(res => {
+        this.QCM = res;
+        this.QCM.name = this.titre;
+      });
+    }
+    else if(tabCategories.categories.length<1){
       this.categories = [];
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
