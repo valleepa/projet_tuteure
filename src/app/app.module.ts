@@ -43,7 +43,9 @@ import { CreationQuestionComponent } from './Component/Creation/creation-questio
 import { CreationQuestionDefautComponent } from './Component/Creation/creation-question/creation-question-defaut/creation-question-defaut.component';
 import { CreationQuestionOuverteComponent } from './Component/Creation/creation-question/creation-question-ouverte/creation-question-ouverte.component';
 import { CreationQuestionNumeriqueComponent } from './Component/Creation/creation-question/creation-question-numerique/creation-question-numerique.component';
-import { ConnexionComponent } from './Component/connexion/connexion.component';
+import { ConnexionComponent } from './Component/Connexion/connexion.component';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpInterceptorService} from "./Services/httpinterceptor.service";
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -97,9 +99,14 @@ import { ConnexionComponent } from './Component/connexion/connexion.component';
     MatOptionModule,
     MatInputModule,
     MatTableModule,
+    HttpClientModule,
     // SweetAlert2Module.forChild()
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
