@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import {AuthenticationService} from "../../../Services/authentication.service";
 
 
 @Component({
@@ -10,13 +11,21 @@ export class TopbarComponent implements OnInit {
 
   @Output()
   open: EventEmitter<boolean>=new EventEmitter()
-
-  constructor() { }
+  isLoggedIn = false
+  name = ""
+  constructor(
+    private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+    this.name = this.authenticationService.getName();
   }
 
   clickMenu() {
     this.open.emit(true);
+  }
+
+  handleLogout() {
+    this.authenticationService.logout();
   }
 }

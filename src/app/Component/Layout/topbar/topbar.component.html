@@ -19,7 +19,10 @@
       <a class="" routerLink="/statistiques">
         <span>MES STATISTIQUES</span></a>
     </li>
+    <li>
+      <a *ngIf="isLoggedIn" class="nav-link" href="/statistiques" (click)=handleLogout()>LOGOUT</a>
+    </li>
   </ul>
   <span class="example-spacer"></span>
-  <div id="user">TROGNON Thomas <i class="fas fa-user-circle" id="ico"></i> </div>
+  <div *ngIf="isLoggedIn" id="user">{{name}} <i class="fas fa-user-circle" id="ico"></i> </div>
 </mat-toolbar>
