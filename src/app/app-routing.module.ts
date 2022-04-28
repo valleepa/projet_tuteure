@@ -7,18 +7,21 @@ import {MesEtudiantsComponent} from "./Pages/mes-etudiants/mes-etudiants.compone
 import {CreationQuestionsComponent} from "./Component/Creation/creation-questions/creation-questions.component";
 import {CreationParametresComponent} from "./Component/Creation/creation-parametres/creation-parametres.component";
 import {CreationEditionsComponent} from "./Component/Creation/creation-editions/creation-editions.component";
+import {ConnexionComponent} from "./Component/Connexion/connexion.component";
+import {AuthGuard} from "./auth/auth.guard";
 
 const routes: Routes = [
-  { path : '', component: AccueilComponent},
-  { path : 'accueil', component: AccueilComponent},
-  { path : 'mesqcm', component: MesQCMComponent},
-  { path : 'etudiants', component: MesEtudiantsComponent},
-  { path : 'statistiques', component: AccueilComponent},
-  { path : 'creation/:name', component: CreationQCMComponent,
+  { path : '', component: AccueilComponent,canActivate: [ AuthGuard ]},
+  { path : 'accueil', component: AccueilComponent,canActivate: [ AuthGuard ]},
+  { path : 'mesqcm', component: MesQCMComponent,canActivate: [ AuthGuard ]},
+  { path : 'etudiants', component: MesEtudiantsComponent,canActivate: [ AuthGuard ]},
+  { path : 'statistiques', component: ConnexionComponent,canActivate: [ AuthGuard ]},
+  { path : 'login', component: ConnexionComponent},
+  { path : 'creation/:name', component: CreationQCMComponent,canActivate: [ AuthGuard ],
   children: [
-    { path : 'questions', component: CreationQuestionsComponent},
-    { path : 'parametres', component: CreationParametresComponent},
-    { path : 'edition', component: CreationEditionsComponent},
+    { path : 'questions', component: CreationQuestionsComponent,canActivate: [ AuthGuard ]},
+    { path : 'parametres', component: CreationParametresComponent,canActivate: [ AuthGuard ]},
+    { path : 'edition', component: CreationEditionsComponent,canActivate: [ AuthGuard ]},
   ]
   }
 ];
