@@ -48,6 +48,7 @@ import {HttpInterceptorService} from "./Services/httpinterceptor.service";
 import {MesQCMComponent} from "./Services/mes-qcm/mes-qcm.component";
 import {RecentsComponent} from "./Pages/accueil/recents/recents.component";
 import {BoutonComponent} from "./Component/bouton/bouton.component";
+import { GestionUsersComponent } from './gestion-users/gestion-users.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -81,6 +82,7 @@ import {BoutonComponent} from "./Component/bouton/bouton.component";
     ConnexionComponent,
     RecentsComponent,
     BoutonComponent,
+    GestionUsersComponent,
   ],
   imports: [
     BrowserModule,
