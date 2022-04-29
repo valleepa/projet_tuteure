@@ -106,4 +106,9 @@ export class AuthenticationService {
   getId(){
     return sessionStorage.getItem(this.ID)
   }
+
+  getAdmin() {
+    console.log(sessionStorage.getItem(this.ISADMIN))
+    return sessionStorage.getItem(this.ISADMIN)
+  }
 }
