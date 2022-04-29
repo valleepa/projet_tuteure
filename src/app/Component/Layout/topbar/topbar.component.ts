@@ -13,11 +13,13 @@ export class TopbarComponent implements OnInit {
   open: EventEmitter<boolean>=new EventEmitter()
   isLoggedIn = false
   name = ""
+  isAdmin: any;
   constructor(
     private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+    this.isAdmin = this.authenticationService.getAdmin()
     this.name = this.authenticationService.getName();
   }
 

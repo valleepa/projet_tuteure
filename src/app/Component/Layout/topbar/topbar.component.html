@@ -19,8 +19,12 @@
       <a class="" routerLink="/statistiques">
         <span>MES STATISTIQUES</span></a>
     </li>
+    <li *ngIf="isAdmin =='true'" class="nav-item-gestionUtilisateurs">
+      <a class="" routerLink="/users">
+        <span>GESTION UTILISATEURS STATISTIQUES</span></a>
+    </li>
     <li>
-      <a *ngIf="isLoggedIn" class="nav-link" href="/statistiques" (click)=handleLogout()>LOGOUT</a>
+      <a class="nav-link" href="" (click)=handleLogout()>LOGOUT</a>
     </li>
   </ul>
   <span class="example-spacer"></span>
