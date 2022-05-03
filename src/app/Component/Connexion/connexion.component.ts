@@ -27,6 +27,7 @@ export class ConnexionComponent implements OnInit {
   connexion() {
     if (this.username != null && this.password != null) {
       this.authenticationService.authenticationService(this.username, this.password).subscribe(r => {
+        console.log(r)
         this.invalidLogin = false;
         this.loginSuccess = true;
         this.successMessage = 'Login Successful.';

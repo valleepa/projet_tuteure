@@ -40,19 +40,16 @@ export class AuthenticationService {
 
     return this.http.post<any>(`http://localhost:8080/login`,
       body.toString(), options).pipe(map((res) => {
+        console.log("res")
+        console.log(res)
         this.id = res.id
         this.username = res.username
-        this.password = res.password
         this.prenom = res.prenom
         this.nom = res.nom
         this.email = res.email
         this.isAdmin = res.isAdmin
         this.registerSuccessfulLogin(this.id,this.username,this.prenom,this.nom,this.email,this.isAdmin);
     }));
-  }
-
-  createBasicAuthToken(username: string, password: string,) {
-    return 'Basic ' + window.btoa(username + ":" + password)
   }
 
   registerSuccessfulLogin(id:string,username: string, prenom: string, nom: string, email: string, isAdmin: boolean) {
@@ -108,7 +105,6 @@ export class AuthenticationService {
   }
 
   getAdmin() {
-    console.log(sessionStorage.getItem(this.ISADMIN))
     return sessionStorage.getItem(this.ISADMIN)
   }
 }
