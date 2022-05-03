@@ -48,7 +48,10 @@ import {HttpInterceptorService} from "./Services/httpinterceptor.service";
 import {MesQCMComponent} from "./Services/mes-qcm/mes-qcm.component";
 import {RecentsComponent} from "./Pages/accueil/recents/recents.component";
 import {BoutonComponent} from "./Component/bouton/bouton.component";
-import { GestionUsersComponent } from './gestion-users/gestion-users.component';
+import { GestionUsersComponent } from './Component/gestion-users/gestion-users.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { NewUserComponent } from './Component/gestion-users/new-user/new-user.component';
+import { EditUserComponent } from './Component/gestion-users/edit-user/edit-user.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -83,6 +86,8 @@ import { GestionUsersComponent } from './gestion-users/gestion-users.component';
     RecentsComponent,
     BoutonComponent,
     GestionUsersComponent,
+    NewUserComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,
@@ -106,6 +111,7 @@ import { GestionUsersComponent } from './gestion-users/gestion-users.component';
     MatInputModule,
     MatTableModule,
     HttpClientModule,
+    MatButtonToggleModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [{
