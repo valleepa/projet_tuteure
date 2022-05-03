@@ -19,6 +19,9 @@ export class HttpInterceptorService implements HttpInterceptor {
     req = req.clone({
       headers:localHeaders
     })
+    req = req.clone({
+      withCredentials: true
+    });
     return next.handle(req);
   }
 }
