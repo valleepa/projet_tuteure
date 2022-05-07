@@ -10,9 +10,6 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let localHeaders = req.headers
-    if(this.authenticationService.isUserLoggedIn()){
-      localHeaders = localHeaders.set('Authorization',`Basic ${window.btoa(this.authenticationService.username + ":" + this.authenticationService.password)}`)
-    }
     if(!req.headers.get('Content-Type')){
       localHeaders = localHeaders.set('Content-Type','application/json')
     }
