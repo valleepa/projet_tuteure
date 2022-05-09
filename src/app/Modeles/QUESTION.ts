@@ -7,18 +7,21 @@ export interface IQuestion{
   val: string;
   options: Option[] | undefined;
   reponses: Reponse[];
+  categorie: string;
 }
 export class Question implements IQuestion{
   name: string;
   options: Option[] | undefined;
   type: string;
   val: string;
-  reponses: Reponse[];
-  constructor(name:string,type:string, reponse:Reponse[], val: string, options?:Option[]) {
+  reponses: Reponse[]
+  categorie: string;
+  constructor(name:string,type:string, reponse:Reponse[], val: string, categorie:string,options?:Option[]) {
     this.name = name;
     this.options = options;
     this.type = type;
     this.reponses = reponse;
     this.val = val;
+    this.categorie = categorie;
   }
 }
