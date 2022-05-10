@@ -33,7 +33,7 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import { CreationEditionsComponent } from './Component/Creation/creation-editions/creation-editions.component';
-import {MesQCMComponent} from "./Pages/mes-qcm/mes-qcm.component";
+import {MesQCMComponent} from "./Services/mes-qcm/mes-qcm.component";
 import {MesEtudiantsComponent} from "./Pages/mes-etudiants/mes-etudiants.component";
 import {TableauComponent} from "./Component/tableau/tableau.component";
 import { TableauEtudiantsComponent } from './Component/tableau-etudiants/tableau-etudiants.component';
@@ -43,6 +43,8 @@ import { CreationQuestionComponent } from './Component/Creation/creation-questio
 import { CreationQuestionDefautComponent } from './Component/Creation/creation-question/creation-question-defaut/creation-question-defaut.component';
 import { CreationQuestionOuverteComponent } from './Component/Creation/creation-question/creation-question-ouverte/creation-question-ouverte.component';
 import { CreationQuestionNumeriqueComponent } from './Component/Creation/creation-question/creation-question-numerique/creation-question-numerique.component';
+import { RecentsComponent } from './Pages/accueil/recents/recents.component';
+import { BoutonComponent } from './Component/bouton/bouton.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -73,6 +75,8 @@ import { CreationQuestionNumeriqueComponent } from './Component/Creation/creatio
     CreationQuestionDefautComponent,
     CreationQuestionOuverteComponent,
     CreationQuestionNumeriqueComponent,
+    RecentsComponent,
+    BoutonComponent,
   ],
   imports: [
     BrowserModule,

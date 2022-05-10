@@ -12,6 +12,7 @@ export class CreationEditionsComponent implements OnInit {
   constructor(public sanitizer:DomSanitizer) { }
 
   pdf = this.sanitizer.bypassSecurityTrustResourceUrl('assets/pdf/Test.pdf');
+  isGenerate: boolean = true;
 
   ngOnInit(): void {
   }
