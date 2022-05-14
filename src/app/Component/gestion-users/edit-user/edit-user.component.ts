@@ -12,6 +12,8 @@ export class EditUserComponent implements OnInit {
   username: any;
   router: Router;
   errorMessage = ""
+  error = false
+  id: number = 0;
 
   constructor(service:EditUserService,router:Router) { this.service = service;this.router = router}
 
@@ -19,21 +21,30 @@ export class EditUserComponent implements OnInit {
   }
 
   findUser(){
+    this.username = !isNaN(Number(this.username)) ? Number(this.username) : this.username;
     if(Number.isInteger(this.username) && Number(this.username) > 0){
-      if(this.service.getUserFromId(this.username)){
-        this.router.navigate([`/users/edit/${this.username}`])
-      }
-      else{
-        this.errorMessage = "Impossible de trouver l'utilisateur"
-      }
+      this.service.getUserFromId(this.username).subscribe(r =>{
+        if(r != null) {
+          this.id = r;
+          this.error = false;
+          this.router.navigate([`users/edit/${this.id}`])
+          this.id = 0;
+          this.username = "";
+        }
+        else {this.errorMessage = "Utilisateur inconnu"; this.error = true}
+      })
     }
     else{
-      if(this.service.getUserFromUsername(/*this.username.getId() > 0*/ "ze")){
-        this.router.navigate([`/users/edit/${this.username}`])
-      }
-      else{
-        this.errorMessage = "Impossible de trouver l'utilisateur"
-      }
+      this.service.getUserFromUsername(this.username).subscribe(r =>{
+        if(r != null) {
+          this.id = r;
+          this.error = false;
+          this.router.navigate([`users/edit/${this.id}`])
+          this.id = 0;
+          this.username = "";
+        }
+        else {this.errorMessage = "Utilisateur inconnu"; this.error = true}
+      })
     }
   }
 

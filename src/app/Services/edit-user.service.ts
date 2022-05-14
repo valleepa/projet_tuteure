@@ -12,13 +12,13 @@ export class EditUserService {
 
   getUserFromId(id:any) {
     return this.http.get<User>(`http://localhost:8080/user/${id}`).pipe(map((res)=>{
-      return res.getId();
+      return res != null ? res.id:null;
     }))
   }
 
   getUserFromUsername(username :String) {
     return this.http.get<User>(`http://localhost:8080/user/${username}`).pipe(map((res)=>{
-      return res
+      return res != null ? res.id:null;
     }))
   }
 }

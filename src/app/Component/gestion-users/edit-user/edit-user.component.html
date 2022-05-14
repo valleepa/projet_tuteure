@@ -7,6 +7,8 @@
   <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur">
 
   <app-bouton (click)=(findUser()) name="Trouver l'utilisateur"></app-bouton>
+
 </form>
 
+<h4 *ngIf="error" >{{errorMessage}}</h4>
 <router-outlet></router-outlet>
