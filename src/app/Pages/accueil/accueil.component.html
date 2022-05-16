@@ -1,7 +1,14 @@
 <div class="wrapper">
   <div class="recent">
     <h1>Recents <i class="fa-solid fa-clock-rotate-left"></i></h1><br>
-    <app-recents></app-recents>
+    <div class="list">
+      <app-recents class="1"></app-recents>
+      <app-recents class="2"></app-recents>
+      <app-recents class="3"></app-recents>
+      <app-recents class="4"></app-recents>
+      <app-recents class="5"></app-recents>
+      <app-recents class="6"></app-recents>
+    </div>
   </div>
   <div class="qcm">
     <app-create [image]="'assets/img/3.svg'" [titre]="'CREER UN QCM'" [type]="'creer'" class="creer curseur"></app-create>
