@@ -13,6 +13,7 @@ import {GestionUsersComponent} from "./Component/gestion-users/gestion-users.com
 import {AdminGuard} from "./auth/auth-admin.guard";
 import {NewUserComponent} from "./Component/gestion-users/new-user/new-user.component";
 import {EditUserComponent} from "./Component/gestion-users/edit-user/edit-user.component";
+import {EditUserActionComponent} from "./Component/gestion-users/edit-user/edit-user-action/edit-user-action.component";
 
 const routes: Routes = [
   { path : '', component: AccueilComponent,canActivate: [ AuthGuard ]},
@@ -25,7 +26,7 @@ const routes: Routes = [
     children:[
       {path : 'new', component: NewUserComponent,canActivate: [ AuthGuard , AdminGuard]},
       {path : 'edit', component: EditUserComponent,canActivate: [ AuthGuard,AdminGuard ]},
-      {path : 'edit/:id', component: EditUserComponent,canActivate: [ AuthGuard,AdminGuard]},
+      {path : 'edit/:id', component: EditUserActionComponent,canActivate: [ AuthGuard,AdminGuard]},
       {path : 'remove', component: CreationQCMComponent,canActivate: [ AuthGuard ]},
       {path : 'reset', component: CreationQCMComponent,canActivate: [ AuthGuard ]}
     ]

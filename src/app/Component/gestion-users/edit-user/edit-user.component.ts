@@ -23,11 +23,11 @@ export class EditUserComponent implements OnInit {
   findUser(){
     this.username = !isNaN(Number(this.username)) ? Number(this.username) : this.username;
     if(Number.isInteger(this.username) && Number(this.username) > 0){
-      this.service.getUserFromId(this.username).subscribe(r =>{
+      this.service.getIdFromId(this.username).subscribe(r =>{
         if(r != null) {
           this.id = r;
           this.error = false;
-          this.router.navigate([`users/edit/${this.id}`])
+          this.router.navigate([`users/edit/${this.id}`],{ state: { id: this.id } })
           this.id = 0;
           this.username = "";
         }
@@ -35,11 +35,11 @@ export class EditUserComponent implements OnInit {
       })
     }
     else{
-      this.service.getUserFromUsername(this.username).subscribe(r =>{
+      this.service.getIdFromUsername(this.username).subscribe(r =>{
         if(r != null) {
           this.id = r;
           this.error = false;
-          this.router.navigate([`users/edit/${this.id}`])
+          this.router.navigate([`users/edit/${this.id}`],{ state: { id: this.id } })
           this.id = 0;
           this.username = "";
         }

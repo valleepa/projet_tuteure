@@ -52,6 +52,7 @@ import { GestionUsersComponent } from './Component/gestion-users/gestion-users.c
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { NewUserComponent } from './Component/gestion-users/new-user/new-user.component';
 import { EditUserComponent } from './Component/gestion-users/edit-user/edit-user.component';
+import { EditUserActionComponent } from './Component/gestion-users/edit-user/edit-user-action/edit-user-action.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -88,6 +89,7 @@ import { EditUserComponent } from './Component/gestion-users/edit-user/edit-user
     GestionUsersComponent,
     NewUserComponent,
     EditUserComponent,
+    EditUserActionComponent,
   ],
   imports: [
     BrowserModule,

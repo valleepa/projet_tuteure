@@ -10,15 +10,22 @@ export class EditUserService {
 
   constructor( private http: HttpClient) {}
 
-  getUserFromId(id:any) {
+  getIdFromId(id:any) {
     return this.http.get<User>(`http://localhost:8080/user/${id}`).pipe(map((res)=>{
       return res != null ? res.id:null;
     }))
   }
 
-  getUserFromUsername(username :String) {
+  getIdFromUsername(username :String) {
     return this.http.get<User>(`http://localhost:8080/user/${username}`).pipe(map((res)=>{
       return res != null ? res.id:null;
     }))
   }
+
+  getUserFromId(id: number){
+    return this.http.get<User>(`http://localhost:8080/user/${id}`).pipe(map((res)=>{
+      return res != null ? res:null;
+    }))
+  }
+
 }
