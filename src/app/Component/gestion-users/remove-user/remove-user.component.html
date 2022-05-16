@@ -1,0 +1,14 @@
+<form>
+  <h3>Supprimer un utilisateur</h3>
+
+
+  <label for="username">Nom d'utilisateur ou id</label>
+  <br>
+  <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur">
+
+  <app-bouton (click)=(removeUser()) name="Supprimer l'utilisateur"></app-bouton>
+
+</form>
+
+<h4 *ngIf="error" >{{errorMessage}}</h4>
+<router-outlet></router-outlet>
