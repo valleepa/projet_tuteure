@@ -1,0 +1,11 @@
+.body {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 60% 30%;
+  grid-template-rows: 8vh;
+  grid-column-gap: 10%;
+  mat-form-field{
+    width: 100%;
+  }
+}

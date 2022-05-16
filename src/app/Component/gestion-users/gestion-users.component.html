@@ -1,0 +1,11 @@
+<div class="wrapper-bouton">
+  <app-bouton name="Nouvel utilisateur" (click)=newUser() href="new"></app-bouton>
+  <br>
+  <app-bouton name="Modifier un utilisateur" (click)=editUser()></app-bouton>
+  <br>
+  <app-bouton name="Supprimer un utilisateur" (click)=removeUser()></app-bouton>
+  <br>
+  <app-bouton name="Réinitialiser un mot de passe" (click)=resetUser()></app-bouton>
+  <br>
+</div>
+<router-outlet></router-outlet>

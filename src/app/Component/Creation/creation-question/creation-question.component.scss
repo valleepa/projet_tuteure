@@ -1,0 +1,32 @@
+mat-card {
+  padding: 5%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 60% 30%;
+  grid-column-gap: 10%;
+  mat-form-field{
+    width: 100%;
+  }
+}
+
+.div1 {grid-area: 1 / 1/ 1/ 3; text-align: center; margin-bottom: 3vh}
+.div2 { grid-area: 2 / 1;}
+.div3 { grid-area: 3 / 1; }
+.not { grid-area: 4 / 1/ 4/ 3; margin-top: 3vh; text-align: center}
+.div4 { grid-area: 5 / 1 / 5 / 3; margin-top: 3vh}
+
+#good{
+  color: white;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #3F51B5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  cursor: pointer;
+}
+.name:hover {
+  font-weight: bold;
+}

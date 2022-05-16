@@ -1,0 +1,26 @@
+.main{
+  margin-top: 1rem;
+  padding: 3rem;
+  background-color: white;
+  text-align: center;
+}
+
+#texte{
+  position: relative;
+  width: 60%;
+}
+
+.center{
+  display: flex;
+  justify-content: space-around;
+}
+
+table{
+  margin-left: 10%;
+  width: 80%;
+  text-align: justify ;
+}
+
+th{
+  color: #3F51B5;
+}

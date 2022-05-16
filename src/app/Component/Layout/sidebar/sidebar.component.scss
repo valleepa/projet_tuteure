@@ -1,0 +1,56 @@
+mat-sidenav {
+  background: #3F51B5;
+  color: white;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+img{
+  width: 90%;
+}
+
+mat-sidenav-container {
+  height: 100vh;
+}
+
+#sidebar{
+  list-style-type:none;
+  padding: 0;
+}
+#sidebar ul{
+  background-color:var(--primary) ;
+}
+#sidebar a{
+  color:var(--white);
+  display: block;
+}
+
+#sidebar li a{
+  text-decoration: none;
+  color:var(--white);
+  background-color:var(--primary);
+  max-width: 100%;
+  padding-left: 1rem;
+  padding-top:1.5rem;
+}
+
+#sidebar-logo-text{
+  position: relative;
+  background-color: #3F51B5;
+  font-size: 200%;
+  text-align: center;
+}
+
+
+#trait{
+  margin-left: 10%;
+  height: 1px;
+  width: 80%;
+  position: relative;
+  background-color: white;
+}
+
+span{
+  margin-left: 5px;
+}

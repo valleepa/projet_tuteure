@@ -1,0 +1,12 @@
+<div class="tab">
+  <div class="tab-top">
+    <app-creation-tab-title [title]="'QUESTIONS'" [selector]="selector" class="onglet" (click)="onQuestions()"></app-creation-tab-title>
+    <app-creation-tab-title [title]="'PARAMETRES'" [selector]="selector" class="onglet" (click)="onParametres()"></app-creation-tab-title>
+    <app-creation-tab-title [title]="'EDITION'" [selector]="selector" class="onglet" (click)="onEdition()"></app-creation-tab-title>
+  </div>
+  <div class="tab-bottom">
+    <mat-progress-bar class="progress" mode="determinate" value="{{progress}}"></mat-progress-bar>
+  </div>
+</div>
+
+<router-outlet></router-outlet>

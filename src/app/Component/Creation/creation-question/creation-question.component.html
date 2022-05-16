@@ -1,0 +1,32 @@
+<mat-card>
+  <div class="div1">
+    <mat-card-title class="curseur name" (click)="modifyName()">
+          {{question.name}}
+    </mat-card-title>
+  </div>
+  <div class="div2">
+    <mat-form-field appearance="fill" id="question">
+          <mat-label>Question?</mat-label>
+          <input #questionSt matInput (keyup)="modifyQuestion(questionSt.value)" placeholder="ma question?" value="{{question.val}}">
+        </mat-form-field>
+  </div>
+  <div class="div3">
+    <mat-form-field appearance="fill" id="type">
+          <mat-label>Type</mat-label>
+          <mat-select  #t [(value)]="selected" (selectionChange)="typeChange()">
+            <mat-option *ngFor="let choi of choix" [value]="choi.value" (click)="setType()">
+              {{choi.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+  </div>
+  <div class="not">
+    <mat-card-title>Notation</mat-card-title>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="div4">
+    <app-creation-question-defaut *ngIf="selected=='defaut'"></app-creation-question-defaut>
+    <app-creation-question-numerique *ngIf="selected=='numerique'"></app-creation-question-numerique>
+    <app-creation-question-ouverte *ngIf="selected=='ouverte'"></app-creation-question-ouverte>
+  </div>
+</mat-card>

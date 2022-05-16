@@ -1,0 +1,31 @@
+<form>
+  <h3>Créer un nouvel utilisateur</h3>
+
+  <div class="alert alert-warning" *ngIf='error'>{{errorMessage}}</div>
+
+  <label for="username">Nom d'utilisateur</label>
+  <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur">
+
+  <br>
+
+  <label for="username">Email</label>
+  <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="utilisateur@sondomaine.ext">
+
+  <br>
+
+  <label for="name">Nom</label>
+  <input placeholder="Nom" type="text" class="form-control" [(ngModel)]="name" id="name" name="name">
+
+  <br>
+
+  <label for="username">Prénom</label>
+  <input type="text" class="form-control" id="prenom" [(ngModel)]="surname" name="surname" placeholder="Prénom">
+
+  <br>
+
+  <button (click)=create() class="btn btn-success">Créer un nouvel utilisateur</button>
+
+  <br>
+
+  <div  *ngIf='resultMessage != ""'>{{resultMessage}}</div>
+</form>

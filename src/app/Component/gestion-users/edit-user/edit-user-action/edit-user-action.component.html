@@ -1,0 +1,9 @@
+<select [ngModel]="selectedField" (ngModelChange)="onChange($event)" name="deviceText">
+  <option [value]="i" *ngFor="let i of fields">{{i}}</option>
+</select>
+<form *ngIf="selectedField">
+  <input *ngIf="selectedField == 'E-mail'" type="text" name="{{user.email}}" [(ngModel)]="user.email">
+  <input *ngIf="selectedField == 'Nom d\'utilisateur'" type="text" name="{{user.username}}" [(ngModel)]="user.username">
+  <input *ngIf="selectedField == 'Prénom'" type="text" name="{{user.prenom}}" [(ngModel)]="user.nom">
+  <input *ngIf="selectedField == 'Nom'" type="text" name="{{user.nom}}" [(ngModel)]="user.prenom">
+</form>

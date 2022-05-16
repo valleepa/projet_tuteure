@@ -1,0 +1,49 @@
+.main-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img{
+    background-color: white;
+    width:100%;
+    height:auto;
+    cursor: pointer;
+  }
+.mat-card:hover{
+  top:1px;
+}
+.mat-card{
+    margin-top: 1.5rem;
+    max-width: 33rem;
+    text-align: center;
+  border-radius: 0px;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.categorie{
+  width: 100%;
+  cursor: pointer;
+
+}
+.categories{
+  margin-top:10px;
+  display: flex;
+  flex-direction: column;
+  width: 19%
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+app-creation-question{
+  margin-top:10px;
+  width: 60%;
+}

@@ -1,0 +1,11 @@
+.bouton{
+  width: 20%;
+}
+.wrapper-bouton{
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  justify-content: center;
+  letter-spacing: 1px;
+  gap:10px
+}

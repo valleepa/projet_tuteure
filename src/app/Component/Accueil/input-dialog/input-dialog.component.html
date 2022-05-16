@@ -1,0 +1,4 @@
+<div class="wrapper">
+  <input mat-input #name [formControl]="nom" placeholder="{{data.placeholder}}" [(ngModel)]="data.name" type="text" class="input" (keyup)="onChange(name.value)" (keydown.enter)="onClick(data.name)">
+  <button mat-flat-button color="primary" [disabled]="nom.invalid || invalide" [mat-dialog-close]="data.name">{{data.button}}</button>
+</div>
