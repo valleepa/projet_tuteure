@@ -1,3 +1,5 @@
+<div class="alert alert-warning" *ngIf='error'>{{errorMessage}}</div>
+
 <select [ngModel]="selectedField" (ngModelChange)="onChange($event)" name="deviceText">
   <option [value]="i" *ngFor="let i of fields">{{i}}</option>
 </select>
@@ -7,3 +9,8 @@
   <input *ngIf="selectedField == 'Prénom'" type="text" name="{{user.prenom}}" [(ngModel)]="user.nom">
   <input *ngIf="selectedField == 'Nom'" type="text" name="{{user.nom}}" [(ngModel)]="user.prenom">
 </form>
+
+<button (click)="editUser()"></button>
+
+
+<div  *ngIf='resultMessage != ""'>{{resultMessage}}</div>

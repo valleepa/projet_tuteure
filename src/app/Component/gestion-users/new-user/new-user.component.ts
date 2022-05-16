@@ -46,7 +46,7 @@ export class NewUserComponent implements OnInit {
           }
           else if(r == "-3"){
             this.error = true
-            this.errorMessage = "Email déjà utilisé"
+            this.errorMessage = "Email ou nom d'utilisateur déjà utilisé"
           }
           else if(r == "-4"){
             this.error = true

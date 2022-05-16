@@ -32,4 +32,28 @@ export class GestionUsersService {
       return res
     }))
   }
+
+  resetPassword(user: User) {
+    return this.http.put(`http://localhost:8080/user/resetpassword`,JSON.stringify(user)).pipe(map(res => {
+      return res != null ? res:null;
+    }))
+  }
+
+  removeUserFromIdOrUsername(id:number){
+    return this.http.delete<number>(`http://localhost:8080/user/${id}`).pipe(map((res)=>{
+      return res
+    }))
+  }
+
+  getIdFromId(id:any) {
+    return this.http.get<User>(`http://localhost:8080/user/${id}`).pipe(map((res)=>{
+      return res != null ? res.id:null;
+    }))
+  }
+
+  getUserFromId(id: number){
+    return this.http.get<User>(`http://localhost:8080/user/${id}`).pipe(map((res)=>{
+      return res != null ? res:null;
+    }))
+  }
 }
