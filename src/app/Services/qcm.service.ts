@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
+import {map} from "rxjs/operators";
+import {QCM} from "../Modeles/QCM";
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +21,13 @@ export class QcmService {
     };
   }
 
+  getQCMFromUser(id:number){
+    return this.http.get<QCM[]>(`http://localhost:8080/qcms/${id}`).pipe(map((res) => {
+      return res
+    }))
+  }
+
+  // @ts-ignore
   generateApplication(): Observable<any>
+
 }
