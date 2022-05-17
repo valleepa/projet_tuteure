@@ -12,19 +12,6 @@ export class GestionUsersService {
 
   constructor(router: Router, private http: HttpClient) {this.router=router }
 
-  newUser(){
-    this.router.navigate(["/users/new"])
-  }
-  editUser(){
-    this.router.navigate(["/users/edit"])
-  }
-  removeUser(){
-    this.router.navigate(["/users/remove"])
-  }
-  resetUser(){
-    this.router.navigate(["/users/reset"])
-  }
-
   createUser(username: string, email: string,name: string, surname:string,password:string) {
     let user = new User(username,email,name,surname,password,false,[])
 

@@ -10,6 +10,8 @@ export class ValidationModificationComponent implements OnInit {
 
   constructor(@Inject(MAT_DIALOG_DATA) public data:any, public dialogRef: MatDialogRef<ValidationModificationComponent>) { }
 
+  selectedField: any;
+  fields = ["E-mail","Nom","Prénom","Nom d'utilisateur"];
   ngOnInit(): void {
   }
 

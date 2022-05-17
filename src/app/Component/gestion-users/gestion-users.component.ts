@@ -16,17 +16,4 @@ export class GestionUsersComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-  newUser(){
-    this.service.newUser()
-  }
-  editUser(){
-    this.service.editUser()
-  }
-  removeUser(){
-    this.service.removeUser()
-  }
-  resetUser(){
-    this.service.resetUser()
-  }
 }
