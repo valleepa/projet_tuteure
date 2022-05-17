@@ -1,13 +1,21 @@
+<body>
 <form>
-  <label for="username">Id ou Nom d'utilisateur</label>
+  <h1>Gestion d'utilisateur</h1>
   <br>
   <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Id ou Nom d'utilisateur">
-
-  <app-bouton name="Supprimer l'utilisateur"></app-bouton><br>
-  <app-bouton name="Réinitialiser le mot de passe de l'utilisateur"></app-bouton><br>
-  <app-bouton name="Modifier l'utilisateur"></app-bouton>
-
+  <div class="btn">
+    <app-bouton name="Rechercher"></app-bouton>
+  </div>
+  <div class="options">
+    <app-bouton name="Supprimer" (click)="open_dialogue_suppression()"></app-bouton>
+    <app-bouton name="Modifier" (click)="open_dialogue_modification()"></app-bouton>
+  </div>
+  <div class="btn">
+    <app-bouton name="Réinitialiser le mot de passe" (click)="open_dialogue_resiliation()"></app-bouton>
+  </div>
 </form>
 
-<h4 *ngIf="error" >{{errorMessage}}</h4>
 <router-outlet></router-outlet>
+</body>
+
+

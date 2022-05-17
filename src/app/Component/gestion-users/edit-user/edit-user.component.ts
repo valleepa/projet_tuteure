@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {EditUserService} from "../../../Services/edit-user.service";
 import {Router, ROUTES} from "@angular/router";
 import {GestionUsersService} from "../../../Services/gestion-users.service";
+import {MatDialog} from "@angular/material/dialog";
+import {ValidationDialogComponent} from "../validation-dialog/validation-dialog.component";
+import {QCM} from "../../../Modeles/QCM";
+import {ValidationModificationComponent} from "../validation-modification/validation-modification.component";
 
 @Component({
   selector: 'app-edit-user',
@@ -15,9 +19,51 @@ export class EditUserComponent implements OnInit {
   error = false
   id: number = 0;
 
-  constructor(private service:GestionUsersService,router:Router) {;this.router = router}
+  constructor(private service:GestionUsersService,router:Router, public dialog: MatDialog) {;this.router = router}
 
   ngOnInit(): void {
+  }
+
+  open_dialogue_suppression():void{
+    const dialogRef = this.dialog.open(ValidationDialogComponent, {
+      width: '40%',
+      height:'20%',
+      panelClass: 'custom-dialog-container',
+      data: {button: 'Supprimer', buttonAnnuler: 'Annuler', text:'Voulez-vous vraiment supprimer cet utilisateur ?'},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        //TODO fonction de suppression des users
+    }});
+  }
+
+  open_dialogue_resiliation():void{
+    const dialogRef = this.dialog.open(ValidationDialogComponent, {
+      width: '50%',
+      height:'25%',
+      panelClass: 'custom-dialog-container',
+      data: {button: 'Réinitialiser', buttonAnnuler: 'Annuler', text:'Voulez-vous vraiment réinitialiser le mot de passe de cet utilisateur ?'},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result){
+        //TODO fonction de reinitialisation du mot de passe des users
+      }});
+  }
+
+  open_dialogue_modification():void{
+    const dialogMod = this.dialog.open(ValidationModificationComponent, {
+      width: '40%',
+      height:'20%',
+      panelClass: 'custom-dialog-container',
+    });
+
+    dialogMod.afterClosed().subscribe(result => {
+      if(result){
+        //TODO fonction de modification des users
+      }});
+
   }
 
   findUser(){

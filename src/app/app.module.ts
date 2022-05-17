@@ -55,6 +55,8 @@ import { EditUserComponent } from './Component/gestion-users/edit-user/edit-user
 import { EditUserActionComponent } from './Component/gestion-users/edit-user/edit-user-action/edit-user-action.component';
 import { RemoveUserComponent } from './Component/gestion-users/remove-user/remove-user.component';
 import { ResetPasswordComponent } from './Component/gestion-users/reset-password/reset-password.component';
+import { ValidationDialogComponent } from './Component/gestion-users/validation-dialog/validation-dialog.component';
+import { ValidationModificationComponent } from './Component/gestion-users/validation-modification/validation-modification.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -94,6 +96,8 @@ import { ResetPasswordComponent } from './Component/gestion-users/reset-password
     EditUserActionComponent,
     RemoveUserComponent,
     ResetPasswordComponent,
+    ValidationDialogComponent,
+    ValidationModificationComponent,
   ],
   imports: [
     BrowserModule,
