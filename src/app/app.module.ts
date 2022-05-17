@@ -53,8 +53,6 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { NewUserComponent } from './Component/gestion-users/new-user/new-user.component';
 import { EditUserComponent } from './Component/gestion-users/edit-user/edit-user.component';
 import { EditUserActionComponent } from './Component/gestion-users/edit-user/edit-user-action/edit-user-action.component';
-import { RemoveUserComponent } from './Component/gestion-users/remove-user/remove-user.component';
-import { ResetPasswordComponent } from './Component/gestion-users/reset-password/reset-password.component';
 import { ValidationDialogComponent } from './Component/gestion-users/validation-dialog/validation-dialog.component';
 import { ValidationModificationComponent } from './Component/gestion-users/validation-modification/validation-modification.component';
 
@@ -94,8 +92,6 @@ import { ValidationModificationComponent } from './Component/gestion-users/valid
     NewUserComponent,
     EditUserComponent,
     EditUserActionComponent,
-    RemoveUserComponent,
-    ResetPasswordComponent,
     ValidationDialogComponent,
     ValidationModificationComponent,
   ],

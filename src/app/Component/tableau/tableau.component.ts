@@ -2,6 +2,10 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {QCM} from "../../Modeles/QCM";
 import {QcmService} from "../../Services/qcm.service";
+import {InputDialogComponent} from "../Accueil/input-dialog/input-dialog.component";
+import {QuestionService} from "../../Services/question.service";
+import {Router} from "@angular/router";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-tableau',
@@ -13,7 +17,7 @@ export class TableauComponent implements OnInit {
   qcm = <QCM>{};
   dataSource!: MatTableDataSource<QCM>;
   displayedColumns: string[] = ['name', 'modify', 'mark'];
-  constructor(private service: QcmService) {
+  constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -30,10 +34,27 @@ export class TableauComponent implements OnInit {
   }
   applyFilter(event: Event) {
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter);
+      return data.titre.toLowerCase().includes(filter);
     };
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  openDialog(): void {
+    const dialogRef = this.dialog.open(InputDialogComponent, {
+      width: '35%',
+      height:'17%',
+      panelClass: 'custom-dialog-container',
+      data: {button: 'Créer', placeholder: 'MON QCM', name:''},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result)
+        localStorage.removeItem("selector");
+      localStorage.removeItem('QCM');
+      this.questionService.QCMActuel.next(QCM.createEmptyQCM());
+      this.router.navigate(['/creation',result])
+    });
+
   }
 
 }

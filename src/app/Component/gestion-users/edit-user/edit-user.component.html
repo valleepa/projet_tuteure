@@ -14,7 +14,8 @@
     <app-bouton name="Réinitialiser le mot de passe" (click)="open_dialogue_resiliation()"></app-bouton>
   </div>
 </form>
-
+<p *ngIf="error == true">{{errorMessage}}</p>
+<p *ngIf="message != ''">{{message}}</p>
 <router-outlet></router-outlet>
 </body>
 
