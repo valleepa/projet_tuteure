@@ -1,12 +1,11 @@
 <form>
-  <h3>Éditer un utilisateur</h3>
-
-
-  <label for="username">Nom d'utilisateur ou id</label>
+  <label for="username">Id ou Nom d'utilisateur</label>
   <br>
-  <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur">
+  <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Id ou Nom d'utilisateur">
 
-  <app-bouton (click)=(findUser()) name="Trouver l'utilisateur"></app-bouton>
+  <app-bouton name="Supprimer l'utilisateur"></app-bouton><br>
+  <app-bouton name="Réinitialiser le mot de passe de l'utilisateur"></app-bouton><br>
+  <app-bouton name="Modifier l'utilisateur"></app-bouton>
 
 </form>
 
