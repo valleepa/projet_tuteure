@@ -20,6 +20,9 @@ export class QcmService {
       return of(result as T);
     };
   }
+  generateNewQCM(QCM: QCM): Observable<QCM>{
+    return this.http.post<QCM>(`http://localhost:8080/qcm`,QCM, this.httpOptions);
+  }
 
   getQCMFromUser(id:number){
     return this.http.get<QCM[]>(`http://localhost:8080/qcms/${id}`).pipe(map((res) => {
