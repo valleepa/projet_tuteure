@@ -21,7 +21,7 @@ export class TableauComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.qcm.name = "QCM1";
+    this.qcm.titre = "QCM1";
     this.qcm.id = 1;
     this.qcms.push(this.qcm);
 

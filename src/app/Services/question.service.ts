@@ -19,7 +19,7 @@ export class QuestionService {
       this.QCMActuel.next(new QCM([],'',0,false,'null','null'));
     }
     this.QCMActuel.subscribe(res => {
-      if(res.name!=='null'){
+      if(res.titre!=='null'){
         localStorage.setItem("QCM",JSON.stringify(res));
       }
 
