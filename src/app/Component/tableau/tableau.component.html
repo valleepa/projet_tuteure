@@ -10,7 +10,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nom </th>
-      <td mat-cell class="name" *matCellDef="let qcm" > {{qcm.name}} </td>
+      <td mat-cell class="name" *matCellDef="let qcm" > {{qcm.titre}} </td>
     </ng-container>
 
     <!-- Modify Column -->
@@ -30,5 +30,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     <tr mat-footer-row>Hey</tr>
   </table>
-  <button type="button" class="add"><mat-icon> add </mat-icon></button>
+  <button type="button" class="add" (click)="openDialog()"><mat-icon> add </mat-icon></button>
 </mat-card>

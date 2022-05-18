@@ -1,0 +1,15 @@
+body{
+  text-align: center;
+  height: 90%;
+  padding-top: 2%;
+}
+
+.contain{
+  display: flex;
+  justify-content: space-around;
+}
+
+app-bouton{
+  margin-top: 2%;
+  width: 25%;
+}

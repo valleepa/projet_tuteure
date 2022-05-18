@@ -17,6 +17,7 @@ export class QCM implements IQCM {
   isRandomized: boolean;
   name: string;
   user: string;
+  titre:any;
   constructor(categories: ICategorie[], entete: string, id:number, isRandomized: boolean, name:string, user:string){
     this.categories = categories;
     this.entete = entete;

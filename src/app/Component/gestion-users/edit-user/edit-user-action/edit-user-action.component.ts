@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {EditUserService} from "../../../../Services/edit-user.service";
 import {User} from "../../../../Modeles/USER";
+import {GestionUsersService} from "../../../../Services/gestion-users.service";
 
 @Component({
   selector: 'app-edit-user-action',
@@ -12,7 +13,10 @@ export class EditUserActionComponent implements OnInit {
   user : any;
   selectedField: any;
   fields = ["E-mail","Nom","Prénom","Nom d'utilisateur"];
-  constructor(private route: ActivatedRoute, private service: EditUserService, private router: Router) {
+  error: boolean = false;
+  errorMessage: string = "";
+  resultMessage: string = "";
+  constructor(private route: ActivatedRoute, private service: GestionUsersService, private editUserService: EditUserService, private router: Router) {
 
     //Redirection dans le cas d'un accès direct via l'url
     if(this.router.getCurrentNavigation()?.extras.state == undefined){
@@ -34,5 +38,17 @@ export class EditUserActionComponent implements OnInit {
   onChange($event: any) {
     this.selectedField = $event
     console.log(this.user)
+  }
+
+  editUser() {
+    this.editUserService.editUser(this.user).subscribe((r) => {
+      if(r == "-2" || r == "-1"  || r == "-3" ){
+        this.error = true
+        this.errorMessage = "Merci de composer un email correctement formé"
+      }
+      else{
+        this.resultMessage=`Utilisateur modifié avec succès`
+      }
+    });
   }
 }

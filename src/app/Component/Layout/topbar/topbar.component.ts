@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import {AuthenticationService} from "../../../Services/authentication.service";
 
 
@@ -14,6 +15,8 @@ export class TopbarComponent implements OnInit {
   isLoggedIn = false
   name = ""
   isAdmin: any;
+  showDropDown: boolean = false;
+
   constructor(
     private authenticationService: AuthenticationService) { }
 
@@ -29,5 +32,10 @@ export class TopbarComponent implements OnInit {
 
   handleLogout() {
     this.authenticationService.logout();
+  }
+
+  onDisplayDropdown()
+  {
+    this.showDropDown = !this.showDropDown;
   }
 }

@@ -6,7 +6,24 @@
 }
 
 .recent{
-  width: 50%;
+  width: 55%;
+  border-radius: 10px;
+  padding: 20px 40px;
+}
+.list{
+  display: grid;
+  width: 100%;
+  height: 90%;
+  grid-template-columns: repeat(2, 33%) 34%;
+  grid-template-rows: repeat(2, 50%);
+  grid-column-gap: 2%;
+  grid-row-gap: 0;
+  .div1 { grid-area: 1 / 1 / 2 / 2; }
+  .div2 { grid-area: 1 / 2 / 2 / 3; }
+  .div3 { grid-area: 1 / 3 / 2 / 4; }
+  .div4 { grid-area: 2 / 3 / 3 / 4; }
+  .div5 { grid-area: 2 / 2 / 3 / 3; }
+  .div6 { grid-area: 2 / 1 / 3 / 2; }
 }
 
 .creer{
@@ -30,4 +47,8 @@ span{
 
 i, h1{
   color: #3F51B5;
+}
+h1{
+  border-bottom: solid 2px #B2B4B7;
+  padding-bottom: 5px;
 }

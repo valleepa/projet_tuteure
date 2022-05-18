@@ -53,6 +53,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import { NewUserComponent } from './Component/gestion-users/new-user/new-user.component';
 import { EditUserComponent } from './Component/gestion-users/edit-user/edit-user.component';
 import { EditUserActionComponent } from './Component/gestion-users/edit-user/edit-user-action/edit-user-action.component';
+import { ValidationDialogComponent } from './Component/gestion-users/validation-dialog/validation-dialog.component';
+import { ValidationModificationComponent } from './Component/gestion-users/validation-modification/validation-modification.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -90,6 +92,8 @@ import { EditUserActionComponent } from './Component/gestion-users/edit-user/edi
     NewUserComponent,
     EditUserComponent,
     EditUserActionComponent,
+    ValidationDialogComponent,
+    ValidationModificationComponent,
   ],
   imports: [
     BrowserModule,

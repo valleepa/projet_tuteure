@@ -27,8 +27,6 @@ const routes: Routes = [
       {path : 'new', component: NewUserComponent,canActivate: [ AuthGuard , AdminGuard]},
       {path : 'edit', component: EditUserComponent,canActivate: [ AuthGuard,AdminGuard ]},
       {path : 'edit/:id', component: EditUserActionComponent,canActivate: [ AuthGuard,AdminGuard]},
-      {path : 'remove', component: CreationQCMComponent,canActivate: [ AuthGuard ]},
-      {path : 'reset', component: CreationQCMComponent,canActivate: [ AuthGuard ]}
     ]
   },
   { path : 'creation/:name', component: CreationQCMComponent,canActivate: [ AuthGuard ],

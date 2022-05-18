@@ -1,14 +1,22 @@
+<body>
 <form>
-  <h3>Éditer un utilisateur</h3>
-
-
-  <label for="username">Nom d'utilisateur ou id</label>
+  <h1>Gestion d'utilisateur</h1>
   <br>
-  <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur">
-
-  <app-bouton (click)=(findUser()) name="Trouver l'utilisateur"></app-bouton>
-
+  <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Id ou Nom d'utilisateur">
+  <div class="btn">
+    <app-bouton name="Rechercher"></app-bouton>
+  </div>
+  <div class="options">
+    <app-bouton name="Supprimer" (click)="open_dialogue_suppression()"></app-bouton>
+    <app-bouton name="Modifier" (click)="open_dialogue_modification()"></app-bouton>
+  </div>
+  <div class="btn">
+    <app-bouton name="Réinitialiser le mot de passe" (click)="open_dialogue_resiliation()"></app-bouton>
+  </div>
 </form>
-
-<h4 *ngIf="error" >{{errorMessage}}</h4>
+<p *ngIf="error == true">{{errorMessage}}</p>
+<p *ngIf="message != ''">{{message}}</p>
 <router-outlet></router-outlet>
+</body>
+
+

@@ -1,0 +1,31 @@
+body{
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
+
+.ligne{
+  width: 60%;
+  display: flex;
+  margin: 40px auto 20px auto;
+  justify-content: space-between;
+}
+
+input{
+  border: None;
+  width: 200px;
+  height: 30px;
+}
+
+app-bouton{
+  width: 30%;
+}
+
+h1{
+  color:#3F51B5;
+}
+
+#create{
+  width: 50%;
+  margin: 50px auto auto auto;
+}

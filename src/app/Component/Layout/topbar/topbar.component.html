@@ -23,10 +23,12 @@
       <a class="" routerLink="/users">
         <span>GESTION UTILISATEURS STATISTIQUES</span></a>
     </li>
-    <li>
-      <a class="nav-link" href="" (click)=handleLogout()>LOGOUT</a>
-    </li>
   </ul>
-  <span class="example-spacer"></span>
-  <div *ngIf="isLoggedIn" id="user">{{name}} <i class="fas fa-user-circle" id="ico"></i> </div>
+  <span class="example-spacer"> </span>
+  <div class="dropdown">
+    <button *ngIf="isLoggedIn" (click)="onDisplayDropdown()" class="dropbtn"> {{name}} <i class="fas fa-user-circle" id="ico"></i></button>
+    <div *ngIf="showDropDown" class="contenu-dropdown">
+      <a (click)=handleLogout() href="" id="logout-item">Déconnexion</a>
+    </div>
+  </div>
 </mat-toolbar>
