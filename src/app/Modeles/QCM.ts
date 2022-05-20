@@ -3,7 +3,7 @@ import { Question } from "./QUESTION";
 
 export interface IQCM {
   id: number;
-  name: string;
+  titre: string;
   entete: string;
   isRandomized: boolean
   categories: ICategorie[];
@@ -15,15 +15,14 @@ export class QCM implements IQCM {
   entete: string;
   id: number;
   isRandomized: boolean;
-  name: string;
+  titre: string;
   user: string;
-  titre:any;
-  constructor(categories: ICategorie[], entete: string, id:number, isRandomized: boolean, name:string, user:string){
+  constructor(categories: ICategorie[], entete: string, id:number, isRandomized: boolean, titre:string, user:string){
     this.categories = categories;
     this.entete = entete;
     this.id = id;
     this.isRandomized = isRandomized;
-    this.name = name;
+    this.titre = titre;
     this.user = user;
   }
 
