@@ -10,7 +10,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nom </th>
-      <td mat-cell class="name" *matCellDef="let etudiant" > {{etudiant.name}} </td>
+      <td mat-cell class="name" *matCellDef="let etudiant" > {{etudiant.nom}} </td>
     </ng-container>
 
     <!-- Class Column -->
@@ -28,9 +28,8 @@
     <!-- Profil Column -->
     <ng-container matColumnDef="profil">
       <th mat-header-cell *matHeaderCellDef> Profil </th>
-      <td mat-cell *matCellDef="let qcm"><button mat-raised-button color="primary" class="mat-button" type="button">Profil</button></td>
+      <td mat-cell *matCellDef="let qcm"><button mat-raised-button color="primary" class="mat-button" type="button" (click)="showProfil(etudiant)">Profil</button></td>
     </ng-container>
-
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

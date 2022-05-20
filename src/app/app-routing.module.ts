@@ -14,12 +14,14 @@ import {AdminGuard} from "./auth/auth-admin.guard";
 import {NewUserComponent} from "./Component/gestion-users/new-user/new-user.component";
 import {EditUserComponent} from "./Component/gestion-users/edit-user/edit-user.component";
 import {EditUserActionComponent} from "./Component/gestion-users/edit-user/edit-user-action/edit-user-action.component";
+import {ProfilComponent} from "./Component/tableau-etudiants/profil/profil.component";
 
 const routes: Routes = [
   { path : '', component: AccueilComponent,canActivate: [ AuthGuard ]},
   { path : 'accueil', component: AccueilComponent,canActivate: [ AuthGuard ]},
   { path : 'mesqcm', component: MesQCMComponent,canActivate: [ AuthGuard ]},
   { path : 'etudiants', component: MesEtudiantsComponent,canActivate: [ AuthGuard ]},
+  { path: 'etudiants/profil/:name', component: ProfilComponent, canActivate: [ AuthGuard ]},
   { path : 'statistiques', component: ConnexionComponent,canActivate: [ AuthGuard ]},
   { path : 'login', component: ConnexionComponent},
   { path : 'users', component: GestionUsersComponent,canActivate: [ AuthGuard , AdminGuard ],
