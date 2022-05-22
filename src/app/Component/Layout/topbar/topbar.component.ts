@@ -38,4 +38,14 @@ export class TopbarComponent implements OnInit {
   {
     this.showDropDown = !this.showDropDown;
   }
+
+  onMouseEnter()
+  {
+    this.showDropDown = true;
+  }
+
+  onMouseLeave()
+  {
+    this.showDropDown = false;
+  }
 }
