@@ -23,7 +23,6 @@ const routes: Routes = [
   { path : 'mesqcm', component: MesQCMComponent,canActivate: [ AuthGuard ]},
   { path : 'etudiants', component: MesEtudiantsComponent,canActivate: [ AuthGuard ]},
   { path: 'etudiants/profil/:name', component: ProfilComponent, canActivate: [ AuthGuard ]},
-  { path : 'statistiques', component: ConnexionComponent,canActivate: [ AuthGuard ]},
   { path : 'login', component: ConnexionComponent},
   { path : 'users', component: GestionUsersComponent,canActivate: [ AuthGuard , AdminGuard ],
     children:[

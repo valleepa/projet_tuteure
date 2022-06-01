@@ -2,7 +2,7 @@ mat-toolbar{
   display: flex;
   line-height: 100%;
   color:#3F51B5;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #FFFFFF;
   margin-bottom: 2.5%;
 }
@@ -15,7 +15,7 @@ ul{
   margin: auto;
   width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
 }
 

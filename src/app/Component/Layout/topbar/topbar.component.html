@@ -19,18 +19,16 @@
       <a class="" routerLink="/statistiques">
         <span>MES STATISTIQUES</span></a>
     </li>
-    <!-- <li *ngIf="isAdmin =='true'" class="nav-item-gestionUtilisateurs">
+    <li *ngIf="isAdmin =='true'" class="nav-item-gestionUtilisateurs">
       <a class="" routerLink="/users">
         <span>GESTION UTILISATEURS STATISTIQUES</span></a>
-    </li> -->
+    </li>
   </ul>
   <span class="example-spacer"> </span>
-  <div class="dropdown" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" >
-    <button [hidden]="!isLoggedIn" (click)="onDisplayDropdown()" class="dropbtn" > {{name}} <i class="fas fa-user-circle" id="ico"></i></button>
-    <div [hidden]="!showDropDown" class="contenu-dropdown">
-      <a routerLink="/monprofil"><span class="other-items">Mon profil</span></a>
-      <a routerLink="/users"><span class="other-items"> Panel Admin</span></a>
-      <a (click)=handleLogout() href="" id="logout-item"><span>Déconnexion</span></a>
+  <div class="dropdown">
+    <button *ngIf="isLoggedIn" (click)="onDisplayDropdown()" class="dropbtn"> {{name}} <i class="fas fa-user-circle" id="ico"></i></button>
+    <div *ngIf="showDropDown" class="contenu-dropdown">
+      <a (click)=handleLogout() href="" id="logout-item">Déconnexion</a>
     </div>
   </div>
 </mat-toolbar>
