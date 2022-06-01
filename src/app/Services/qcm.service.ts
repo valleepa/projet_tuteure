@@ -8,7 +8,7 @@ import {QCM} from "../Modeles/QCM";
   providedIn: 'root'
 })
 export class QcmService {
-  private backUrl = 'http://localhost:8080/preferences';
+  private backUrl = 'http://back.depta.krapo.pro/preferences';
   httpOptions = {
     headers: new HttpHeaders({'Content-Type': 'qcm/json'})
   };
@@ -22,7 +22,7 @@ export class QcmService {
   }
 
   getQCMFromUser(id:number){
-    return this.http.get<QCM[]>(`http://localhost:8080/qcms/${id}`).pipe(map((res) => {
+    return this.http.get<QCM[]>(`http://back.depta.krapo.pro/qcms/${id}`).pipe(map((res) => {
       return res
     }))
   }
