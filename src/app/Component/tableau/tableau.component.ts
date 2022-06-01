@@ -16,7 +16,7 @@ export class TableauComponent implements OnInit {
   qcms: QCM[] = [];
   qcm = <QCM>{};
   dataSource!: MatTableDataSource<QCM>;
-  displayedColumns: string[] = ['name', 'modify', 'mark', 'correction'];
+  displayedColumns: string[] = ['name', 'modify', 'mark'];
   constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router) {
   }
 

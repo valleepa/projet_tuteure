@@ -1,3 +1,4 @@
+import { CorrectionComponent } from './Component/correction/correction.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AccueilComponent} from "./Pages/accueil/accueil.component";
