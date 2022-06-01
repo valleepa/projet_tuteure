@@ -1,6 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import {Etudiant, IEtudiant} from "../../Modeles/ETUDIANTS";
+import {Router} from "@angular/router";
+import {EtudiantsService} from "../../Services/etudiants.service";
 
 @Component({
   selector: 'app-tableau-etudiants',
@@ -9,20 +11,24 @@ import {Etudiant, IEtudiant} from "../../Modeles/ETUDIANTS";
 })
 export class TableauEtudiantsComponent implements OnInit {
   etudiants: IEtudiant[] = [];
-  etudiant = new Etudiant("FA2", "B", "Damien Stengel");
+  etudiant = new Etudiant(1, "FA2", "B", "Stengel", "Damien", 22001693);
   dataSource!: MatTableDataSource<IEtudiant>;
   displayedColumns: string[] = ['name', 'class', 'group', 'profil'];
 
-  constructor() { }
+  constructor(private router: Router, private etudiantsService: EtudiantsService) { }
 
   ngOnInit(): void {
     this.etudiants.push(this.etudiant);
     this.dataSource = new MatTableDataSource<IEtudiant>(this.etudiants)
   }
+  showProfil(etudiant:Etudiant):void{
+    this.etudiantsService.etudiantActuel = etudiant;
+    this.router.navigate(['/etudiants/profil/'+ etudiant.nom]);
+  }
 
   applyFilter(event: Event) {
     this.dataSource.filterPredicate = function(data, filter: string): boolean {
-      return data.name.toLowerCase().includes(filter);
+      return data.nom.toLowerCase().includes(filter);
     };
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();

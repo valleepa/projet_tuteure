@@ -1,0 +1,65 @@
+<body xmlns="http://www.w3.org/1999/html">
+<div class="information">
+  <h2>Informations</h2>
+  <div class="info">
+    <img src="https://avatars.dicebear.com/api/identicon/{{this.id}}.svg?background=%23EBECF0"/>
+    <div *ngIf="isModifying==false" class="coordonnes">
+      <i class="fa-solid fa-pen-to-square fa-2x" (click)="modify()"></i>
+      <div class="meslabel">
+        <label for="nom">Nom :</label>
+        <p id="nom">{{etudiant.nom}}</p>
+      </div>
+      <div class="meslabel">
+        <label for="prenom">Prenom :</label>
+        <p id="prenom">{{etudiant.prenom}}</p>
+      </div>
+      <div class="meslabel">
+        <label for="num">N° Etudiant :</label>
+        <p id="num">{{etudiant.numero}}</p>
+      </div>
+      <div class="classe">
+        <div class="meslabel">
+          <label for="classe">Classe :</label>
+          <p id="classe">{{etudiant.classe}}</p>
+        </div>
+        <div class="meslabel">
+          <label for="grp">Groupe :</label>
+          <p id="grp">{{etudiant.group}}</p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isModifying==true" class="coordonnes">
+      <i class="fa-solid fa-check fa-2x" (click)="save()"></i>
+      <mat-form-field>
+          <mat-label for="nom">Nom :</mat-label>
+          <input matInput type="text" class="nom" value="{{etudiant.nom}}" [(ngModel)]="nom"/>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label for="prenom">Prenom :</mat-label>
+          <input matInput type="text" class="prenom" value="{{etudiant.prenom}}" [(ngModel)]="prenom"/>
+      </mat-form-field>
+      <mat-form-field>
+          <mat-label for="num">N° Etudiant :</mat-label>
+          <input matInput class="num" value="{{etudiant.numero}}" [(ngModel)]="numero"/>
+      </mat-form-field>
+          <mat-form-field>
+            <mat-label for="classe">Classe :</mat-label>
+            <input matInput class="classe" value="{{etudiant.classe}}" [(ngModel)]="class"/>
+            </mat-form-field>
+          <mat-form-field>
+            <mat-label for="grp">Groupe :</mat-label>
+            <input matInput class="grp" value="{{etudiant.group}}" [(ngModel)]="group"/>
+          </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="qcm">
+  <h2>QCM</h2>
+  <div class="element">
+    <p class="name">QCM</p>
+    <p class='note'>18,5</p>
+    <app-bouton name="copie"></app-bouton>
+  </div>
+</div>
+</body>
