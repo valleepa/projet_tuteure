@@ -16,7 +16,7 @@ export class TableauComponent implements OnInit {
   qcms: QCM[] = [];
   qcm = <QCM>{};
   dataSource!: MatTableDataSource<QCM>;
-  displayedColumns: string[] = ['name', 'modify', 'mark'];
+  displayedColumns: string[] = ['name', 'modify', 'mark','correction'];
   constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router) {
   }
 
@@ -55,6 +55,11 @@ export class TableauComponent implements OnInit {
       this.router.navigate(['/creation',result])
     });
 
+  }
+
+  onCorrection(qcm: QCM)
+  {
+    this.router.navigate([`/correction/${qcm.id}`]);
   }
 
 }
