@@ -29,7 +29,4 @@ export class CorrectionComponent implements OnInit {
 
   }
 
-
-  }
-
 }
