@@ -9,7 +9,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CorrectionComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) { }
-  
+
+
 
   qcmId! : number;
 
@@ -25,7 +26,10 @@ export class CorrectionComponent implements OnInit {
       this.qcmId = id;
       console.log(id);
     }
-    
+
+  }
+
+
   }
 
 }
