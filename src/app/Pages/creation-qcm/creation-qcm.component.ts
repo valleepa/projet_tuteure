@@ -30,6 +30,7 @@ export class CreationQCMComponent implements OnInit {
   }
 
   checkSave() {
+    console.log(this.qcmLocal);
     if(this.qcmLocal?.id){
       this.qcmService.modifyQCM(this.qcmLocal);
     }
@@ -44,7 +45,6 @@ export class CreationQCMComponent implements OnInit {
   }
 
   deleteQcm() {
-    console.log("jglsdkj");
     console.log(this.qcmLocal);
     if(this.qcmLocal?.id){
       this.qcmService.deleteQCM(this.qcmLocal.id);
