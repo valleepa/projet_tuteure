@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 import {QCM} from "../Modeles/QCM";
+import {Q} from "@angular/cdk/keycodes";
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +30,15 @@ export class QcmService {
       return res
     }))
   }
-
+  getQCMFromId(id:number): Observable<QCM>{
+    return this.http.get<QCM>(`http://localhost:8080/qcm/${id}`).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
+  }
+  modifyQCM(QCM: QCM): Observable<QCM>{
+    return this.http.put<QCM>(`http://localhost:8080/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Modifie un QCM')));
+  }
+  createNewQCM(QCM:QCM): Observable<QCM>{
+    return this.http.post<QCM>(`http://localhost:8080/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Créé un QCM')));
+  }
   // @ts-ignore
   generateApplication(): Observable<any>
 

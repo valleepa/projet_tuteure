@@ -6,6 +6,7 @@ import {Router} from "@angular/router";
 import { QCM } from 'src/app/Modeles/QCM';
 import { Categorie } from 'src/app/Modeles/CATEGORIE';
 import { Question } from 'src/app/Modeles/QUESTION';
+import {AuthenticationService} from "../../../Services/authentication.service";
 
 @Component({
   selector: 'app-create',
@@ -14,11 +15,12 @@ import { Question } from 'src/app/Modeles/QUESTION';
 })
 export class CreateComponent implements OnInit {
   name: string = 'boom';
+  qcm: QCM|undefined;
   @Input() titre = '';
   @Input() image = '';
   @Input() type = '';
 
-  constructor(public dialog: MatDialog, public router: Router, private questionService : QuestionService) { }
+  constructor(public dialog: MatDialog, public router: Router, private questionService : QuestionService, private authentificationService: AuthenticationService) { }
 
   openDialog(): void {
     if(this.type == 'creer'){
@@ -34,6 +36,10 @@ export class CreateComponent implements OnInit {
           localStorage.removeItem("selector");
           localStorage.removeItem('QCM');
           this.questionService.QCMActuel.next(QCM.createEmptyQCM());
+          this.questionService.QCMActuel.subscribe(res=>{
+            this.qcm = res;
+            this.qcm.user = this.authentificationService.getId()!;
+          });
           this.router.navigate(['/creation',result])
       });
     }

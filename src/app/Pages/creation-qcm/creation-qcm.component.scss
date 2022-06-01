@@ -6,7 +6,16 @@
 }
 .title{
   flex:1;
-  min-width:20%;
+  max-width:20%;
+}
+#fill{
+  visibility: hidden;
+}
+.top{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
 }
 app-creation-tab{
   display: flex;
