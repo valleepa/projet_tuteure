@@ -12,7 +12,7 @@ export class EditUserService {
 
 
   editUser(user: User) {
-    return this.http.put("http://localhost:8080/user",JSON.stringify(user)).pipe(map(res => {
+    return this.http.put("http://back.depta.krapo.pro/user",JSON.stringify(user)).pipe(map(res => {
       return res != null ? res:null;
     }))
   }
