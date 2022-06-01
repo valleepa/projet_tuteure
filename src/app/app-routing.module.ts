@@ -1,3 +1,4 @@
+import { CorrectionComponent } from './Component/correction/correction.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AccueilComponent} from "./Pages/accueil/accueil.component";
@@ -38,6 +39,12 @@ const routes: Routes = [
     { path : 'parametres', component: CreationParametresComponent,canActivate: [ AuthGuard ]},
     { path : 'edition', component: CreationEditionsComponent,canActivate: [ AuthGuard ]},
   ]
+  },
+  {
+    path : 'correction', component: CorrectionComponent, canActivate: [AuthGuard],
+    children: [
+      { path: ':id', component : CorrectionComponent, canActivate: [AuthGuard]}
+    ]
   }
 ];
 
