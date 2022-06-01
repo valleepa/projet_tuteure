@@ -24,7 +24,7 @@
     <button [hidden]="!isLoggedIn" (click)="onDisplayDropdown()" class="dropbtn" > <i class="fas fa-user-circle" id="ico"></i> {{name}} </button>
     <div [hidden]="!showDropDown" class="contenu-dropdown">
       <div class="ligne"><i class="fas fa-user-circle"></i><a routerLink="/monprofil"><span class="other-items">Mon profil</span></a></div>
-      <div class="ligne"><i class="fa-solid fa-screwdriver-wrench"></i><a routerLink="/users"><span class="other-items"> Panel Admin</span></a></div>
+      <div  *ngIf="isAdmin =='true'" class="ligne"><i class="fa-solid fa-screwdriver-wrench"></i><a routerLink="/users"><span class="other-items"> Panel Admin</span></a></div>
       <div class="ligne" id="logout-item"><i class="fa-solid fa-right-from-bracket"></i><a (click)=handleLogout() href=""><span id="text-logout">Déconnexion</span></a></div>
     </div>
   </div>
