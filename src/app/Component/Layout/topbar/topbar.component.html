@@ -14,23 +14,18 @@
       <a class="" routerLink="/etudiants">
         <span>MES ETUDIANTS</span></a>
     </li>
-    <!-- Nav Item - Mes Statistiques-->
-    <li class="nav-item-mesStatistiques">
-      <a class="" routerLink="/statistiques">
-        <span>MES STATISTIQUES</span></a>
-    </li>
-    <!-- <li *ngIf="isAdmin =='true'" class="nav-item-gestionUtilisateurs">
-      <a class="" routerLink="/users">
-        <span>GESTION UTILISATEURS STATISTIQUES</span></a>
-    </li> -->
+<!--    <li *ngIf="isAdmin =='true'" class="nav-item-gestionUtilisateurs">-->
+<!--      <a class="" routerLink="/users">-->
+<!--        <span>GESTION UTILISATEURS STATISTIQUES</span></a>-->
+<!--    </li>-->
   </ul>
   <span class="example-spacer"> </span>
   <div class="dropdown" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" >
-    <button [hidden]="!isLoggedIn" (click)="onDisplayDropdown()" class="dropbtn" > {{name}} <i class="fas fa-user-circle" id="ico"></i></button>
+    <button [hidden]="!isLoggedIn" (click)="onDisplayDropdown()" class="dropbtn" > <i class="fas fa-user-circle" id="ico"></i> {{name}} </button>
     <div [hidden]="!showDropDown" class="contenu-dropdown">
-      <a routerLink="/monprofil"><span class="other-items">Mon profil</span></a>
-      <a routerLink="/users"><span class="other-items"> Panel Admin</span></a>
-      <a (click)=handleLogout() href="" id="logout-item"><span>Déconnexion</span></a>
+      <div class="ligne"><i class="fas fa-user-circle"></i><a routerLink="/monprofil"><span class="other-items">Mon profil</span></a></div>
+      <div class="ligne"><i class="fa-solid fa-screwdriver-wrench"></i><a routerLink="/users"><span class="other-items"> Panel Admin</span></a></div>
+      <div class="ligne" id="logout-item"><i class="fa-solid fa-right-from-bracket"></i><a (click)=handleLogout() href=""><span id="text-logout">Déconnexion</span></a></div>
     </div>
   </div>
 </mat-toolbar>

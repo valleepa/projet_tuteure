@@ -15,7 +15,7 @@ ul{
   margin: auto;
   width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
 }
 
@@ -48,16 +48,16 @@ mat-icon{
 }
 
 .dropdown {
+  position: relative;
   margin-left:5em;
   display: inline-block;
-  width:fit-content;
+  width:13%;
 }
 
 .contenu-dropdown {
   position: absolute ;
   background-color: white;
-  width: auto;
-  overflow: auto;
+  width: 100%;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
 }
@@ -71,11 +71,26 @@ mat-icon{
   cursor: pointer;
 }
 
-#logout-item{
-  background-color: rgb(182, 50, 50);
+#logout-item *{
+  color: rgb(182, 50, 50);
 }
 
 .other-items{
   background-color: white;
   color: #3F51B5;
+}
+
+.ligne{
+  display: flex;
+  justify-content: center;
+  line-height: 1;
+  padding-left: 10px;
+
+  i{
+    margin: auto;
+    width: 10%;
+  }
+  a{
+    width: 70%;
+  }
 }
