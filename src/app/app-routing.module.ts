@@ -16,6 +16,7 @@ import {EditUserComponent} from "./Component/gestion-users/edit-user/edit-user.c
 import {EditUserActionComponent} from "./Component/gestion-users/edit-user/edit-user-action/edit-user-action.component";
 import {ProfilComponent} from "./Component/tableau-etudiants/profil/profil.component";
 import {MonprofilComponent} from "./Pages/monprofil/monprofil.component";
+import { CorrectionComponent } from './Component/correction/correction.component';
 
 const routes: Routes = [
   { path : '', component: AccueilComponent,canActivate: [ AuthGuard ]},
@@ -38,6 +39,12 @@ const routes: Routes = [
     { path : 'parametres', component: CreationParametresComponent,canActivate: [ AuthGuard ]},
     { path : 'edition', component: CreationEditionsComponent,canActivate: [ AuthGuard ]},
   ]
+  },
+  {
+    path : 'correction', component: CorrectionComponent, canActivate: [AuthGuard],
+    children: [
+      { path: ':id', component : CorrectionComponent, canActivate: [AuthGuard]}
+    ]
   }
 ];
 
