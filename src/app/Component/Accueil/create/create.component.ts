@@ -38,7 +38,7 @@ export class CreateComponent implements OnInit {
           this.questionService.QCMActuel.next(QCM.createEmptyQCM());
           this.questionService.QCMActuel.subscribe(res=>{
             this.qcm = res;
-            this.qcm.user = this.authentificationService.getId()!;
+            this.qcm.idcreateur = this.authentificationService.getId()!;
           });
           this.router.navigate(['/creation',result])
       });

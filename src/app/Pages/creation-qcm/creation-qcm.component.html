@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="top">
-    <app-bouton id="fill" disabled="disabled" [name]="'Sauvegarder'"></app-bouton>
+    <app-bouton (click)="deleteQcm()" [name]="'Supprimer'"></app-bouton>
     <app-creation-title [title]="name" class="title"></app-creation-title>
     <app-bouton (click)="checkSave()" [name]="'Sauvegarder'" [select]="isNotSaved"></app-bouton>
   </div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {QcmService} from "../../Services/qcm.service";
 import {QuestionService} from "../../Services/question.service";
 import {QCM} from "../../Modeles/QCM";
@@ -14,7 +14,7 @@ export class CreationQCMComponent implements OnInit {
   isNotSaved: boolean = true;
   qcmLocal: QCM|undefined;
   qcmBd: QCM|undefined;
-  constructor(public route:ActivatedRoute,private questionService: QuestionService, private qcmService: QcmService) { }
+  constructor(public route:ActivatedRoute,private questionService: QuestionService, private qcmService: QcmService, public router:Router) { }
 
   ngOnInit(): void {
     this.name = <string>this.route.snapshot.paramMap.get('name');
@@ -41,5 +41,15 @@ export class CreationQCMComponent implements OnInit {
         this.qcmLocal = res;
       });
     }
+  }
+
+  deleteQcm() {
+    console.log("jglsdkj");
+    console.log(this.qcmLocal);
+    if(this.qcmLocal?.id){
+      this.qcmService.deleteQCM(this.qcmLocal.id);
+    }
+    this.router.navigate(["/"]);
+
   }
 }

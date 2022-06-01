@@ -45,7 +45,7 @@ import { CreationQuestionNumeriqueComponent } from './Component/Creation/creatio
 import { ConnexionComponent } from './Component/Connexion/connexion.component';
 import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {HttpInterceptorService} from "./Services/httpinterceptor.service";
-import {MesQCMComponent} from "./Services/mes-qcm/mes-qcm.component";
+import {MesQCMComponent} from "./Pages/mes-qcm/mes-qcm.component";
 import {RecentsComponent} from "./Pages/accueil/recents/recents.component";
 import {BoutonComponent} from "./Component/bouton/bouton.component";
 import { GestionUsersComponent } from './Component/gestion-users/gestion-users.component';

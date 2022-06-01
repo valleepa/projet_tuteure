@@ -14,22 +14,15 @@ import {MatDialog} from "@angular/material/dialog";
 })
 export class TableauComponent implements OnInit {
   qcms: QCM[] = [];
-  qcm = <QCM>{};
   dataSource!: MatTableDataSource<QCM>;
   displayedColumns: string[] = ['name', 'modify', 'mark'];
   constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router) {
   }
 
   ngOnInit(): void {
-    this.qcm.titre = "QCM1";
-    this.qcm.id = 1;
-    this.qcms.push(this.qcm);
-
     this.service.getQCMFromUser(1).subscribe(r => {
       this.qcms = r;
-      this.qcms.forEach(each => {
-        this.dataSource = new MatTableDataSource<QCM>(this.qcms)
-      })
+      this.dataSource = new MatTableDataSource<QCM>(this.qcms)
     })
   }
   applyFilter(event: Event) {
@@ -57,4 +50,8 @@ export class TableauComponent implements OnInit {
 
   }
 
+  modify(qcm: QCM) {
+    this.router.navigate(['/creation',qcm.titre])
+    this.questionService.QCMActuel.next(qcm);
+  }
 }

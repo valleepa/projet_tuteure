@@ -7,7 +7,7 @@ export interface IQCM {
   entete: string;
   isRandomized: boolean
   categories: ICategorie[];
-  user: string;
+  idcreateur: string;
 }
 
 export class QCM implements IQCM {
@@ -16,13 +16,13 @@ export class QCM implements IQCM {
   id: number | undefined;
   isRandomized: boolean;
   titre: string;
-  user: string;
-  constructor(categories: ICategorie[], entete: string, isRandomized: boolean, titre:string, user:string, id?:number){
+  idcreateur: string;
+  constructor(categories: ICategorie[], entete: string, isRandomized: boolean, titre:string, idcreateur:string, id?:number){
     this.categories = categories;
     this.entete = entete;
     this.isRandomized = isRandomized;
     this.titre = titre;
-    this.user = user;
+    this.idcreateur = idcreateur;
     this.id = id;
   }
 

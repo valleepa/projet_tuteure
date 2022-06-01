@@ -9,9 +9,8 @@ import {Q} from "@angular/cdk/keycodes";
   providedIn: 'root'
 })
 export class QcmService {
-  private backUrl = 'http://localhost:8080/preferences';
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'qcm/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
   constructor(private http: HttpClient) { }
   private handleError<T>(operation = 'operation', result?: T) {
@@ -26,18 +25,21 @@ export class QcmService {
   }
 
   getQCMFromUser(id:number){
-    return this.http.get<QCM[]>(`http://localhost:8080/qcms/${id}`).pipe(map((res) => {
+    return this.http.get<QCM[]>(`http://localhost:8080/qcms/${id}`,this.httpOptions).pipe(map((res) => {
       return res
     }))
   }
   getQCMFromId(id:number): Observable<QCM>{
-    return this.http.get<QCM>(`http://localhost:8080/qcm/${id}`).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
+    return this.http.get<QCM>(`http://localhost:8080/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
   }
   modifyQCM(QCM: QCM): Observable<QCM>{
     return this.http.put<QCM>(`http://localhost:8080/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Modifie un QCM')));
   }
   createNewQCM(QCM:QCM): Observable<QCM>{
     return this.http.post<QCM>(`http://localhost:8080/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Créé un QCM')));
+  }
+  deleteQCM(id:number): Observable<QCM>{
+    return this.http.delete<QCM>(`http://localhost:8080/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Supprime un QCM')));
   }
   // @ts-ignore
   generateApplication(): Observable<any>
