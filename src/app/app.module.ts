@@ -57,6 +57,7 @@ import { ValidationDialogComponent } from './Component/gestion-users/validation-
 import { ValidationModificationComponent } from './Component/gestion-users/validation-modification/validation-modification.component';
 import { ProfilComponent } from './Component/tableau-etudiants/profil/profil.component';
 import { MonprofilComponent } from './Pages/monprofil/monprofil.component';
+import { CorrectionComponent } from './Component/correction/correction.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -99,6 +100,7 @@ import { MonprofilComponent } from './Pages/monprofil/monprofil.component';
     ProfilComponent,
     MonprofilComponent,
     CorrectionComponent,
+    DialogCreateComponent,
   ],
   imports: [
     BrowserModule,
