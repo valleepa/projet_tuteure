@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>{{data?.title}}</h2>
+
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Nom</mat-label>
+    <input matInput [(ngModel)]="nom">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Classe</mat-label>
+    <input matInput [(ngModel)]="classe">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Groupe</mat-label>
+    <input matInput [(ngModel)]="groupe">
+  </mat-form-field>
+
+</div>
+<div id="buttons">
+  <div mat-dialog-actions>
+    <button id="annuler" mat-button mat-dialog-actions mat-dialog-close="">Annuler</button>
+    <button id="valider" mat-button mat-dialog-actions (click)="creer()">Créer</button>
+  </div>
+</div>
