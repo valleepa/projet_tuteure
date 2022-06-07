@@ -38,7 +38,7 @@ export class AuthenticationService {
         .set('Content-Type', 'application/x-www-form-urlencoded')
     }
 
-    return this.http.post<any>(`http://localhost:8080/login`,
+    return this.http.post<any>(`/login`,
       body.toString(), options).pipe(map((res) => {
         console.log("res")
         console.log(res)
