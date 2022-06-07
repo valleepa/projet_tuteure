@@ -11,6 +11,7 @@ export class CorrectionComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) { }
 
 
+
   qcmId! : number;
 
   ngOnInit(): void {
