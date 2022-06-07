@@ -35,8 +35,7 @@ export class AuthenticationService {
 
     const options =  {
       headers: new HttpHeaders()
-        .set('Content-Type', 'application/x-www-form-urlencoded'),
-      WithCredentials: true
+        .set('Content-Type', 'application/x-www-form-urlencoded')
     }
 
     return this.http.post<any>(`/login`,
