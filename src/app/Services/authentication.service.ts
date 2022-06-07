@@ -35,10 +35,11 @@ export class AuthenticationService {
 
     const options =  {
       headers: new HttpHeaders()
-        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('Content-Type', 'application/x-www-form-urlencoded'),
+      WithCredentials: true
     }
 
-    return this.http.post<any>(`http://back.depta.krapo.pro/login`,
+    return this.http.post<any>(`/login`,
       body.toString(), options).pipe(map((res) => {
         console.log("res")
         console.log(res)
