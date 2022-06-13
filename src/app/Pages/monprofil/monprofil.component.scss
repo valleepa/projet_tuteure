@@ -24,8 +24,9 @@ img{
   border-radius: 10px;
 }
 
-mat-form-field{
-  display: flex;
+mat-form-field.mat-form-field{
+  color: #3F51B5;
+  display: block;
 }
 
 .meslabel{
@@ -34,7 +35,7 @@ mat-form-field{
 }
 
 .meslabel label{
- font-size: 1.2em;
+  font-size: 1.2em;
 }
 
 mat-label{
@@ -70,34 +71,21 @@ input{
 }
 
 .coordonnes{
-  height: 50%;
   width: 50%;
-  line-height: 2em;
-}
-.classe{
-  display: flex;
-  width: 80%;
-  justify-content: space-between;
+  height: auto;
+  line-height: 3em;
 }
 
-.qcm{
+.password{
   padding: 2%;
-  width: 40%;
-  height: 40%;
-  background-color: #FFFFFF;
+  width: 20%;
+  height: fit-content;
+  background-color: white;
   border-radius: 10px;
 }
 
-.qcm h2{
-  margin-left: 7%;
-}
-.element{
-  background-color: #EBECF0;
-  display: flex;
-  height: 25%;
-  border-radius: 5px;
-  width: 90%;
-  margin: auto;
+h2{
+  margin-bottom: 20px;
 }
 
 .name{

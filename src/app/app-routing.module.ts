@@ -1,3 +1,4 @@
+import { CorrectionComponent } from './Component/correction/correction.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {AccueilComponent} from "./Pages/accueil/accueil.component";
@@ -15,6 +16,8 @@ import {NewUserComponent} from "./Component/gestion-users/new-user/new-user.comp
 import {EditUserComponent} from "./Component/gestion-users/edit-user/edit-user.component";
 import {EditUserActionComponent} from "./Component/gestion-users/edit-user/edit-user-action/edit-user-action.component";
 import {ProfilComponent} from "./Component/tableau-etudiants/profil/profil.component";
+import {MonprofilComponent} from "./Pages/monprofil/monprofil.component";
+import {DialogCreateComponent} from "./Component/tableau-etudiants/dialog-create/dialog-create.component";
 
 const routes: Routes = [
   { path : '', component: AccueilComponent,canActivate: [ AuthGuard ]},
@@ -22,7 +25,8 @@ const routes: Routes = [
   { path : 'mesqcm', component: MesQCMComponent,canActivate: [ AuthGuard ]},
   { path : 'etudiants', component: MesEtudiantsComponent,canActivate: [ AuthGuard ]},
   { path: 'etudiants/profil/:name', component: ProfilComponent, canActivate: [ AuthGuard ]},
-  { path : 'statistiques', component: ConnexionComponent,canActivate: [ AuthGuard ]},
+  { path: 'dialog', component: DialogCreateComponent, canActivate: [ AuthGuard ]},
+  { path: 'monprofil', component: MonprofilComponent, canActivate: [ AuthGuard ]},
   { path : 'login', component: ConnexionComponent},
   { path : 'users', component: GestionUsersComponent,canActivate: [ AuthGuard , AdminGuard ],
     children:[
@@ -37,6 +41,12 @@ const routes: Routes = [
     { path : 'parametres', component: CreationParametresComponent,canActivate: [ AuthGuard ]},
     { path : 'edition', component: CreationEditionsComponent,canActivate: [ AuthGuard ]},
   ]
+  },
+  {
+    path : 'correction', component: CorrectionComponent, canActivate: [AuthGuard],
+    children: [
+      { path: ':id', component : CorrectionComponent, canActivate: [AuthGuard]}
+    ]
   }
 ];
 

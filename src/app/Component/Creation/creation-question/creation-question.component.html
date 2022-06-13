@@ -5,13 +5,13 @@
     </mat-card-title>
   </div>
   <div class="div2">
-    <mat-form-field appearance="fill" id="question">
+    <mat-form-field appearance="outline" id="question">
           <mat-label>Question?</mat-label>
           <input #questionSt matInput (keyup)="modifyQuestion(questionSt.value)" placeholder="ma question?" value="{{question.val}}">
-        </mat-form-field>
+    </mat-form-field>
   </div>
   <div class="div3">
-    <mat-form-field appearance="fill" id="type">
+    <mat-form-field appearance="outline" id="type">
           <mat-label>Type</mat-label>
           <mat-select  #t [(value)]="selected" (selectionChange)="typeChange()">
             <mat-option *ngFor="let choi of choix" [value]="choi.value" (click)="setType()">

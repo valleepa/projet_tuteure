@@ -38,7 +38,7 @@ export class AuthenticationService {
         .set('Content-Type', 'application/x-www-form-urlencoded')
     }
 
-    return this.http.post<any>(`http://localhost:8080/login`,
+    return this.http.post<any>(`/login`,
       body.toString(), options).pipe(map((res) => {
         console.log("res")
         console.log(res)
@@ -53,22 +53,22 @@ export class AuthenticationService {
   }
 
   registerSuccessfulLogin(id:string,username: string, prenom: string, nom: string, email: string, isAdmin: boolean) {
-    sessionStorage.setItem(this.USERNAME, username)
-    sessionStorage.setItem(this.PRENOM, prenom)
-    sessionStorage.setItem(this.NOM, nom)
-    sessionStorage.setItem(this.EMAIL, email)
-    sessionStorage.setItem(this.ISADMIN, String(isAdmin))
-    sessionStorage.setItem(this.ID, this.id)
+    sessionStorage.setItem("USERNAME", username)
+    sessionStorage.setItem("PRENOM", prenom)
+    sessionStorage.setItem("NOM", nom)
+    sessionStorage.setItem("EMAIL", email)
+    sessionStorage.setItem("ISADMIN", String(isAdmin))
+    sessionStorage.setItem("ID", this.id)
 
   }
 
   logout() {
-    sessionStorage.removeItem(this.ID);
-    sessionStorage.removeItem(this.USERNAME);
-    sessionStorage.removeItem(this.PRENOM);
-    sessionStorage.removeItem(this.NOM);
-    sessionStorage.removeItem(this.EMAIL);
-    sessionStorage.removeItem(this.ISADMIN);
+    sessionStorage.removeItem("ID");
+    sessionStorage.removeItem("USERNAME");
+    sessionStorage.removeItem("PRENOM");
+    sessionStorage.removeItem("NOM");
+    sessionStorage.removeItem("EMAIL");
+    sessionStorage.removeItem("ISADMIN");
 
     this.username = undefined;
     this.password = undefined;
@@ -80,20 +80,20 @@ export class AuthenticationService {
   }
 
   isUserLoggedIn() {
-    let user = sessionStorage.getItem(this.ID)
+    let user = sessionStorage.getItem("ID")
     if (user === null) return false
     return true
   }
 
   getLoggedInUserName() {
-    let user = sessionStorage.getItem(this.ID)
+    let user = sessionStorage.getItem("ID")
     if (user === null) return ''
     return user
   }
 
   getName(){
-    let prenom = sessionStorage.getItem(this.PRENOM)
-    let nom = sessionStorage.getItem(this.NOM)
+    let prenom = sessionStorage.getItem("PRENOM")
+    let nom = sessionStorage.getItem("NOM")
 
     if(prenom == null || nom == null) return ""
 
@@ -101,10 +101,10 @@ export class AuthenticationService {
   }
 
   getId(){
-    return sessionStorage.getItem(this.ID)
+    return sessionStorage.getItem("ID")
   }
 
   getAdmin() {
-    return sessionStorage.getItem(this.ISADMIN)
+    return sessionStorage.getItem("ISADMIN")
   }
 }

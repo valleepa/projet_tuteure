@@ -1,0 +1,8 @@
+{
+  "**": {
+    "target": "http://back.depta.krapo.pro",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

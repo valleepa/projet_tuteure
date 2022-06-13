@@ -1,0 +1,72 @@
+<body xmlns="http://www.w3.org/1999/html">
+<div class="information">
+  <h2>Mon profil</h2>
+  <div class="info">
+    <img src="https://avatars.dicebear.com/api/identicon/{{this.id}}.svg?background=%23d5d6d9"/>
+    <div *ngIf="isModifying==false" class="coordonnes">
+      <i class="fa-solid fa-pen-to-square fa-2x" (click)="modify()"></i>
+      <div class="meslabel">
+        <label for="nom">Nom d'utilisateur :</label>
+        <p id="username">{{username}}</p>
+      </div>
+      <div class="meslabel">
+        <label for="nom">Nom :</label>
+        <p id="nom">{{secondname}}</p>
+      </div>
+      <div class="meslabel">
+        <label for="prenom">Prenom :</label>
+        <p id="prenom">{{firstname}}</p>
+      </div>
+      <div class="meslabel">
+        <label for="prenom">Email :</label>
+        <p id="email">{{email}}</p>
+      </div>
+    </div>
+
+    <div *ngIf="isModifying==true" class="coordonnes">
+      <i class="fa-solid fa-check fa-2x" (click)="save()"></i>
+      <mat-form-field appearance="outline">
+        <mat-label for="username">Nom d'utilisateur :</mat-label>
+        <input matInput type="text" class="username" value="{{username}}" [(ngModel)]="username"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label for="nom">Nom :</mat-label>
+        <input matInput type="text" class="nom" value="{{secondname}}" [(ngModel)]="secondname"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label for="prenom">Prenom :</mat-label>
+        <input matInput type="text" class="prenom" value="{{firstname}}" [(ngModel)]="firstname"/>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label for="email">Email :</mat-label>
+        <input matInput type="text" class="email" value="{{email}}" [(ngModel)]="email"/>
+      </mat-form-field>
+    </div>
+  </div>
+</div>
+<div class="password">
+  <h2>Modifier mon mot de passe</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Mot de passe actuel</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Nouveau mot de passe</mat-label>
+    <input matInput [type]="hide_2 ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide_2 = !hide_2" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_2">
+      <mat-icon>{{hide_2 ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Confirmer mot de passe</mat-label>
+    <input matInput [type]="hide_3 ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide_3 = !hide_3" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide_3">
+      <mat-icon>{{hide_3 ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <app-bouton name="Modifier"></app-bouton>
+</div>
+</body>
