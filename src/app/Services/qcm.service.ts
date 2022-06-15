@@ -22,7 +22,7 @@ export class QcmService {
   }
 
   getQCMFromUser(id:number){
-    return this.http.get<QCM[]>(`http://back.depta.krapo.pro/qcms/${id}`).pipe(map((res) => {
+    return this.http.get<QCM[]>(`/qcms/${id}`).pipe(map((res) => {
       return res
     }))
   }
