@@ -47,7 +47,8 @@ export class CreationQCMComponent implements OnInit {
   deleteQcm() {
     console.log(this.qcmLocal);
     if(this.qcmLocal?.id){
-      this.qcmService.deleteQCM(this.qcmLocal.id);
+      console.log("ça passe");
+      this.qcmService.deleteQCM(this.qcmLocal.id).subscribe();
     }
     this.router.navigate(["/"]);
 
