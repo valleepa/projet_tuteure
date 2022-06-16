@@ -14,15 +14,31 @@ button{
   flex: 1 0 auto;
   min-height: 35px;
   weight: 25px;
+  width: 10px;
+  height: 10px;
 }
 #annuler{
   background-color: #5f5c5c;
+}
+
+#annuler:hover {
+  text-decoration: underline;
+  transition: 0.5s;
+  width:50px;
 }
 
 #valider{
   background-color: #3f51b5;
 }
 
+#valider:hover {
+  text-decoration: underline;
+  transition: 0.5s;
+  width:50px;
+}
+mat-form-field {
+  margin: 5px;
+}
 .mat-dialog-container{
   padding: 30px;
 }

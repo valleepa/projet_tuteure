@@ -16,9 +16,9 @@ export class ProfilComponent implements OnInit {
   id: number= this.etudiant.id;
   prenom:string = this.etudiant.prenom;
   nom:string = this.etudiant.nom;
-  group:string = this.etudiant.group;
+  group:string = this.etudiant.groupe;
   class:string = this.etudiant.classe;
-  numero:number= this.etudiant.numero;
+  numero:number= this.etudiant.nOEtudiant;
   ngOnInit(): void {
   }
 
@@ -30,9 +30,9 @@ export class ProfilComponent implements OnInit {
     this.isModifying = true ? this.isModifying==false : this.isModifying = false;
     this.etudiant.nom = this.nom;
     this.etudiant.prenom = this.prenom;
-    this.etudiant.numero = this.numero;
+    this.etudiant.nOEtudiant = this.numero;
     this.etudiant.classe = this.class;
-    this.etudiant.group = this.group;
+    this.etudiant.groupe = this.group;
   }
 
 }
