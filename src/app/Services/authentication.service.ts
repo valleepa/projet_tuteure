@@ -52,7 +52,7 @@ export class AuthenticationService {
     }));
   }
 
-  registerSuccessfulLogin(id:string,username: string, prenom: string, nom: string, email: string, isAdmin: boolean) {
+  registerSuccessfulLogin(id:number,username: string, prenom: string, nom: string, email: string, isAdmin: boolean) {
     sessionStorage.setItem("USERNAME", username)
     sessionStorage.setItem("PRENOM", prenom)
     sessionStorage.setItem("NOM", nom)
