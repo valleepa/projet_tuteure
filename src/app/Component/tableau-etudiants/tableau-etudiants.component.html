@@ -22,13 +22,13 @@
     <!-- Group Column -->
     <ng-container matColumnDef="group">
       <th mat-header-cell *matHeaderCellDef> Groupe </th>
-      <td mat-cell class="group" *matCellDef="let etudiant" > {{etudiant.group}} </td>
+      <td mat-cell class="group" *matCellDef="let etudiant" > {{etudiant.groupe}} </td>
     </ng-container>
 
     <!-- Profil Column -->
     <ng-container matColumnDef="profil">
       <th mat-header-cell *matHeaderCellDef> Profil </th>
-      <td mat-cell *matCellDef="let qcm"><button mat-raised-button color="primary" class="mat-button" type="button" (click)="showProfil(etudiant)">Profil</button></td>
+      <td mat-cell *matCellDef="let etudiant"><button mat-raised-button color="primary" class="mat-button" type="button" (click)="showProfil(etudiant)">Profil</button></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

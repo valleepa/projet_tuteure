@@ -21,7 +21,7 @@ export class QcmService {
     };
   }
 
-  getQCMFromUser(id:number){
+  getQCMFromUser(id:string){
     return this.http.get<QCM[]>(`/qcms/${id}`).pipe(map((res) => {
       return res
     }))

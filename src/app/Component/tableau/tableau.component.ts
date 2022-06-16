@@ -13,6 +13,7 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./tableau.component.scss']
 })
 export class TableauComponent implements OnInit {
+  id = sessionStorage.getItem("ID");
   qcms: QCM[] = [];
   qcm = <QCM>{};
   dataSource!: MatTableDataSource<QCM>;
@@ -25,12 +26,15 @@ export class TableauComponent implements OnInit {
     this.qcm.id = 1;
     this.qcms.push(this.qcm);
 
-    this.service.getQCMFromUser(1).subscribe(r => {
-      this.qcms = r;
-      this.qcms.forEach(each => {
-        this.dataSource = new MatTableDataSource<QCM>(this.qcms)
+
+    if(this.id != null){
+      this.service.getQCMFromUser(this.id).subscribe(r => {
+        this.qcms = r;
+        this.qcms.forEach(each => {
+          this.dataSource = new MatTableDataSource<QCM>(this.qcms)
+        })
       })
-    })
+    }
   }
   applyFilter(event: Event) {
     this.dataSource.filterPredicate = function(data, filter: string): boolean {

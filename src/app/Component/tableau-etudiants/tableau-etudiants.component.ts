@@ -5,6 +5,7 @@ import {Router} from "@angular/router";
 import {EtudiantsService} from "../../Services/etudiants.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DialogCreateComponent} from "./dialog-create/dialog-create.component";
+import {group} from "@angular/animations";
 
 @Component({
   selector: 'app-tableau-etudiants',
@@ -12,18 +13,25 @@ import {DialogCreateComponent} from "./dialog-create/dialog-create.component";
   styleUrls: ['./tableau-etudiants.component.scss']
 })
 export class TableauEtudiantsComponent implements OnInit {
+  id = sessionStorage.getItem("ID");
   etudiants: IEtudiant[] = [];
-  etudiant = new Etudiant(1, "FA2", "B", "Stengel", "Damien", 22001693);
   dataSource!: MatTableDataSource<IEtudiant>;
   displayedColumns: string[] = ['name', 'class', 'group', 'profil'];
 
   constructor(public dialog: MatDialog, private router: Router, private etudiantsService: EtudiantsService) { }
 
   ngOnInit(): void {
-    this.etudiants.push(this.etudiant);
-    this.dataSource = new MatTableDataSource<IEtudiant>(this.etudiants)
+    if(this.id != null){
+      this.etudiantsService.getEtudiantFromUser(this.id).subscribe(r=>{
+        for(let i = 0; i < r.length ; i++){
+            this.etudiants.push(r[i]);
+            this.dataSource = new MatTableDataSource<IEtudiant>(this.etudiants)
+        }
+      });
+    }
   }
   showProfil(etudiant:Etudiant):void{
+    console.log(etudiant)
     this.etudiantsService.etudiantActuel = etudiant;
     this.router.navigate(['/etudiants/profil/'+ etudiant.nom]);
   }
