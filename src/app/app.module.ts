@@ -59,6 +59,8 @@ import { ProfilComponent } from './Component/tableau-etudiants/profil/profil.com
 import { MonprofilComponent } from './Pages/monprofil/monprofil.component';
 import { CorrectionComponent } from './Component/correction/correction.component';
 import {DialogCreateComponent} from "./Component/tableau-etudiants/dialog-create/dialog-create.component";
+import { DragAndDropDirective } from './Component/correction/directives/drag-and-drop.directive';
+import {MatListModule} from '@angular/material/list';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -102,6 +104,7 @@ import {DialogCreateComponent} from "./Component/tableau-etudiants/dialog-create
     MonprofilComponent,
     CorrectionComponent,
     DialogCreateComponent,
+    DragAndDropDirective,
   ],
   imports: [
     BrowserModule,
@@ -126,6 +129,7 @@ import {DialogCreateComponent} from "./Component/tableau-etudiants/dialog-create
     MatTableModule,
     HttpClientModule,
     MatButtonToggleModule,
+    MatListModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [{
