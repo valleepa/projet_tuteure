@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
 import {Etudiant} from "../Modeles/ETUDIANTS";
-import {HttpClient} from "@angular/common/http";
-import {QCM} from "../Modeles/QCM";
-import {map} from "rxjs/operators";
-import {Groupe} from "../Modeles/GROUPE";
 
 @Injectable({
   providedIn: 'root'
