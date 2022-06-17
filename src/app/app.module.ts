@@ -63,6 +63,7 @@ import { DragAndDropDirective } from './Component/correction/directives/drag-and
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NotesComponent } from './Component/notes/notes.component';
+import { ClassegroupesComponent } from './Component/classegroupes/classegroupes.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -107,7 +108,8 @@ import { NotesComponent } from './Component/notes/notes.component';
     CorrectionComponent,
     DialogCreateComponent,
     DragAndDropDirective,
-    NotesComponent,    
+    NotesComponent,
+    ClassegroupesComponent,
   ],
   imports: [
     BrowserModule,
