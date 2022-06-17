@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
-import {map} from "rxjs/operators";
+import {catchError, map} from "rxjs/operators";
 import {QCM} from "../Modeles/QCM";
 
 @Injectable({
@@ -25,6 +25,10 @@ export class QcmService {
     return this.http.get<QCM[]>(`/qcms/${id}`).pipe(map((res) => {
       return res
     }))
+  }
+
+  getQCMFromId(id:number): Observable<QCM>{
+    return this.http.get<QCM>(`/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
   }
 
   // @ts-ignore

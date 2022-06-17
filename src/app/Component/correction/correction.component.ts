@@ -1,3 +1,6 @@
+import { map, take, tap } from 'rxjs/operators';
+import { QCM } from './../../Modeles/QCM';
+import { QcmService } from './../../Services/qcm.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,12 +11,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CorrectionComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private router: Router) { }
+  constructor(private route: ActivatedRoute, private router: Router, private qcmService : QcmService) { }
 
   files : File[] = [];
   showOnlyPDFAcceptedError = false;
-
-
+  qcm? : QCM;
   qcmId! : number;
 
   ngOnInit(): void {
@@ -26,7 +28,15 @@ export class CorrectionComponent implements OnInit {
     else
     {
       this.qcmId = id;
-      // TODO: call get on QCMService 
+      this.qcmService.getQCMFromId(this.qcmId)
+      .subscribe(qcm => 
+        {
+          this.qcm = qcm as QCM;          
+          if(this.qcm == undefined)
+          {
+            this.router.navigate(['mesqcm']);
+          }
+        });
     }
 
   }
