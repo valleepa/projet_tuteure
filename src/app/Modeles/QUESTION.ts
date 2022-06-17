@@ -2,7 +2,7 @@ import {IOption, Option} from "./OPTION";
 import {Reponse} from "./REPONSE";
 
 export interface IQuestion{
-  name: string;
+  intitule: string;
   type: string;
   val: string;
   options: Option[] | undefined;
@@ -10,14 +10,14 @@ export interface IQuestion{
   categorie: string;
 }
 export class Question implements IQuestion{
-  name: string;
+  intitule: string;
   options: Option[] | undefined;
   type: string;
   val: string;
   reponses: Reponse[]
   categorie: string;
-  constructor(name:string,type:string, reponse:Reponse[], val: string, categorie:string,options?:Option[]) {
-    this.name = name;
+  constructor(intitule:string,type:string, reponse:Reponse[], val: string, categorie:string,options?:Option[]) {
+    this.intitule = intitule;
     this.options = options;
     this.type = type;
     this.reponses = reponse;

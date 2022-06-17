@@ -50,9 +50,9 @@ choix: Choix[] = [
       this.questionService.categorieActuel.subscribe(val =>{
         this.categorie = val;
         this.QCM.categories.forEach(x=>{
-          if(x.name === this.categorie.name){
+          if(x.nom === this.categorie.nom){
             x.questions.forEach(y=>{
-              if(y.name === this.question.name){
+              if(y.intitule === this.question.intitule){
                 this.question = y;
               }
                 });
@@ -68,7 +68,7 @@ choix: Choix[] = [
       width: '35%',
       height:'17%',
       panelClass: 'custom-dialog-container',
-      data: {button: 'Modifier', placeholder: 'Nom', name:this.question.name},
+      data: {button: 'Modifier', placeholder: 'Nom', name:this.question.intitule},
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result)
@@ -79,7 +79,7 @@ choix: Choix[] = [
   }
 
   modifyQuestionName(newName:any) {
-    this.question.name = newName;
+    this.question.intitule = newName;
     this.questionService.questionActuel.next(this.question);
     this.questionService.reloadQCM(this.QCM);
   }
@@ -90,7 +90,7 @@ choix: Choix[] = [
   }
 
   modifyQuestion(questionSt: string) {
-    this.question.val = questionSt;
+    this.question.intitule = questionSt;
     this.questionService.reloadQCM(this.QCM);
   }
 

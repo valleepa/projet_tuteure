@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InputDialogComponent } from '../../Accueil/input-dialog/input-dialog.component';
@@ -12,6 +12,7 @@ import {QCM} from "../../../Modeles/QCM";
   templateUrl: './creation-questions.component.html',
   styleUrls: ['./creation-questions.component.scss']
 })
+
 export class CreationQuestionsComponent implements OnInit {
 
   public categories : Categorie[] = [];
@@ -52,19 +53,7 @@ export class CreationQuestionsComponent implements OnInit {
   }
 
   addQuestion(): void {
-    const dialogRef = this.dialog.open(InputDialogComponent, {
-      width: '35%',
-      height:'17%',
-      panelClass: 'custom-dialog-container',
-      data: {button: 'Créer', placeholder: 'Question', name:''},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result)
-      {
-        this.ajoutQuestion(result);
-      }
-    });
+    this.ajoutQuestion();
   }
 
   categoriesLength(){
@@ -72,9 +61,9 @@ export class CreationQuestionsComponent implements OnInit {
   }
   ajoutCategorie(categorieName : string)
   {
-    let categorie = new Categorie(categorieName, [new Question("Question 1", "unique", [],"","")])
+    let categorie = new Categorie(categorieName, [new Question("", "unique", [],"","")])
     this.questionService.categorieActuel.next(categorie);
-    this.questionService.questionActuel.next(categorie.questions[0])
+    this.questionService.questionActuel.next(categorie.questions[0]);//pb
     this.questionService.categorieActuel.subscribe(res => this.selector = res);
     this.categories.push(categorie);
     this.QCM.categories = this.categories
@@ -98,7 +87,6 @@ export class CreationQuestionsComponent implements OnInit {
       this.categories = [];
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
-        this.QCM.titre = this.titre;
       });
     }
     else
@@ -110,12 +98,15 @@ export class CreationQuestionsComponent implements OnInit {
       this.questionService.questionActuel.next(this.categories[0].questions[0])
       this.questionService.questionActuel.subscribe(res => this.selectorQ = res);
       this.questionService.QCMActuel.next(tabCategories);
-      this.questionService.QCMActuel.subscribe(res => this.QCM = res);
+      this.questionService.QCMActuel.subscribe(res => {
+        this.QCM = res;
+        console.log(this.QCM);
+      });
     }
   }
 
-  private ajoutQuestion(name: string) {
-    let question = new Question(name, "unique", [],"","");
+  private ajoutQuestion() {
+    let question = new Question('', "unique", [],"","");
     this.questions.push(question);
     this.questionService.questionActuel.next(question);
     this.questionService.QCMActuel.next(this.QCM);

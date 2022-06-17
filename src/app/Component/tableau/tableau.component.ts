@@ -6,6 +6,7 @@ import {InputDialogComponent} from "../Accueil/input-dialog/input-dialog.compone
 import {QuestionService} from "../../Services/question.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
+import {CreationQuestionsComponent} from "../Creation/creation-questions/creation-questions.component";
 
 @Component({
   selector: 'app-tableau',
@@ -31,6 +32,7 @@ export class TableauComponent implements OnInit {
       this.service.getQCMFromUser(this.id).subscribe(r => {
         this.qcms = r;
         this.qcms.forEach(each => {
+          console.log(each);
           this.dataSource = new MatTableDataSource<QCM>(this.qcms)
         })
       })
@@ -66,4 +68,8 @@ export class TableauComponent implements OnInit {
     this.router.navigate([`/correction/${qcm.id}`]);
   }
 
+  modifierQcm(qcm:QCM) {
+    this.router.navigate([`/creation/${qcm.titre}/questions`]);
+    this.questionService.QCMActuel.next(qcm);
+  }
 }
