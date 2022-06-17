@@ -1,0 +1,35 @@
+.content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card{
+    width: 90%;
+}
+
+#correct-button
+{
+    background-color: green;
+    float:right;
+    color: white;
+}
+
+.mat-card-header{
+    text-align: center;
+}
+
+.spinner
+{
+    display:flex;
+    justify-content: center;
+}
+
+mat-list
+{
+    max-height: 20rem;
+    overflow-y: auto;
+}
+
+
+
+

@@ -66,4 +66,9 @@ export class TableauComponent implements OnInit {
     this.router.navigate([`/correction/${qcm.id}`]);
   }
 
+  onNotes(qcm : QCM)
+  {
+    this.router.navigate([`/notes/${qcm.id}`]);
+  }
+
 }

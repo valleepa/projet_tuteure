@@ -62,6 +62,7 @@ import {DialogCreateComponent} from "./Component/tableau-etudiants/dialog-create
 import { DragAndDropDirective } from './Component/correction/directives/drag-and-drop.directive';
 import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { NotesComponent } from './Component/notes/notes.component';
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -105,7 +106,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MonprofilComponent,
     CorrectionComponent,
     DialogCreateComponent,
-    DragAndDropDirective,    
+    DragAndDropDirective,
+    NotesComponent,    
   ],
   imports: [
     BrowserModule,
