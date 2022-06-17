@@ -5,7 +5,7 @@
   <div class="searchBar">
     <input class="searchInput" type="text" placeholder="Chercher un étudiant..." (keyup)="applyFilter($event)">
   </div>
-  <table mat-table [dataSource]="dataSource" class="table">
+  <table mat-table [dataSource]="dataSource" class="table" >
 
     <!-- Name Column -->
     <ng-container matColumnDef="name">
