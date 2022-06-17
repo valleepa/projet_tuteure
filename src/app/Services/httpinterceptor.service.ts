@@ -10,7 +10,7 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let localHeaders = req.headers
-    if(!req.headers.get('Content-Type')){
+    if(!req.headers.get('Content-Type') && !req.url.includes("upload")){
       localHeaders = localHeaders.set('Content-Type','application/json')
     }
     req = req.clone({

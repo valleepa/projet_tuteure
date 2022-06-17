@@ -3,6 +3,14 @@ import { QCM } from './../../Modeles/QCM';
 import { QcmService } from './../../Services/qcm.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import {HttpClient} from "@angular/common/http";
+
+class RequestOptions {
+  constructor(param: { headers: Headers }) {
+
+  }
+
+}
 
 @Component({
   selector: 'app-correction',
@@ -10,8 +18,10 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./correction.component.scss']
 })
 export class CorrectionComponent implements OnInit {
+  public uploaded: Object = false;
+  public worked = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private qcmService : QcmService) { }
+  constructor(private route: ActivatedRoute, private router: Router, private qcmService : QcmService, private httpClient: HttpClient) { }
 
   files : File[] = [];
   showOnlyPDFAcceptedError = false;
@@ -29,9 +39,9 @@ export class CorrectionComponent implements OnInit {
     {
       this.qcmId = id;
       this.qcmService.getQCMFromId(this.qcmId)
-      .subscribe(qcm => 
+      .subscribe(qcm =>
         {
-          this.qcm = qcm as QCM;          
+          this.qcm = qcm as QCM;
           if(this.qcm == undefined)
           {
             this.router.navigate(['mesqcm']);
@@ -56,9 +66,9 @@ export class CorrectionComponent implements OnInit {
     this.showOnlyPDFAcceptedError = false;
     for(let i = 0; i < files.length; i++)
     {
-      let file : File | null = files.item(i);      
+      let file : File | null = files.item(i);
       if(file)
-      {            
+      {
         //TODO: check file size
         if(file?.type == "application/pdf")
         {
@@ -68,7 +78,7 @@ export class CorrectionComponent implements OnInit {
         {
           this.showOnlyPDFAcceptedError = true;
         }
-      }  
+      }
     }
   }
 
@@ -79,7 +89,15 @@ export class CorrectionComponent implements OnInit {
 
   onCorriger()
   {
-    //TODO: handle correction
+    console.log("corriger");
+    let formData:any = new FormData();
+    this.files.forEach(file=>{
+      formData.append('files',file)
+    })
+    this.httpClient.post(`/qcm/${this.qcmId}/uploadcopies`, formData).subscribe(r=>{
+      this.worked = true;
+      this.uploaded = r;
+    })
   }
 
 }
