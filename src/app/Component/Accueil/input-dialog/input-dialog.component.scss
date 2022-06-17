@@ -11,6 +11,12 @@ button{
   width: 35%;
   margin-top: 10px;
 }
+button:hover {
+  text-decoration: underline;
+  transition: 0.5s;
+  width: 45%;
+}
+
 .wrapper{
   display: flex;
   flex-direction: column;
