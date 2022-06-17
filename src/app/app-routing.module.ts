@@ -19,12 +19,14 @@ import {EditUserActionComponent} from "./Component/gestion-users/edit-user/edit-
 import {ProfilComponent} from "./Component/tableau-etudiants/profil/profil.component";
 import {MonprofilComponent} from "./Pages/monprofil/monprofil.component";
 import {DialogCreateComponent} from "./Component/tableau-etudiants/dialog-create/dialog-create.component";
+import {ClassegroupesComponent} from "./Component/classegroupes/classegroupes.component";
 
 const routes: Routes = [
   { path : '', component: AccueilComponent,canActivate: [ AuthGuard ]},
   { path : 'accueil', component: AccueilComponent,canActivate: [ AuthGuard ]},
   { path : 'mesqcm', component: MesQCMComponent,canActivate: [ AuthGuard ]},
   { path : 'etudiants', component: MesEtudiantsComponent,canActivate: [ AuthGuard ]},
+  { path : 'classesgroupes', component: ClassegroupesComponent,canActivate: [ AuthGuard ]},
   { path: 'etudiants/profil/:name', component: ProfilComponent, canActivate: [ AuthGuard ]},
   { path: 'dialog', component: DialogCreateComponent, canActivate: [ AuthGuard ]},
   { path: 'monprofil', component: MonprofilComponent, canActivate: [ AuthGuard ]},
