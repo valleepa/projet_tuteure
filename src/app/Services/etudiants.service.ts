@@ -15,4 +15,11 @@ export class EtudiantsService {
       return res
     }))
   }
+
+  createEtudiant(param: { noetudiant: any; classe: any; groupe: any; nom: any; prenom: any }) {
+    return this.http.post<Etudiant>('/etudiant', param).pipe(map((r) => {
+      return r;
+    }))
+  }
+
 }
