@@ -16,4 +16,17 @@ export class GroupeService {
       return r;
     })))
   }
+
+  ownGroupe(groupe: Groupe) {
+    return this.httpClient.put<Groupe>(`/groupe/${groupe.id}`,groupe).pipe((map((r)=>{
+      return r;
+    })))
+  }
+
+  getGroupesFromUser(id1: number, id: number) {
+    return this.httpClient.get<Groupe[]>(`/groupes/${id1}/${id}`).pipe((map((r)=>{
+      console.log(r);
+      return r;
+    })))
+  }
 }
