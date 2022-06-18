@@ -13,6 +13,17 @@
       <td mat-cell class="name" *matCellDef="let etudiant" > {{etudiant.nom}} </td>
     </ng-container>
 
+    <ng-container matColumnDef="surname">
+      <th mat-header-cell *matHeaderCellDef> Prénom </th>
+      <td mat-cell class="name" *matCellDef="let etudiant" > {{etudiant.prenom}} </td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="numetu">
+      <th mat-header-cell *matHeaderCellDef> N° Étudiant </th>
+      <td mat-cell class="name" *matCellDef="let etudiant" > {{etudiant.noetudiant}} </td>
+    </ng-container>
+
     <!-- Class Column -->
     <ng-container matColumnDef="class">
       <th mat-header-cell *matHeaderCellDef> Classe </th>
