@@ -6,22 +6,37 @@
     <input matInput [(ngModel)]="nom">
   </mat-form-field>
 
+  <mat-form-field appearance="fill">
+    <mat-label>Prénom</mat-label>
+    <input matInput [(ngModel)]="prenom">
+  </mat-form-field>
 
   <mat-form-field appearance="fill">
-    <mat-label>Classe</mat-label>
-    <input matInput [(ngModel)]="classe">
+    <mat-label>N° Étudiant</mat-label>
+    <input matInput [(ngModel)]="numetu">
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Classes</mat-label>
+    <mat-select [formControl]="classesForm" (selectionChange)="onClasseChange($event)">
+      <mat-option *ngFor="let classe of classesList" [value]="classe">{{classe}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
 
   <mat-form-field appearance="fill">
     <mat-label>Groupe</mat-label>
-    <input matInput [(ngModel)]="groupe">
+    <mat-select [formControl]="classesForm" (selectionChange)="onGroupeChange($event)">
+      <mat-option *ngFor="let groupe of groupesList" [value]="groupe">{{groupe}}</mat-option>
+    </mat-select>
   </mat-form-field>
+
 
 </div>
 <div id="buttons">
   <div mat-dialog-actions>
     <button id="annuler" mat-button mat-dialog-actions mat-dialog-close="">Annuler</button>
-    <button id="valider" mat-button mat-dialog-actions><!--(click)=" "-->Créer</button>
+    <button id="valider" mat-button mat-dialog-actions (click)="createEtudiant();"><!--(click)=" "-->Créer</button>
   </div>
 </div>
