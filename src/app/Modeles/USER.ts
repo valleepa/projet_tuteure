@@ -6,7 +6,7 @@ export interface IUser {
   prenom : string,
   password : string,
   isAdmin : boolean,
-  groupes : [],
+  groupes : [] | null,
   enabled : boolean,
   authorities : null,
   accountNonExpired : boolean,
@@ -22,14 +22,14 @@ export class User implements IUser {
   public prenom : string
   public password : string
   public isAdmin : boolean
-  public groupes : []
+  public groupes : [] | null
   public enabled : boolean = false
   public authorities : null
   public accountNonExpired : boolean = false
   public accountNonLocked : boolean = false
   public credentialsNonExpired : boolean = false
 
-  public constructor(username:string,email:string,nom:string,prenom:string,password:string,isAdmin:boolean,groupes:[]) {
+  public constructor(username:string,email:string,nom:string,prenom:string,password:string,isAdmin:boolean,groupes:[]|null) {
     this.username = username
     this.email = email
     this.nom = nom
