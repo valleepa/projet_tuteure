@@ -16,7 +16,7 @@ export class TableauEtudiantsComponent implements OnInit {
   id = sessionStorage.getItem("ID");
   etudiants: IEtudiant[] = [];
   dataSource!: MatTableDataSource<IEtudiant>;
-  displayedColumns: string[] = ['name', 'class', 'group', 'profil'];
+  displayedColumns: string[] = ['name','surname','numetu', 'class', 'group', 'profil'];
 
   constructor(public dialog: MatDialog, private router: Router, private etudiantsService: EtudiantsService) { }
 
@@ -31,7 +31,6 @@ export class TableauEtudiantsComponent implements OnInit {
     }
   }
   showProfil(etudiant:Etudiant):void{
-    console.log(etudiant)
     this.etudiantsService.etudiantActuel = etudiant;
     this.router.navigate(['/etudiants/profil/'+ etudiant.nom]);
   }
