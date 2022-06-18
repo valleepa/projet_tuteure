@@ -15,4 +15,16 @@ export class ClasseService {
       return res;
     })))
   }
+
+  getClassesFromUser(id:number) {
+    return this.httpClient.get<Classe[]>(`/classes/${id}`).pipe((map(res=>{
+      return res;
+    })))
+  }
+
+  ownClasse(classe: Classe) {
+    return this.httpClient.put<Classe>(`/classe/${classe.id}`,classe).pipe((map((r)=>{
+      return r;
+    })))
+  }
 }
