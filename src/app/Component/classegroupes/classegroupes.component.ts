@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {ClasseService} from "../../Services/classe.service";
 import {Classe, IClasse} from "../../Modeles/CLASSE";
-import {IGroupe} from "../../Modeles/GROUPE";
+import {Groupe, IGroupe} from "../../Modeles/GROUPE";
 import {GroupeService} from "../../groupe.service";
+import {GestionUsersService} from "../../Services/gestion-users.service";
+import {IUser, User} from "../../Modeles/USER";
+import {group} from "@angular/animations";
 
 @Component({
   selector: 'app-classegroupes',
@@ -14,12 +17,18 @@ export class ClassegroupesComponent implements OnInit {
   id = sessionStorage.getItem("ID");
   classes: IClasse[] = [];
   groupes: IGroupe[] = [];
+  user: User | null= new User('','','','','',false,null);
   dataSource!: MatTableDataSource<IClasse>;
   displayedColumns: string[] = ['name', 'partOf', 'join','groupes'];
   displayedColumnsGroupes: string[] = ['name', 'partOf', 'join'];
-  constructor(private classeService: ClasseService, private groupeService: GroupeService) {}
+  constructor(private classeService: ClasseService, private groupeService: GroupeService, private userService:GestionUsersService) {}
 
   ngOnInit(): void {
+    if(this.id != null){
+      this.userService.getUserFromId(<number><unknown>this.id).subscribe(r=>{
+        this.user = r;
+      });
+    }
     this.classeService.getClasses().subscribe(r=>{
       for(let i = 0; i < r.length ; i++){
         r[i].professeurs.forEach(user=>{
@@ -55,15 +64,27 @@ export class ClassegroupesComponent implements OnInit {
     })
   }
 
-  ownClasse() {
-
+  ownClasse(classe : Classe) {
+    if(this.user != null){
+      classe.professeurs.push(this.user);
+    }
+    console.log(this.user);
+    this.classeService.ownClasse(classe).subscribe((r) => {
+      classe.estmaclasse = r != null;
+    })
   }
 
   openDialog() {
 
   }
 
-  ownGroup() {
-
+  ownGroup(groupe: Groupe) {
+    if(this.user != null){
+      groupe.professeurs.push(this.user);
+    }
+    console.log(this.user);
+    this.groupeService.ownGroupe(groupe).subscribe((r) => {
+      groupe.estmongroupe = r != null;
+    })
   }
 }
