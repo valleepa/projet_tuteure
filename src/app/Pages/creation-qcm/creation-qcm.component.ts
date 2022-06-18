@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {QcmService} from "../../Services/qcm.service";
 import {QuestionService} from "../../Services/question.service";
@@ -9,7 +9,7 @@ import {QCM} from "../../Modeles/QCM";
   templateUrl: './creation-qcm.component.html',
   styleUrls: ['./creation-qcm.component.scss']
 })
-export class CreationQCMComponent implements OnInit {
+export class CreationQCMComponent implements OnInit,AfterViewInit {
   name : string = "bam";
   isNotSaved: boolean = true;
   qcmLocal: QCM|undefined;
@@ -20,13 +20,11 @@ export class CreationQCMComponent implements OnInit {
     this.name = <string>this.route.snapshot.paramMap.get('name');
     this.questionService.QCMActuel.subscribe(res =>{
       this.qcmLocal = res;
-      if(this.qcmLocal.id){
-        this.qcmService.getQCMFromId(this.qcmLocal.id).subscribe(res => this.qcmBd = res);
-        if(JSON.stringify(this.qcmLocal) === JSON.stringify((this.qcmBd))){
-          this.isNotSaved = false;
-        }
-      }
-    })
+      this.questionService.isNotSaved.subscribe(res => {
+        this.isNotSaved = res
+      });
+    });
+
   }
 
   checkSave() {
@@ -38,7 +36,7 @@ export class CreationQCMComponent implements OnInit {
       if(this.qcmLocal)
         this.qcmLocal.titre = this.name;
       this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
-        this.questionService.QCMActuel.next(res);
+        this.questionService.reloadQCM(res);
         this.qcmLocal = res;
       });
     }
@@ -52,5 +50,11 @@ export class CreationQCMComponent implements OnInit {
     }
     this.router.navigate(["/"]);
 
+  }
+
+  ngAfterViewInit(): void {
+    if(this.qcmLocal?.id){
+      this.isNotSaved = false;
+    }
   }
 }

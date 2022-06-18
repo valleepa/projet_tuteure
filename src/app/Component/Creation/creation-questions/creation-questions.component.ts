@@ -68,7 +68,7 @@ export class CreationQuestionsComponent implements OnInit {
     this.categories.push(categorie);
     this.QCM.categories = this.categories
     //localStorage.setItem('categories',JSON.stringify(this.categories));
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
     this.questions = categorie.questions;
   }
 
@@ -97,7 +97,7 @@ export class CreationQuestionsComponent implements OnInit {
       this.questionService.categorieActuel.next(this.categories[0]);
       this.questionService.questionActuel.next(this.categories[0].questions[0])
       this.questionService.questionActuel.subscribe(res => this.selectorQ = res);
-      this.questionService.QCMActuel.next(tabCategories);
+      this.questionService.reloadQCM(tabCategories);
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
         console.log(this.QCM);
@@ -109,7 +109,7 @@ export class CreationQuestionsComponent implements OnInit {
     let question = new Question('', "unique", [],"","");
     this.questions.push(question);
     this.questionService.questionActuel.next(question);
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
     //localStorage.setItem('categories',JSON.stringify(this.categories));
   }
 

@@ -57,7 +57,7 @@ export class TableauComponent implements OnInit {
       if(result)
         localStorage.removeItem("selector");
       localStorage.removeItem('QCM');
-      this.questionService.QCMActuel.next(QCM.createEmptyQCM());
+      this.questionService.reloadQCM(QCM.createEmptyQCM());
       this.router.navigate(['/creation',result])
     });
 
@@ -70,6 +70,6 @@ export class TableauComponent implements OnInit {
 
   modifierQcm(qcm:QCM) {
     this.router.navigate([`/creation/${qcm.titre}/questions`]);
-    this.questionService.QCMActuel.next(qcm);
+    this.questionService.reloadQCM(qcm);
   }
 }

@@ -58,27 +58,27 @@ export class CreationQuestionDefautComponent implements OnInit {
 
   addAnswer(){
     this.question.reponses.push(new Reponse('', false));
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
   }
   deleteAnswer(reponse : Reponse){
     const index = this.question.reponses.indexOf(reponse);
     if(index !== -1) {
       this.question.reponses.splice(index, 1);
     }
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
   }
 
   modifyIsGodd(reponse: Reponse) {
     if(this.editMode){
       reponse.isGood ? reponse.isGood = false : reponse.isGood = true;
-      this.questionService.QCMActuel.next(this.QCM);
+      this.questionService.reloadQCM(this.QCM);
     }
   }
 
   modifyReponse(reponse: Reponse, value: string) {
     const index = this.question.reponses.indexOf(reponse);
     this.question.reponses[index].contain = value;
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
   }
 
   isNumber(str: string): boolean {
