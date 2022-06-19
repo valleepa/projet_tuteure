@@ -13,7 +13,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>N° Étudiant</mat-label>
-    <input matInput [(ngModel)]="numetu">
+    <input type="Number" matInput [(ngModel)]="numetu">
   </mat-form-field>
 
 
@@ -37,6 +37,6 @@
 <div id="buttons">
   <div mat-dialog-actions>
     <button id="annuler" mat-button mat-dialog-actions mat-dialog-close="">Annuler</button>
-    <button id="valider" mat-button mat-dialog-actions (click)="createEtudiant();"><!--(click)=" "-->Créer</button>
+    <button id="valider" mat-button mat-dialog-actions (click)="createEtudiant();" ><!--(click)=" "-->Créer</button>
   </div>
 </div>
