@@ -1,5 +1,5 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {MAT_DIALOG_DATA, MatDialog} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {EtudiantsService} from "../../../Services/etudiants.service";
 import {ClasseService} from "../../../Services/classe.service";
 import {GroupeService} from "../../../groupe.service";
@@ -8,6 +8,7 @@ import {Groupe} from "../../../Modeles/GROUPE";
 import {FormControl} from "@angular/forms";
 import {MatSelectChange} from "@angular/material/select";
 import {Etudiant} from "../../../Modeles/ETUDIANTS";
+import {InputDialogComponent} from "../../Accueil/input-dialog/input-dialog.component";
 
 
 @Component({
@@ -33,7 +34,7 @@ export class DialogCreateComponent implements OnInit {
   numetu: any;
   prenom: any;
   created = false;
-  constructor(@Inject(MAT_DIALOG_DATA) public data:any, private etudiantsService:EtudiantsService,private classeService : ClasseService, private groupeService: GroupeService) { }
+  constructor(public dialogRef: MatDialogRef<InputDialogComponent>,@Inject(MAT_DIALOG_DATA) public data:any, private etudiantsService:EtudiantsService,private classeService : ClasseService, private groupeService: GroupeService) { }
 
   ngOnInit(): void {
     this.classeService.getClassesFromUser(<number><unknown>this.id).subscribe(r => {
@@ -47,6 +48,9 @@ export class DialogCreateComponent implements OnInit {
   createEtudiant() {
     this.etudiantsService.createEtudiant({"nom":this.nom,"prenom":this.prenom,"noetudiant":this.numetu,"classe":this.classe,"groupe":this.groupe}).subscribe(r=>{
       this.created = (r != null);
+      if(this.created){
+        this.dialogRef.close(new Etudiant(0,this.nom,this.prenom,this.numetu,this.classe,this.groupe));
+      }
     })
   }
 
