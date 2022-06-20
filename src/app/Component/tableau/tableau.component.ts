@@ -19,11 +19,10 @@ export class TableauComponent implements OnInit {
   qcms: QCM[] = [];
   qcm = <QCM>{};
   dataSource!: MatTableDataSource<QCM>;
-  displayedColumns: string[] = ['name', 'modify', 'mark'];
   constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router, private authentService: AuthenticationService) {
-  displayedColumns: string[] = ['name', 'modify', 'mark','correction'];
-  constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router) {
+
   }
+  displayedColumns: string[] = ['name', 'modify', 'mark','correction'];
 
   ngOnInit(): void {
     this.qcm.titre = "QCM1";

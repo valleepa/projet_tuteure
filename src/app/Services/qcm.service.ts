@@ -34,10 +34,6 @@ export class QcmService {
   getQCMFromId(id:number): Observable<QCM>{
     return this.http.get<QCM>(`/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
   }
-
-  getQCMFromId(id:number): Observable<QCM>{
-    return this.http.get<QCM>(`/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
-  }
   modifyQCM(QCM: QCM): Observable<QCM>{
     return this.http.put<QCM>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Modifie un QCM')));
   }
