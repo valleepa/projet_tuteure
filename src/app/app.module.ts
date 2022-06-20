@@ -33,7 +33,6 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatInputModule} from "@angular/material/input";
 import {MatTableModule} from "@angular/material/table";
 import { CreationEditionsComponent } from './Component/Creation/creation-editions/creation-editions.component';
-import {MesQCMComponent} from "./Services/mes-qcm/mes-qcm.component";
 import {MesEtudiantsComponent} from "./Pages/mes-etudiants/mes-etudiants.component";
 import {TableauComponent} from "./Component/tableau/tableau.component";
 import { TableauEtudiantsComponent } from './Component/tableau-etudiants/tableau-etudiants.component';
@@ -43,8 +42,23 @@ import { CreationQuestionComponent } from './Component/Creation/creation-questio
 import { CreationQuestionDefautComponent } from './Component/Creation/creation-question/creation-question-defaut/creation-question-defaut.component';
 import { CreationQuestionOuverteComponent } from './Component/Creation/creation-question/creation-question-ouverte/creation-question-ouverte.component';
 import { CreationQuestionNumeriqueComponent } from './Component/Creation/creation-question/creation-question-numerique/creation-question-numerique.component';
-import { RecentsComponent } from './Pages/accueil/recents/recents.component';
-import { BoutonComponent } from './Component/bouton/bouton.component';
+import { ConnexionComponent } from './Component/Connexion/connexion.component';
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
+import {HttpInterceptorService} from "./Services/httpinterceptor.service";
+import {MesQCMComponent} from "./Pages/mes-qcm/mes-qcm.component";
+import {RecentsComponent} from "./Pages/accueil/recents/recents.component";
+import {BoutonComponent} from "./Component/bouton/bouton.component";
+import { GestionUsersComponent } from './Component/gestion-users/gestion-users.component';
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import { NewUserComponent } from './Component/gestion-users/new-user/new-user.component';
+import { EditUserComponent } from './Component/gestion-users/edit-user/edit-user.component';
+import { EditUserActionComponent } from './Component/gestion-users/edit-user/edit-user-action/edit-user-action.component';
+import { ValidationDialogComponent } from './Component/gestion-users/validation-dialog/validation-dialog.component';
+import { ValidationModificationComponent } from './Component/gestion-users/validation-modification/validation-modification.component';
+import { ProfilComponent } from './Component/tableau-etudiants/profil/profil.component';
+import { MonprofilComponent } from './Pages/monprofil/monprofil.component';
+import { CorrectionComponent } from './Component/correction/correction.component';
+import {DialogCreateComponent} from "./Component/tableau-etudiants/dialog-create/dialog-create.component";
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -75,8 +89,19 @@ import { BoutonComponent } from './Component/bouton/bouton.component';
     CreationQuestionDefautComponent,
     CreationQuestionOuverteComponent,
     CreationQuestionNumeriqueComponent,
+    ConnexionComponent,
     RecentsComponent,
     BoutonComponent,
+    GestionUsersComponent,
+    NewUserComponent,
+    EditUserComponent,
+    EditUserActionComponent,
+    ValidationDialogComponent,
+    ValidationModificationComponent,
+    ProfilComponent,
+    MonprofilComponent,
+    CorrectionComponent,
+    DialogCreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,9 +124,15 @@ import { BoutonComponent } from './Component/bouton/bouton.component';
     MatOptionModule,
     MatInputModule,
     MatTableModule,
+    HttpClientModule,
+    MatButtonToggleModule,
     // SweetAlert2Module.forChild()
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpInterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

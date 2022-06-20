@@ -1,0 +1,25 @@
+body{
+  height: 70%;
+  width: 100%;
+  text-align: center;
+}
+
+h1{
+  color:#3F51B5;
+}
+.options{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+#username{
+  width: 200px;
+  height: 30px;
+  border: None;
+}
+
+.btn{
+  width: 35%;
+  margin: 5% auto 5% auto;
+}

@@ -30,8 +30,8 @@ export class InputDialogComponent implements OnInit {
   onChange(value: string) {
     this.invalide = false;
     this.categorie.questions.forEach(ques =>{
-      ques.categorie = this.categorie.name
-      if(ques.name === value){
+      ques.categorie = this.categorie.nom
+      if(ques.intitule === value){
         this.invalide = true;
         //TODO snack bar en cas d'erreur
       }

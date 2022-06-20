@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title id="{{title}}" [ngClass]="selector===title ? 'selected' : 'unselected'">
+  <mat-card-title id="{{title}}" [ngClass]="isSelected ? 'selected' : 'unselected'">
     {{title}}
   </mat-card-title>
 </mat-card>

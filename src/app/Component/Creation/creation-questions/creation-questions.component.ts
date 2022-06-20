@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Injectable, OnDestroy, OnInit} from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InputDialogComponent } from '../../Accueil/input-dialog/input-dialog.component';
@@ -12,13 +12,14 @@ import {QCM} from "../../../Modeles/QCM";
   templateUrl: './creation-questions.component.html',
   styleUrls: ['./creation-questions.component.scss']
 })
+
 export class CreationQuestionsComponent implements OnInit {
 
   public categories : Categorie[] = [];
   image = 'assets/img/1.svg';
   titre = 'AJOUTER UNE CATEGORIE';
-  QCM = new QCM([],'null',0,false,'null','null');
-  selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [],"","")]);
+  QCM = new QCM([],'null',false,"null",'null');
+  selector : Categorie = new Categorie("null", [new Question("Question 1", "UNIQUE", [],"",[])]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
   categorieType: string = "categorie";
@@ -52,19 +53,7 @@ export class CreationQuestionsComponent implements OnInit {
   }
 
   addQuestion(): void {
-    const dialogRef = this.dialog.open(InputDialogComponent, {
-      width: '35%',
-      height:'17%',
-      panelClass: 'custom-dialog-container',
-      data: {button: 'Créer', placeholder: 'Question', name:''},
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if(result)
-      {
-        this.ajoutQuestion(result);
-      }
-    });
+    this.ajoutQuestion();
   }
 
   categoriesLength(){
@@ -72,14 +61,14 @@ export class CreationQuestionsComponent implements OnInit {
   }
   ajoutCategorie(categorieName : string)
   {
-    let categorie = new Categorie(categorieName, [new Question("Question 1", "unique", [],"","")])
+    let categorie = new Categorie(categorieName, [new Question("", "UNIQUE", [],"",[])])
     this.questionService.categorieActuel.next(categorie);
-    this.questionService.questionActuel.next(categorie.questions[0])
+    this.questionService.questionActuel.next(categorie.questions[0]);//pb
     this.questionService.categorieActuel.subscribe(res => this.selector = res);
     this.categories.push(categorie);
     this.QCM.categories = this.categories
     //localStorage.setItem('categories',JSON.stringify(this.categories));
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
     this.questions = categorie.questions;
   }
 
@@ -93,14 +82,12 @@ export class CreationQuestionsComponent implements OnInit {
       this.categories = [];
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
-        this.QCM.name = this.titre;
       });
     }
     else if(tabCategories.categories.length<1){
       this.categories = [];
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
-        this.QCM.name = this.titre;
       });
     }
     else
@@ -111,16 +98,18 @@ export class CreationQuestionsComponent implements OnInit {
       this.questionService.categorieActuel.next(this.categories[0]);
       this.questionService.questionActuel.next(this.categories[0].questions[0])
       this.questionService.questionActuel.subscribe(res => this.selectorQ = res);
-      this.questionService.QCMActuel.next(tabCategories);
-      this.questionService.QCMActuel.subscribe(res => this.QCM = res);
+      this.questionService.reloadQCM(tabCategories);
+      this.questionService.QCMActuel.subscribe(res => {
+        this.QCM = res;
+      });
     }
   }
 
-  private ajoutQuestion(name: string) {
-    let question = new Question(name, "unique", [],"","");
+  private ajoutQuestion() {
+    let question = new Question('', "unique", [],"",[]);
     this.questions.push(question);
     this.questionService.questionActuel.next(question);
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
     //localStorage.setItem('categories',JSON.stringify(this.categories));
   }
 

@@ -2,7 +2,7 @@ mat-toolbar{
   display: flex;
   line-height: 100%;
   color:#3F51B5;
-  justify-content: center;
+  justify-content: space-between;
   background-color: #FFFFFF;
   margin-bottom: 2.5%;
 }
@@ -13,9 +13,9 @@ img{
 
 ul{
   margin: auto;
-  width: 50%;
+  width: 80%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style-type: none;
 }
 
@@ -27,11 +27,70 @@ li a{
   text-decoration: none;
   color: var(--primary);
 }
-#user{
-  color: #3F51B5;
-}
 
 mat-icon{
   color: #3F51B5;
 }
 
+.dropbtn
+{
+  color: #FFFFFF;
+  background-color: #3F51B5;
+  padding: 16px;
+  font-size: 16px;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3142a3;
+}
+
+.dropdown {
+  position: relative;
+  margin-left:5em;
+  display: inline-block;
+  width:13%;
+}
+
+.contenu-dropdown {
+  position: absolute ;
+  background-color: white;
+  width: 100%;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.contenu-dropdown a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  max-width: 100%;
+  cursor: pointer;
+}
+
+#logout-item *{
+  color: rgb(182, 50, 50);
+}
+
+.other-items{
+  background-color: white;
+  color: #3F51B5;
+}
+
+.ligne{
+  display: flex;
+  justify-content: center;
+  line-height: 1;
+  padding-left: 10px;
+
+  i{
+    margin: auto;
+    width: 10%;
+  }
+  a{
+    width: 70%;
+  }
+}

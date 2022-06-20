@@ -9,11 +9,11 @@
 
 <div *ngIf="categoriesLength() > 0" class="wrapper">
   <div class="categories">
-    <app-creation-card *ngFor="let categorie of categories" [title]="categorie.name" [type]="categorieType" class="categorie" (click)="setCategorie(categorie)"></app-creation-card>
+    <app-creation-card *ngFor="let categorie of categories" [title]="categorie.nom" [type]="categorieType" class="categorie" (click)="setCategorie(categorie)"></app-creation-card>
     <app-creation-add class="categorie" (click)="addCategorie()"></app-creation-add>
   </div>
   <div *ngIf="questions.length > 0" class="categories">
-    <app-creation-card *ngFor="let question of questions" [title]="question.name" [type]="questionType" class="categorie" (click)="setQuestion(question)"></app-creation-card>
+    <app-creation-card *ngFor="let question of questions; let i = index" [title]="'Question '+(i+1).toString()" [type]="questionType" class="categorie" (click)="setQuestion(question)"></app-creation-card>
     <app-creation-add class="categorie" (click)="addQuestion()"></app-creation-add>
   </div>
   <app-creation-question></app-creation-question>

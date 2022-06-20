@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {BreakpointObserver} from '@angular/cdk/layout';
+import {AuthenticationService} from "../../Services/authentication.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-layout',
@@ -11,9 +13,12 @@ export class LayoutComponent implements OnInit {
   isOpen:boolean=true;
   // @ts-ignore
 
-  constructor(private observer: BreakpointObserver) { }
+  isLoggedIn$: boolean
+
+  constructor(private observer: BreakpointObserver, private auth: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn$ = Number(this.auth.getId()) > 0
   }
 
   ngAfterViewInit() {

@@ -1,0 +1,34 @@
+<body>
+<form>
+  <h1>Créer un nouvel utilisateur</h1>
+
+  <div class="alert alert-warning" *ngIf='error'>{{errorMessage}}</div>
+
+  <div class="ligne">
+    <label for="username">Nom d'utilisateur</label>
+    <input type="text" class="form-control" id="username" [(ngModel)]="username" name="username" placeholder="Nom d'utilisateur">
+  </div>
+
+  <div class="ligne">
+    <label for="name">Nom</label>
+    <input placeholder="Nom" type="text" class="form-control" [(ngModel)]="name" id="name" name="name">
+  </div>
+
+  <div class="ligne">
+    <label for="username">Prénom</label>
+    <input type="text" class="form-control" id="prenom" [(ngModel)]="surname" name="surname" placeholder="Prénom">
+  </div>
+
+  <div class="ligne">
+    <label for="username">Email</label>
+    <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="utilisateur@sondomaine.ext">
+  </div>
+  <div id="create">
+    <app-bouton name="Créer" (click)=create()></app-bouton>
+  </div>
+
+
+  <div  *ngIf='resultMessage != ""'>{{resultMessage}}</div>
+</form>
+</body>
+

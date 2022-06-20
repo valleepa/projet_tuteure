@@ -29,9 +29,9 @@ export class CreationQuestionOuverteComponent implements OnInit {
         this.questionService.questionActuel.subscribe(valu=>{
           this.question = valu;
           this.QCM.categories.forEach(x=>{
-            if(x.name === this.categorie.name){
+            if(x.nom === this.categorie.nom){
               x.questions.forEach(y=>{
-                if(y.name === this.question.name){
+                if(y.intitule === this.question.intitule){
                   this.question = y;
                   if(this.question.options && this.question.options.length>0){
                     this.notationNumAB = this.question.options[0].valeur;

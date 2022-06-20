@@ -1,0 +1,115 @@
+body{
+  display: flex;
+  justify-content: space-around;
+  height: 85%;
+}
+
+i{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #3F51B5;
+}
+
+img{
+  width: 25%;
+}
+
+.information{
+  position: relative;
+  width: 40%;
+  height: fit-content;
+  padding: 2%;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+mat-form-field{
+  display: flex;
+}
+
+.meslabel{
+  width: 80%;
+  display: flex;
+}
+
+.meslabel label{
+ font-size: 1.2em;
+}
+
+mat-label{
+  font-size: 1.5em;
+  color: black;
+}
+
+input{
+  color: #3F51B5;
+}
+
+.meslabel p{
+  margin-left: 10%;
+  color: #3F51B5;
+}
+
+.meslabel input{
+  margin-left: 10%;
+  color: #3F51B5;
+}
+
+.information h2{
+  margin-left: 7%;
+}
+.info{
+  display: flex;
+  justify-content: space-around;
+}
+
+.image{
+  background-color: gray;
+  width: 30%;
+}
+
+.coordonnes{
+  height: 50%;
+  width: 50%;
+  line-height: 2em;
+}
+.classe{
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.qcm{
+  padding: 2%;
+  width: 40%;
+  height: 40%;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+.qcm h2{
+  margin-left: 7%;
+}
+.element{
+  background-color: #EBECF0;
+  display: flex;
+  height: 25%;
+  border-radius: 5px;
+  width: 90%;
+  margin: auto;
+}
+
+.name{
+  margin:auto;
+  width: 40%;
+}
+
+.note{
+  margin: auto;
+  width: 10%;
+}
+
+app-bouton{
+  margin: auto;
+}

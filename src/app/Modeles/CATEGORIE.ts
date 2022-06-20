@@ -1,14 +1,14 @@
 import {Question} from "./QUESTION";
 
 export interface ICategorie{
-  name: string;
+  nom: string;
   questions: Question[];
 }
 export class Categorie implements ICategorie {
-  name: string;
+  nom: string;
   questions: Question[];
-  constructor(name: string, questions: Question[]) {
-    this.name = name;
+  constructor(nom: string, questions: Question[]) {
+    this.nom = nom;
     this.questions = questions;
   }
 }

@@ -1,4 +1,8 @@
 <div class="wrapper">
-  <app-creation-title [title]="name" class="title"></app-creation-title>
+  <div class="top">
+    <app-bouton (click)="deleteQcm()" [name]="'Supprimer'"></app-bouton>
+    <app-creation-title [title]="name" class="title"></app-creation-title>
+    <app-bouton (click)="checkSave()" [name]="'Sauvegarder'" [select]="isNotSaved"></app-bouton>
+  </div>
   <app-creation-tab [title]="name"></app-creation-tab>
 </div>

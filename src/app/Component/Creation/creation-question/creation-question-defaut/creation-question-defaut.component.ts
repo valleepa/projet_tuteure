@@ -30,9 +30,9 @@ export class CreationQuestionDefautComponent implements OnInit {
         this.questionService.questionActuel.subscribe(valu=>{
           this.question = valu;
           this.QCM.categories.forEach(x=>{
-            if(x.name === this.categorie.name){
+            if(x.nom === this.categorie.nom){
               x.questions.forEach(y=>{
-                if(y.name === this.question.name){
+                if(y.intitule === this.question.intitule){
                   this.question = y;
                   if(this.question.options && this.question.options.length>0){
                     this.notationNum = this.question.options[0].valeur;
@@ -58,27 +58,27 @@ export class CreationQuestionDefautComponent implements OnInit {
 
   addAnswer(){
     this.question.reponses.push(new Reponse('', false));
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
   }
   deleteAnswer(reponse : Reponse){
     const index = this.question.reponses.indexOf(reponse);
     if(index !== -1) {
       this.question.reponses.splice(index, 1);
     }
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
   }
 
   modifyIsGodd(reponse: Reponse) {
     if(this.editMode){
       reponse.isGood ? reponse.isGood = false : reponse.isGood = true;
-      this.questionService.QCMActuel.next(this.QCM);
+      this.questionService.reloadQCM(this.QCM);
     }
   }
 
   modifyReponse(reponse: Reponse, value: string) {
     const index = this.question.reponses.indexOf(reponse);
-    this.question.reponses[index].contain = value;
-    this.questionService.QCMActuel.next(this.QCM);
+    this.question.reponses[index].texte = value;
+    this.questionService.reloadQCM(this.QCM);
   }
 
   isNumber(str: string): boolean {

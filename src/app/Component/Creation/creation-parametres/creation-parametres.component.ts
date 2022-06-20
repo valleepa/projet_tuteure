@@ -83,6 +83,6 @@ export class CreationParametresComponent implements OnInit {
 */
   setChange(){
     this.QCM.isRandomized = (this.selected !== "non-1");
-    this.questionService.QCMActuel.next(this.QCM);
+    this.questionService.reloadQCM(this.QCM);
   }
 }

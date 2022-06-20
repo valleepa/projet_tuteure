@@ -4,9 +4,9 @@
       <div class="reponse">
         <div class="mat1" [ngClass]="editMode === true ? 'curseur':''" (click)="modifyIsGodd(reponse)">
           <div class="mat" [ngClass]="editMode ===true ? 'not-selectable': ''">
-            <mat-form-field [ngClass]="reponse.isGood ? 'selected' : ''" class="form-reponse" appearance="fill">
+            <mat-form-field [ngClass]="reponse.isGood ? 'selected' : ''" class="form-reponse" appearance="outline">
               <mat-label>Réponse {{question.reponses.indexOf(reponse)+1}}</mat-label>
-              <input #inputRep matInput value="{{reponse.contain}}" (keyup)="modifyReponse(reponse, inputRep.value)">
+              <input #inputRep matInput value="{{reponse.texte}}" (keyup)="modifyReponse(reponse, inputRep.value)">
             </mat-form-field>
           </div>
         </div>
@@ -16,7 +16,7 @@
     <app-creation-add (click)="addAnswer()"></app-creation-add>
   </div>
   <div class="divRight">
-    <mat-form-field appearance="fill" id="notation">
+    <mat-form-field appearance="outline" id="notation">
       <mat-label>Notation</mat-label>
       <input id="nota" matInput #notation (keyup)="modifyNotation(notation.value)" (keyup.backspace)="deleteNotation()" value="{{notationNum}}" type="number">
     </mat-form-field>

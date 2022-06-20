@@ -33,8 +33,8 @@ choix: Choix[] = [
   constructor(public dialog: MatDialog, private questionService: QuestionService) {
 
     this.questionService.questionActuel.subscribe(val =>{
-      if(val.type !== 'unique' && val.type !== 'multiple'){
-        this.selected = val.type;
+      if(val.typeDeQuestion !== 'UNIQUE' && val.typeDeQuestion !== 'MULTIPLE'){
+        this.selected = val.typeDeQuestion;
       }
       else{
         this.selected ='defaut';
@@ -50,9 +50,9 @@ choix: Choix[] = [
       this.questionService.categorieActuel.subscribe(val =>{
         this.categorie = val;
         this.QCM.categories.forEach(x=>{
-          if(x.name === this.categorie.name){
+          if(x.nom === this.categorie.nom){
             x.questions.forEach(y=>{
-              if(y.name === this.question.name){
+              if(y.intitule === this.question.intitule){
                 this.question = y;
               }
                 });
@@ -68,7 +68,7 @@ choix: Choix[] = [
       width: '35%',
       height:'17%',
       panelClass: 'custom-dialog-container',
-      data: {button: 'Modifier', placeholder: 'Nom', name:this.question.name},
+      data: {button: 'Modifier', placeholder: 'Nom', name:this.question.intitule},
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result)
@@ -79,18 +79,31 @@ choix: Choix[] = [
   }
 
   modifyQuestionName(newName:any) {
-    this.question.name = newName;
+    this.question.intitule = newName;
     this.questionService.questionActuel.next(this.question);
     this.questionService.reloadQCM(this.QCM);
   }
 
   setType() {
-    this.question.type = this.selected;
+    if(this.selected==="Par défaut"){
+      if(this.question.reponses.length>1){
+        this.question.typeDeQuestion='MULTIPLE';
+      }
+      else{
+        this.question.typeDeQuestion = 'UNIQUE';
+      }
+    }
+    else if(this.selected ==='Numérique'){
+      this.question.typeDeQuestion = 'NUMERIQUE';
+    }
+    else{
+      this.question.typeDeQuestion = 'OUVERTE';
+    }
     this.questionService.reloadQCM(this.QCM);
   }
 
   modifyQuestion(questionSt: string) {
-    this.question.val = questionSt;
+    this.question.intitule = questionSt;
     this.questionService.reloadQCM(this.QCM);
   }
 
