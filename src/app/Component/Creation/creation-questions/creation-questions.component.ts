@@ -6,6 +6,7 @@ import {Categorie, ICategorie} from "../../../Modeles/CATEGORIE";
 import {Question} from "../../../Modeles/QUESTION";
 import {QuestionService} from "../../../Services/question.service";
 import {QCM} from "../../../Modeles/QCM";
+import {Options} from "../../../Modeles/OPTIONS";
 
 @Component({
   selector: 'app-creation-questions',
@@ -19,7 +20,7 @@ export class CreationQuestionsComponent implements OnInit {
   image = 'assets/img/1.svg';
   titre = 'AJOUTER UNE CATEGORIE';
   QCM = new QCM([],'null',false,"null",'null');
-  selector : Categorie = new Categorie("null", [new Question("Question 1", "UNIQUE", [],"",[])]);
+  selector : Categorie = new Categorie("null", [new Question("Question 1", "UNIQUE", [],"",new Options('null',[]))]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
   categorieType: string = "categorie";
@@ -61,7 +62,7 @@ export class CreationQuestionsComponent implements OnInit {
   }
   ajoutCategorie(categorieName : string)
   {
-    let categorie = new Categorie(categorieName, [new Question("", "UNIQUE", [],"",[])])
+    let categorie = new Categorie(categorieName, [new Question("", "UNIQUE", [],"",new Options('null',[]))])
     this.questionService.categorieActuel.next(categorie);
     this.questionService.questionActuel.next(categorie.questions[0]);//pb
     this.questionService.categorieActuel.subscribe(res => this.selector = res);
@@ -106,7 +107,7 @@ export class CreationQuestionsComponent implements OnInit {
   }
 
   private ajoutQuestion() {
-    let question = new Question('', "unique", [],"",[]);
+    let question = new Question('', "unique", [],"",new Options('null',[]));
     this.questions.push(question);
     this.questionService.questionActuel.next(question);
     this.questionService.reloadQCM(this.QCM);

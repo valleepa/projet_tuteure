@@ -39,7 +39,7 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
                     this.reponseNum = '';
                   }
                   if(this.question.options){
-                    this.notationNum = this.question.options[0].valeur;
+                    this.notationNum = this.question.options.optionsset[0].valeur;
                   }
                   else{
                     this.notationNum = '';
@@ -85,11 +85,11 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
 
   modifyNotation(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options && this.question.options.length>0){
-        this.question.options[0].valeur = value;
+      if(this.question.options && this.question.options.optionsset.length>0){
+        this.question.options.optionsset[0].valeur = value;
       }
       else{
-        this.question.options = [new Option("BAREME",value)];
+        this.question.options.optionsset = [new Option("BAREME",value)];
       }
       // @ts-ignore
       this.notationNum = this.question.options[0].valeur;

@@ -3,13 +3,14 @@ import {Question} from "../Modeles/QUESTION";
 import {BehaviorSubject, Observable} from "rxjs";
 import {Categorie} from "../Modeles/CATEGORIE";
 import {QCM} from "../Modeles/QCM";
+import {Options} from "../Modeles/OPTIONS";
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-  questionActuel = new BehaviorSubject(new Question('nullll', 'null', [],"",[]));
-  categorieActuel = new BehaviorSubject(new Categorie('nu', [new Question('nul', 'null', [],"",[])]));
+  questionActuel = new BehaviorSubject(new Question('nullll', 'null', [],"",new Options('null',[])));
+  categorieActuel = new BehaviorSubject(new Categorie('nu', [new Question('nul', 'null', [],"",new Options('null',[]))]));
   QCMActuel = new BehaviorSubject(new QCM([],'',false,"null",'null'));
   isNotSaved = new BehaviorSubject(false);
   constructor() {

@@ -5,6 +5,7 @@ import {Question} from "../../../../Modeles/QUESTION";
 import {QCM} from "../../../../Modeles/QCM";
 import {QuestionService} from "../../../../Services/question.service";
 import {Option} from "../../../../Modeles/OPTION";
+import {Options} from "../../../../Modeles/OPTIONS";
 
 @Component({
   selector: 'app-creation-question-ouverte',
@@ -33,10 +34,10 @@ export class CreationQuestionOuverteComponent implements OnInit {
               x.questions.forEach(y=>{
                 if(y.intitule === this.question.intitule){
                   this.question = y;
-                  if(this.question.options && this.question.options.length>0){
-                    this.notationNumAB = this.question.options[0].valeur;
-                    this.notationNumTB = this.question.options[1].valeur;
-                    this.notationNumF = this.question.options[2].valeur;
+                  if(this.question.options && this.question.options.optionsset.length>0){
+                    this.notationNumAB = this.question.options.optionsset[0].valeur;
+                    this.notationNumTB = this.question.options.optionsset[1].valeur;
+                    this.notationNumF = this.question.options.optionsset[2].valeur;
                   }
                   else{
                     this.notationNumAB = '';
@@ -66,14 +67,17 @@ export class CreationQuestionOuverteComponent implements OnInit {
 
   modifyNotationF(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options && this.question.options.length>0){
-        this.question.options[2].valeur = value;
+      if(this.question.options && this.question.options.optionsset.length>0){
+        this.question.options.optionsset[2].valeur = value;
       }
       else{
-        this.question.options = [new Option("BAREMEAB",''),new Option("BAREMETB",''),new Option("BAREMEF",value)];
+        this.question.options = new Options('OUVERTE',[])  ;
+        this.question.options.optionsset.push(new Option("BAREMEAB",''))
+        this.question.options.optionsset.push(new Option("BAREMETB",''))
+        this.question.options.optionsset.push(new Option("BAREMEF",value))
       }
       // @ts-ignore
-      this.notationNumF = this.question.options[2].valeur;
+      this.notationNumF = this.question.options.optionsset[2].valeur;
       this.questionService.reloadQCM(this.QCM);
     }
     else{
@@ -85,11 +89,11 @@ export class CreationQuestionOuverteComponent implements OnInit {
 
   modifyNotationAB(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options && this.question.options.length>0){
-        this.question.options[0].valeur = value;
+      if(this.question.options && this.question.options.optionsset.length>0){
+        this.question.options.optionsset[0].valeur = value;
       }
       else{
-        this.question.options = [new Option("BAREMEAB",value),new Option("BAREMETB",''),new Option("BAREMEF",'')];
+        this.question.options.optionsset = [new Option("BAREMEAB",value),new Option("BAREMETB",''),new Option("BAREMEF",'')];
       }
       // @ts-ignore
       this.notationNumAB = this.question.options[0].valeur;
@@ -103,11 +107,11 @@ export class CreationQuestionOuverteComponent implements OnInit {
 
   modifyNotationTB(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options && this.question.options.length>0){
-        this.question.options[1].valeur = value;
+      if(this.question.options && this.question.options.optionsset.length>0){
+        this.question.options.optionsset[1].valeur = value;
       }
       else{
-        this.question.options = [new Option("BAREMEAB",''),new Option("BAREMETB",value),new Option("BAREMEF",'')];
+        this.question.options.optionsset = [new Option("BAREMEAB",''),new Option("BAREMETB",value),new Option("BAREMEF",'')];
       }
       // @ts-ignore
       this.notationNumTB = this.question.options[1].valeur;

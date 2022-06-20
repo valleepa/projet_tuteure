@@ -35,10 +35,20 @@ export class QcmService {
     return this.http.get<QCM>(`/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
   }
   modifyQCM(QCM: QCM): Observable<QCM>{
+    QCM.categories.forEach(categorie=>{
+      categorie.questions.forEach(question=>{
+        question.reponses.forEach(reponse=>{
+          delete reponse.id
+        })
+      })
+    })
     return this.http.put<QCM>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Modifie un QCM')));
   }
-  createNewQCM(QCM:QCM): Observable<QCM>{
-    return this.http.post<QCM>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Créé un QCM')));
+  createNewQCM(QCM:QCM): Observable<number>{
+    console.log(QCM);
+    delete QCM.id;
+    console.log(QCM);
+    return this.http.post<number>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<number>('Créé un QCM')));
   }
   deleteQCM(QCM:QCM): Observable<QCM>{
     return this.http.delete<QCM>(`/qcm/${QCM.id}`,{headers: new HttpHeaders({'Content-Type': 'application/json'}),body: QCM}).pipe(catchError(this.handleError<QCM>('Supprime un QCM')));

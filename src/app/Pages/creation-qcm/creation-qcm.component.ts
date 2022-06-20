@@ -3,6 +3,8 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {QcmService} from "../../Services/qcm.service";
 import {QuestionService} from "../../Services/question.service";
 import {QCM} from "../../Modeles/QCM";
+import {Options} from "../../Modeles/OPTIONS";
+import {Option} from "../../Modeles/OPTION";
 
 @Component({
   selector: 'app-creation-qcm',
@@ -30,16 +32,25 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
   checkSave() {
     if(this.isNotSaved){
       if(this.qcmLocal?.id){
-        this.qcmService.modifyQCM(this.qcmLocal).subscribe();
+        this.qcmLocal.categories.forEach(categorie=>{
+          categorie.questions.forEach(question =>{
+            question.options = new Options(question.typeDeQuestion,[]);
+          })
+        })
+        this.qcmService.modifyQCM(this.qcmLocal).subscribe(r=>{
+          console.log(r);
+        });
       }
       else{
         if(this.qcmLocal)
           this.qcmLocal.titre = this.name;
         console.log("avant"+this.qcmLocal);
         this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
-          this.questionService.reloadQCM(res);
-          this.qcmLocal = res;
-          console.log("apres"+res);
+          this.qcmService.getQCMFromId(res).subscribe(r=>{
+            this.questionService.reloadQCM(r);
+            this.qcmLocal = r;
+            console.log("apres"+res);
+          })
         });
       }
     }

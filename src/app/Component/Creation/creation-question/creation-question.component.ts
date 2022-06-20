@@ -6,6 +6,7 @@ import {InputDialogComponent} from "../../Accueil/input-dialog/input-dialog.comp
 import {MatDialog} from "@angular/material/dialog";
 import {QuestionService} from "../../../Services/question.service";
 import {QCM} from "../../../Modeles/QCM";
+import {Options} from "../../../Modeles/OPTIONS";
 
 interface Choix {
   value: string;
@@ -108,7 +109,7 @@ choix: Choix[] = [
   }
 
   typeChange() {
-    this.question.options = [];
+    this.question.options =new Options('null',[]);
     this.question.reponses = [];
   }
 }

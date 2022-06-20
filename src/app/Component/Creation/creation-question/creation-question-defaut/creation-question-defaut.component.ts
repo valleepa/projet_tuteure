@@ -34,8 +34,8 @@ export class CreationQuestionDefautComponent implements OnInit {
               x.questions.forEach(y=>{
                 if(y.intitule === this.question.intitule){
                   this.question = y;
-                  if(this.question.options && this.question.options.length>0){
-                    this.notationNum = this.question.options[0].valeur;
+                  if(this.question.options && this.question.options.optionsset.length>0){
+                    this.notationNum = this.question.options.optionsset[0].valeur;
                   }
                   else{
                     this.notationNum = '';
@@ -95,11 +95,11 @@ export class CreationQuestionDefautComponent implements OnInit {
 
   modifyNotation(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options && this.question.options.length>0){
-        this.question.options[0].valeur = value;
+      if(this.question.options && this.question.options.optionsset.length>0){
+        this.question.options.optionsset[0].valeur = value;
       }
       else{
-        this.question.options = [new Option("BAREME",value)];
+        this.question.options.optionsset = [new Option("BAREME",value)];
       }
       // @ts-ignore
       this.notationNum = this.question.options[0].valeur;
