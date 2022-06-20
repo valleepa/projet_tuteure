@@ -35,7 +35,7 @@ export class CreateComponent implements OnInit {
         if(result)
           localStorage.removeItem("selector");
           localStorage.removeItem('QCM');
-          this.questionService.reloadQCM(QCM.createEmptyQCM());
+          this.questionService.reloadQCM(QCM.createEmptyQCM(this.authentificationService.getId()!.toString()));
           this.questionService.QCMActuel.subscribe(res=>{
             this.qcm = res;
             this.qcm.idcreateur = this.authentificationService.getId()!;

@@ -33,7 +33,7 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
                 if(y.intitule === this.question.intitule){
                   this.question = y;
                   if(this.question.reponses.length>0){
-                    this.reponseNum = this.question.reponses[0].contain;
+                    this.reponseNum = this.question.reponses[0].texte;
                   }
                   else{
                     this.reponseNum = '';
@@ -58,12 +58,12 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
   modifyReponse(value: string) {
     if(this.isNumber(value)){
       if(this.question.reponses.length>0){
-        this.question.reponses[0].contain = value;
+        this.question.reponses[0].texte = value;
       }
       else{
         this.question.reponses[0] = new Reponse(value,true);
       }
-      this.reponseNum = this.question.reponses[0].contain;
+      this.reponseNum = this.question.reponses[0].texte;
       this.questionService.reloadQCM(this.QCM);
     }
     else{

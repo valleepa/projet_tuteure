@@ -1,16 +1,16 @@
 export interface IOption{
   id?: number;
   valeur: string;
-  type: string;
+  typeOption: string;
 }
 
 export class Option implements IOption {
   id: number | undefined;
-  type: string;
+  typeOption: string;
   valeur: string;
-  constructor(type:string, valeur:string, id?:number){
+  constructor(typeOption:string, valeur:string, id?:number){
     this.id = id;
-    this.type = type;
+    this.typeOption = typeOption;
     this.valeur = valeur;
   }
 }

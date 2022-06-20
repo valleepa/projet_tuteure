@@ -7,6 +7,7 @@ import {QuestionService} from "../../Services/question.service";
 import {Router} from "@angular/router";
 import {MatDialog} from "@angular/material/dialog";
 import {CreationQuestionsComponent} from "../Creation/creation-questions/creation-questions.component";
+import {AuthenticationService} from "../../Services/authentication.service";
 
 @Component({
   selector: 'app-tableau',
@@ -19,7 +20,7 @@ export class TableauComponent implements OnInit {
   qcm = <QCM>{};
   dataSource!: MatTableDataSource<QCM>;
   displayedColumns: string[] = ['name', 'modify', 'mark'];
-  constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router) {
+  constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router, private authentService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -32,7 +33,6 @@ export class TableauComponent implements OnInit {
       this.service.getQCMFromUser(this.id).subscribe(r => {
         this.qcms = r;
         this.qcms.forEach(each => {
-          console.log(each);
           this.dataSource = new MatTableDataSource<QCM>(this.qcms)
         })
       })
@@ -57,7 +57,7 @@ export class TableauComponent implements OnInit {
       if(result)
         localStorage.removeItem("selector");
       localStorage.removeItem('QCM');
-      this.questionService.reloadQCM(QCM.createEmptyQCM());
+      this.questionService.reloadQCM(QCM.createEmptyQCM(this.authentService.getId()!.toString()));
       this.router.navigate(['/creation',result])
     });
 

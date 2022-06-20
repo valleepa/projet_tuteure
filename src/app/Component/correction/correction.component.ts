@@ -24,7 +24,6 @@ export class CorrectionComponent implements OnInit {
     else
     {
       this.qcmId = id;
-      console.log(id);
     }
 
   }

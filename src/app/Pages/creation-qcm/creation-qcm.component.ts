@@ -29,18 +29,17 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
 
   checkSave() {
     if(this.isNotSaved){
-      console.log(this.qcmLocal);
       if(this.qcmLocal?.id){
         this.qcmService.modifyQCM(this.qcmLocal).subscribe();
       }
       else{
         if(this.qcmLocal)
           this.qcmLocal.titre = this.name;
-        console.log(this.qcmLocal);
+        console.log("avant"+this.qcmLocal);
         this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
-
           this.questionService.reloadQCM(res);
           this.qcmLocal = res;
+          console.log("apres"+res);
         });
       }
     }
@@ -49,7 +48,6 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
   deleteQcm() {
     console.log(this.qcmLocal);
     if(this.qcmLocal?.id){
-      console.log("ça passe");
       this.qcmService.deleteQCM(this.qcmLocal).subscribe(res=>console.log(res));
     }
     this.router.navigate(["/"]);

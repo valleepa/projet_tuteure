@@ -6,7 +6,7 @@
           <div class="mat" [ngClass]="editMode ===true ? 'not-selectable': ''">
             <mat-form-field [ngClass]="reponse.isGood ? 'selected' : ''" class="form-reponse" appearance="outline">
               <mat-label>Réponse {{question.reponses.indexOf(reponse)+1}}</mat-label>
-              <input #inputRep matInput value="{{reponse.contain}}" (keyup)="modifyReponse(reponse, inputRep.value)">
+              <input #inputRep matInput value="{{reponse.texte}}" (keyup)="modifyReponse(reponse, inputRep.value)">
             </mat-form-field>
           </div>
         </div>

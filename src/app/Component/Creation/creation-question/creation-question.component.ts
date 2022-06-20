@@ -33,8 +33,8 @@ choix: Choix[] = [
   constructor(public dialog: MatDialog, private questionService: QuestionService) {
 
     this.questionService.questionActuel.subscribe(val =>{
-      if(val.type !== 'unique' && val.type !== 'multiple'){
-        this.selected = val.type;
+      if(val.typeDeQuestion !== 'UNIQUE' && val.typeDeQuestion !== 'MULTIPLE'){
+        this.selected = val.typeDeQuestion;
       }
       else{
         this.selected ='defaut';
@@ -85,7 +85,20 @@ choix: Choix[] = [
   }
 
   setType() {
-    this.question.type = this.selected;
+    if(this.selected==="Par défaut"){
+      if(this.question.reponses.length>1){
+        this.question.typeDeQuestion='MULTIPLE';
+      }
+      else{
+        this.question.typeDeQuestion = 'UNIQUE';
+      }
+    }
+    else if(this.selected ==='Numérique'){
+      this.question.typeDeQuestion = 'NUMERIQUE';
+    }
+    else{
+      this.question.typeDeQuestion = 'OUVERTE';
+    }
     this.questionService.reloadQCM(this.QCM);
   }
 

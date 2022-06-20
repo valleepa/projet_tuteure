@@ -19,7 +19,7 @@ export class CreationQuestionsComponent implements OnInit {
   image = 'assets/img/1.svg';
   titre = 'AJOUTER UNE CATEGORIE';
   QCM = new QCM([],'null',false,"null",'null');
-  selector : Categorie = new Categorie("null", [new Question("Question 1", "unique", [],"","")]);
+  selector : Categorie = new Categorie("null", [new Question("Question 1", "UNIQUE", [],"",[])]);
   selectorQ: Question = this.selector.questions[0];
   questions: Question[] = [];
   categorieType: string = "categorie";
@@ -61,7 +61,7 @@ export class CreationQuestionsComponent implements OnInit {
   }
   ajoutCategorie(categorieName : string)
   {
-    let categorie = new Categorie(categorieName, [new Question("", "unique", [],"","")])
+    let categorie = new Categorie(categorieName, [new Question("", "UNIQUE", [],"",[])])
     this.questionService.categorieActuel.next(categorie);
     this.questionService.questionActuel.next(categorie.questions[0]);//pb
     this.questionService.categorieActuel.subscribe(res => this.selector = res);
@@ -100,13 +100,12 @@ export class CreationQuestionsComponent implements OnInit {
       this.questionService.reloadQCM(tabCategories);
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
-        console.log(this.QCM);
       });
     }
   }
 
   private ajoutQuestion() {
-    let question = new Question('', "unique", [],"","");
+    let question = new Question('', "unique", [],"",[]);
     this.questions.push(question);
     this.questionService.questionActuel.next(question);
     this.questionService.reloadQCM(this.QCM);

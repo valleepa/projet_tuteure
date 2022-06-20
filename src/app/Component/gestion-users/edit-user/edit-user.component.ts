@@ -36,7 +36,6 @@ export class EditUserComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         this.service.removeUserFromIdOrUsername(this.username).subscribe(r =>{
-          console.log(r)
           if(r != null) {
             this.id = r;
             this.error = false;

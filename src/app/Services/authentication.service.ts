@@ -40,8 +40,6 @@ export class AuthenticationService {
 
     return this.http.post<any>(`/login`,
       body.toString(), options).pipe(map((res) => {
-        console.log("res")
-        console.log(res)
         this.id = res.id
         this.username = res.username
         this.prenom = res.prenom

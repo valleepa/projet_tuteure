@@ -3,25 +3,22 @@ import {Reponse} from "./REPONSE";
 
 export interface IQuestion{
   intitule: string;
-  type: string;
-  val: string;
-  options: Option[] | undefined;
+  typeDeQuestion: string;
+  options: Option[];
   reponses: Reponse[];
   categorie: string;
 }
 export class Question implements IQuestion{
   intitule: string;
-  options: Option[] | undefined;
-  type: string;
-  val: string;
+  options: Option[];
+  typeDeQuestion: string;
   reponses: Reponse[]
   categorie: string;
-  constructor(intitule:string,type:string, reponse:Reponse[], val: string, categorie:string,options?:Option[]) {
+  constructor(intitule:string,typeDeQuestion:string, reponse:Reponse[], categorie:string,options:Option[]) {
     this.intitule = intitule;
     this.options = options;
-    this.type = type;
+    this.typeDeQuestion = typeDeQuestion;
     this.reponses = reponse;
-    this.val = val;
     this.categorie = categorie;
   }
 }

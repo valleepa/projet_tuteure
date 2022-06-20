@@ -7,8 +7,8 @@ export interface ICategorie{
 export class Categorie implements ICategorie {
   nom: string;
   questions: Question[];
-  constructor(name: string, questions: Question[]) {
-    this.nom = name;
+  constructor(nom: string, questions: Question[]) {
+    this.nom = nom;
     this.questions = questions;
   }
 }

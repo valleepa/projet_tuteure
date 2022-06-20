@@ -26,8 +26,8 @@ export class QCM implements IQCM {
     this.id = id;
   }
 
-  static createEmptyQCM() : QCM
+  static createEmptyQCM(idCreateur : string) : QCM
   {
-    return new QCM([],'',false,"null",'null1',);
+    return new QCM([],'',false,"null",idCreateur,);
   }
 }

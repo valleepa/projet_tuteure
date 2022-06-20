@@ -29,7 +29,6 @@ export class EditUserActionComponent implements OnInit {
       parts => {
         this.service.getUserFromId(Number.parseInt(parts[parts.length-1].path)).subscribe(r => {
           this.user = r
-          console.log(this.user)
         })
       }
     )

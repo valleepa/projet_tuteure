@@ -8,8 +8,8 @@ import {QCM} from "../Modeles/QCM";
   providedIn: 'root'
 })
 export class QuestionService {
-  questionActuel = new BehaviorSubject(new Question('nullll', 'null', [],"",""));
-  categorieActuel = new BehaviorSubject(new Categorie('nu', [new Question('nul', 'null', [],"","")]));
+  questionActuel = new BehaviorSubject(new Question('nullll', 'null', [],"",[]));
+  categorieActuel = new BehaviorSubject(new Categorie('nu', [new Question('nul', 'null', [],"",[])]));
   QCMActuel = new BehaviorSubject(new QCM([],'',false,"null",'null'));
   isNotSaved = new BehaviorSubject(false);
   constructor() {
@@ -20,6 +20,7 @@ export class QuestionService {
       this.reloadQCM(new QCM([],'',false,'null','null'));
     }
     this.QCMActuel.subscribe(res => {
+      console.log(res);
       if(res.titre!=='null'){
         localStorage.setItem("QCM",JSON.stringify(res));
       }

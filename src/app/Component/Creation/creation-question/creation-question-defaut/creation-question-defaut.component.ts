@@ -77,7 +77,7 @@ export class CreationQuestionDefautComponent implements OnInit {
 
   modifyReponse(reponse: Reponse, value: string) {
     const index = this.question.reponses.indexOf(reponse);
-    this.question.reponses[index].contain = value;
+    this.question.reponses[index].texte = value;
     this.questionService.reloadQCM(this.QCM);
   }
 
