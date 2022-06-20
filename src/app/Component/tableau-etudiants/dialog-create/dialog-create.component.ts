@@ -17,8 +17,4 @@ export class DialogCreateComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  creer(){
-    console.log("nom : " + this.nom, "|| classe : " + this.classe, "|| groupe : " + this.groupe);
-
-  }
 }

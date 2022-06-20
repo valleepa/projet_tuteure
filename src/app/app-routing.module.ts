@@ -1,3 +1,4 @@
+import { NotesComponent } from './Component/notes/notes.component';
 import { CorrectionComponent } from './Component/correction/correction.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -46,6 +47,12 @@ const routes: Routes = [
     path : 'correction', component: CorrectionComponent, canActivate: [AuthGuard],
     children: [
       { path: ':id', component : CorrectionComponent, canActivate: [AuthGuard]}
+    ]
+  },
+  {
+    path : 'notes', component : NotesComponent, canActivate: [AuthGuard],
+    children: [
+      { path: ':id', component : NotesComponent, canActivate: [AuthGuard]}
     ]
   }
 ];

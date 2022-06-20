@@ -21,6 +21,8 @@ export class TableauComponent implements OnInit {
   dataSource!: MatTableDataSource<QCM>;
   displayedColumns: string[] = ['name', 'modify', 'mark'];
   constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router, private authentService: AuthenticationService) {
+  displayedColumns: string[] = ['name', 'modify', 'mark','correction'];
+  constructor(public dialog: MatDialog,private service: QcmService, private questionService: QuestionService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -72,4 +74,9 @@ export class TableauComponent implements OnInit {
     this.router.navigate([`/creation/${qcm.titre}/questions`]);
     this.questionService.reloadQCM(qcm);
   }
+  onNotes(qcm : QCM)
+  {
+    this.router.navigate([`/notes/${qcm.id}`]);
+  }
+
 }

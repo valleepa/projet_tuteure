@@ -1,1 +1,51 @@
-<p>id du qcm courant : {{qcmId}}</p>
+<div class="content" *ngIf="qcm; else pasqcm">    
+    <mat-card class="card">    
+        <div style="text-align: center;">
+                <mat-card-title >
+                    Correction de {{qcm.titre}} <br><br>
+                    <p>Déposez ici les copies d'étudiants à corriger</p>
+                </mat-card-title>
+        </div>
+        <br>
+        <hr>
+        <br>
+
+        <mat-list *ngIf="files.length > 0">
+            <mat-list-item *ngFor="let file of files; let i=index;">
+            
+                <mat-icon (click)="onDeleteFile(i)" style="cursor: pointer;">delete</mat-icon>
+                <h3 matLine>
+                    <mat-icon style="transform: scale(0.9);">picture_as_pdf</mat-icon>
+                    {{file.name}}
+                </h3>
+                <p matLine>
+                    <span> Taille : {{file.size / 1000}} Ko</span>
+                </p>
+            </mat-list-item>
+        </mat-list>
+        <h3 *ngIf="files.length > 0" style="margin-left:1rem;">
+            <hr>
+            <b>{{files.length}}</b> fichiers reçu{{files.length > 1 ? 's' : ''}}
+        </h3>
+        
+        <h3 *ngIf="showOnlyPDFAcceptedError" class="errors" style="text-align: center;">Seuls les fichiers .PDF sont acceptés</h3>
+        <div *ngIf="files.length === 0" class="dropzone" appDragAndDrop (fileDropped)="onFileDropped($event)">
+            <input type="file" #fileDropRef id="fileDropRef" multiple (change)="fileBrowseHandler($event)"/>
+            <mat-icon>cloud_upload</mat-icon>
+            <h3>Déposez les fichiers PDF</h3>
+            <h3> ou </h3>
+            <label for="fileDropRef"> Importez les depuis votre ordinateur</label>            
+        </div>
+        <div *ngIf="files.length > 0" class="button-zone">
+            <input type="file" id="secondInputFile" multiple (change)="fileBrowseHandler($event)"/>
+            <label for="secondInputFile" style="cursor:pointer;">Ajouter des fichiers</label>
+            <button id="correct-button" mat-raised-button (click)="onCorriger()">Corriger les copies</button>
+        </div>
+    </mat-card>
+</div>
+
+<ng-template #pasqcm>
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>

@@ -19,23 +19,26 @@ button{
 }
 #annuler{
   background-color: #5f5c5c;
+  height: 2em;
 }
 
 #annuler:hover {
   text-decoration: underline;
   transition: 0.5s;
-  width:50px;
+  width:60px;
 }
 
 #valider{
   background-color: #3f51b5;
+  height: 2em;
 }
 
 #valider:hover {
   text-decoration: underline;
   transition: 0.5s;
-  width:50px;
+  width:60px;
 }
+
 mat-form-field {
   margin: 5px;
 }

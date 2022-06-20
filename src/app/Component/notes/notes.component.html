@@ -1,0 +1,36 @@
+<div class="content" *ngIf="qcm; else pasqcm">
+    <mat-card class="card">
+        <div style="text-align: center;">
+                <mat-card-title >
+                    Résultats de {{qcm?.titre}} <br><br>
+                </mat-card-title>
+        </div>
+        <br>
+        <hr>
+        <br>
+    
+        <mat-list> <!--change this -->
+            <mat-list-item *ngFor="let file of files; let i=index;">
+                <h3 matLine>
+                    <mat-icon style="transform: scale(0.9);">picture_as_pdf</mat-icon>
+                    <span>{{file.name}}</span>
+                </h3>
+                <p matLine>
+                    <span> Taille : {{file.size / 1000}} Ko</span>
+                </p>
+            </mat-list-item>
+        </mat-list>
+        <h3 style="margin-left:1rem;">
+            <hr>
+            <b>{{files.length}}</b> fichier{{files.length > 1 ? 's' : ''}}
+        </h3>    
+        <div>
+            <button id="correct-button" mat-raised-button (click)="onDownloadAll()" style="width:100%;">Télécharger</button>
+        </div>
+    </mat-card>
+</div>
+<ng-template #pasqcm>
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+    </div>
+</ng-template>
