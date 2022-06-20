@@ -10,8 +10,9 @@ import {QCM} from "../Modeles/QCM";
 export class QcmService {
   private backUrl = 'http://back.depta.krapo.pro/preferences';
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type': 'qcm/json'})
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
+
   constructor(private http: HttpClient) { }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
@@ -39,8 +40,8 @@ export class QcmService {
   createNewQCM(QCM:QCM): Observable<QCM>{
     return this.http.post<QCM>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Créé un QCM')));
   }
-  deleteQCM(id:number): Observable<QCM>{
-    return this.http.delete<QCM>(`/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Supprime un QCM')));
+  deleteQCM(QCM:QCM): Observable<QCM>{
+    return this.http.delete<QCM>(`/qcm/${QCM.id}`,{headers: new HttpHeaders({'Content-Type': 'application/json'}),body: QCM}).pipe(catchError(this.handleError<QCM>('Supprime un QCM')));
   }
   // @ts-ignore
   generateApplication(): Observable<any>

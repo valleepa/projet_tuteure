@@ -28,17 +28,21 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
   }
 
   checkSave() {
-    console.log(this.qcmLocal);
-    if(this.qcmLocal?.id){
-      this.qcmService.modifyQCM(this.qcmLocal);
-    }
-    else{
-      if(this.qcmLocal)
-        this.qcmLocal.titre = this.name;
-      this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
-        this.questionService.reloadQCM(res);
-        this.qcmLocal = res;
-      });
+    if(this.isNotSaved){
+      console.log(this.qcmLocal);
+      if(this.qcmLocal?.id){
+        this.qcmService.modifyQCM(this.qcmLocal).subscribe();
+      }
+      else{
+        if(this.qcmLocal)
+          this.qcmLocal.titre = this.name;
+        console.log(this.qcmLocal);
+        this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
+
+          this.questionService.reloadQCM(res);
+          this.qcmLocal = res;
+        });
+      }
     }
   }
 
@@ -46,7 +50,7 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
     console.log(this.qcmLocal);
     if(this.qcmLocal?.id){
       console.log("ça passe");
-      this.qcmService.deleteQCM(this.qcmLocal.id).subscribe(res=>console.log(res));
+      this.qcmService.deleteQCM(this.qcmLocal).subscribe(res=>console.log(res));
     }
     this.router.navigate(["/"]);
 
@@ -54,7 +58,7 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
 
   ngAfterViewInit(): void {
     if(this.qcmLocal?.id){
-      this.isNotSaved = false;
+      this.questionService.isNotSaved.next(false);
     }
   }
 }
