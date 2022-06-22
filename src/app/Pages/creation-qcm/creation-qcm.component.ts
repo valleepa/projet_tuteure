@@ -40,13 +40,15 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
           })
         })
         this.qcmService.modifyQCM(this.qcmLocal).subscribe(r=>{
-          console.log(r);
+          this.notificationService.successMessage(this.qcmLocal?.titre+" SAUVEGARDÉ")
         });
+        this.questionService.isNotSaved.next(false);
       }
       else{
         if(this.qcmLocal)
           this.qcmLocal.titre = this.name;
         this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
+          this.notificationService.successMessage(this.qcmLocal?.titre+" CRÉÉ AVEC SUCCÈS")
           this.qcmService.getQCMFromId(res).subscribe(r=>{
             this.questionService.QCMActuel.next(r);
             this.qcmLocal = r;
