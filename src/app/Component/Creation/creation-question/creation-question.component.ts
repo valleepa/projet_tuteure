@@ -75,6 +75,7 @@ choix: Choix[] = [
       if(result)
       {
         this.modifyQuestionName(result);
+        this.questionService.isNotSaved.next(false);
       }
     });
   }
@@ -86,20 +87,27 @@ choix: Choix[] = [
   }
 
   setType() {
-    if(this.selected==="Par défaut"){
-      if(this.question.reponses.length>1){
+    if(this.selected==="defaut"){
+      let compt = 0;
+      for(let i = 0;i< this.question.reponses.length;i++){
+        if(this.question.reponses[i].isGood){
+          compt++;
+        }
+      }
+      if(compt>1){
         this.question.typeDeQuestion='MULTIPLE';
       }
       else{
         this.question.typeDeQuestion = 'UNIQUE';
       }
     }
-    else if(this.selected ==='Numérique'){
+    else if(this.selected ==='numerique'){
       this.question.typeDeQuestion = 'NUMERIQUE';
     }
     else{
       this.question.typeDeQuestion = 'OUVERTE';
     }
+    console.log(this.question.typeDeQuestion);
     this.questionService.reloadQCM(this.QCM);
   }
 

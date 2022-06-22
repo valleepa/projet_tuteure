@@ -10,7 +10,7 @@
 --primary: #3F51B5;
 --on-primary: #7384E2;
 --secondary: #B2B4B7;
---good: #7CE73B;
+--good: #00B74A;
 --error: #EB5945;
 --warning: #F6BB42;
 }
@@ -22,5 +22,12 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #EBECF0}
 .curseur{
   cursor: pointer;
+}
+.errorMessage{
+  background-color: var(--error);
+  font-size: larger;
+}
+.successMessage{
+  background-color: var(--good);
 }
 

@@ -64,6 +64,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NotesComponent } from './Component/notes/notes.component';
 import { ClassegroupesComponent } from './Component/classegroupes/classegroupes.component';
+import { MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -136,6 +137,7 @@ import { ClassegroupesComponent } from './Component/classegroupes/classegroupes.
     MatButtonToggleModule,
     MatListModule,
     MatProgressSpinnerModule,
+    MatSnackBarModule,
     // SweetAlert2Module.forChild()
   ],
   providers: [{

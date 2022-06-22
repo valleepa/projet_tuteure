@@ -23,7 +23,7 @@
     <mat-divider></mat-divider>
   </div>
   <div class="div4">
-    <app-creation-question-defaut *ngIf="selected=='defaut'"></app-creation-question-defaut>
+    <app-creation-question-defaut (reponseChange)="setType()" *ngIf="selected=='defaut'"></app-creation-question-defaut>
     <app-creation-question-numerique *ngIf="selected=='numerique'"></app-creation-question-numerique>
     <app-creation-question-ouverte *ngIf="selected=='ouverte'"></app-creation-question-ouverte>
   </div>

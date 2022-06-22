@@ -3,6 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable, of} from "rxjs";
 import {catchError, map} from "rxjs/operators";
 import {QCM} from "../Modeles/QCM";
+import {NotificationService} from "./notification.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,10 @@ export class QcmService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private notificationService: NotificationService) { }
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
+      this.notificationService.errorMessage(operation);
       console.error(error); // log to console
       return of(result as T);
     };
@@ -32,7 +33,7 @@ export class QcmService {
   }
 
   getQCMFromId(id:number): Observable<QCM>{
-    return this.http.get<QCM>(`/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Récupère un QCM')));
+    return this.http.get<QCM>(`/qcm/${id}`,this.httpOptions).pipe(catchError(this.handleError<QCM>('Ne parviens pas à récupérer le QCM')));
   }
   modifyQCM(QCM: QCM): Observable<QCM>{
     QCM.categories.forEach(categorie=>{
@@ -42,16 +43,14 @@ export class QcmService {
         })
       })
     })
-    return this.http.put<QCM>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Modifie un QCM')));
+    return this.http.put<QCM>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<QCM>('Ne parviens pas à modifier le QCM')));
   }
   createNewQCM(QCM:QCM): Observable<number>{
-    console.log(QCM);
     delete QCM.id;
-    console.log(QCM);
-    return this.http.post<number>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<number>('Créé un QCM')));
+    return this.http.post<number>(`/qcm`,QCM,this.httpOptions).pipe(catchError(this.handleError<number>('Erreur lors de la création du QCM dans la base de donnée')));
   }
   deleteQCM(QCM:QCM): Observable<QCM>{
-    return this.http.delete<QCM>(`/qcm/${QCM.id}`,{headers: new HttpHeaders({'Content-Type': 'application/json'}),body: QCM}).pipe(catchError(this.handleError<QCM>('Supprime un QCM')));
+    return this.http.delete<QCM>(`/qcm/${QCM.id}`,{headers: new HttpHeaders({'Content-Type': 'application/json'}),body: QCM}).pipe(catchError(this.handleError<QCM>("La suppression du QCM n'a pas aboutie")));
   }
   // @ts-ignore
   //generateApplication(): Observable<any>

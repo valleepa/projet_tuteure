@@ -99,7 +99,7 @@ export class CreationQuestionsComponent implements OnInit {
       this.questionService.categorieActuel.next(this.categories[0]);
       this.questionService.questionActuel.next(this.categories[0].questions[0])
       this.questionService.questionActuel.subscribe(res => this.selectorQ = res);
-      this.questionService.reloadQCM(tabCategories);
+      this.questionService.QCMActuel.next(tabCategories);
       this.questionService.QCMActuel.subscribe(res => {
         this.QCM = res;
       });
@@ -107,7 +107,7 @@ export class CreationQuestionsComponent implements OnInit {
   }
 
   private ajoutQuestion() {
-    let question = new Question('', "unique", [],"",new Options('null',[]));
+    let question = new Question('', "UNIQUE", [],"",new Options('UNIQUE',[]));
     this.questions.push(question);
     this.questionService.questionActuel.next(question);
     this.questionService.reloadQCM(this.QCM);

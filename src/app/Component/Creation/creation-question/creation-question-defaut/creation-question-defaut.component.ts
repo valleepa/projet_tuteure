@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Question} from "../../../../Modeles/QUESTION";
 import {Reponse} from "../../../../Modeles/REPONSE";
 import {Categorie} from "../../../../Modeles/CATEGORIE";
@@ -18,6 +18,7 @@ export class CreationQuestionDefautComponent implements OnInit {
   question!: Question;
   editMode: Boolean = false;
   notationNum: any;
+  @Output() reponseChange = new EventEmitter();
 
   constructor(private questionService: QuestionService) {
   }
@@ -72,6 +73,7 @@ export class CreationQuestionDefautComponent implements OnInit {
     if(this.editMode){
       reponse.isGood ? reponse.isGood = false : reponse.isGood = true;
       this.questionService.reloadQCM(this.QCM);
+      this.reponseChange.emit();
     }
   }
 
@@ -95,7 +97,7 @@ export class CreationQuestionDefautComponent implements OnInit {
 
   modifyNotation(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options && this.question.options.optionsset.length>0){
+      if(this.question.options && this.question.options.optionsset){
         this.question.options.optionsset[0].valeur = value;
       }
       else{
