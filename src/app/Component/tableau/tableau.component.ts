@@ -70,7 +70,7 @@ export class TableauComponent implements OnInit {
   }
 
   modifierQcm(qcm:QCM) {
-    this.router.navigate([`/creation/${qcm.titre}/questions`]);
+    this.router.navigate([`/creation/${qcm.titre}/questions`],{state : {qcm:qcm}});
     this.questionService.reloadQCM(qcm);
   }
   onNotes(qcm : QCM)

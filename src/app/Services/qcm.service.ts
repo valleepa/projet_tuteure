@@ -28,7 +28,7 @@ export class QcmService {
     }))
   }
   generateNewQCM(QCM: QCM): Observable<QCM>{
-    return this.http.post<QCM>(`/qcm`,QCM, this.httpOptions);
+    return this.http.post<QCM>(`/qcm/${QCM.id}/generate`,'', this.httpOptions);
   }
 
   getQCMFromId(id:number): Observable<QCM>{
@@ -54,6 +54,16 @@ export class QcmService {
     return this.http.delete<QCM>(`/qcm/${QCM.id}`,{headers: new HttpHeaders({'Content-Type': 'application/json'}),body: QCM}).pipe(catchError(this.handleError<QCM>('Supprime un QCM')));
   }
   // @ts-ignore
-  generateApplication(): Observable<any>
+  //generateApplication(): Observable<any>
 
+  getPDFFromIdAndId(idcreateur: string | undefined, id: number | undefined) {
+    return fetch(`http://back.depta.krapo.pro/pdf/${idcreateur}/${id}`)
+    .then(r=>
+      r.blob()
+    ).then(r =>{
+      console.log("log");
+      const file = new Blob([r],{type:'application/pdf'});
+      return file;
+    } )
+  }
 }

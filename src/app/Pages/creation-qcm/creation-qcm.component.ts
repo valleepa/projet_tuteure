@@ -4,7 +4,6 @@ import {QcmService} from "../../Services/qcm.service";
 import {QuestionService} from "../../Services/question.service";
 import {QCM} from "../../Modeles/QCM";
 import {Options} from "../../Modeles/OPTIONS";
-import {Option} from "../../Modeles/OPTION";
 
 @Component({
   selector: 'app-creation-qcm',
