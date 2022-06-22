@@ -12,7 +12,7 @@ export class Options implements IOptions {
   optionsset: Option[];
   constructor(typeDeQuestion:any, optionsset:Option[], id?:number){
     this.id = id;
-    this.typeDeQuestion = typeDeQuestion;
+    this.typeDeQuestion = "UNIQUE";
     this.optionsset = optionsset;
   }
 }

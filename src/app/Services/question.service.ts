@@ -15,10 +15,10 @@ export class QuestionService {
   isNotSaved = new BehaviorSubject(false);
   constructor() {
     if(localStorage.getItem("QCM")){
-      this.reloadQCM(JSON.parse(<string>localStorage.getItem("QCM")));
+      this.QCMActuel.next(JSON.parse(<string>localStorage.getItem("QCM")));
     }
     else {
-      this.reloadQCM(new QCM([],'',false,'null','null'));
+      this.QCMActuel.next(new QCM([],'',false,'null','null'));
     }
     this.QCMActuel.subscribe(res => {
       console.log(res);

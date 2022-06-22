@@ -5,6 +5,7 @@ import {QuestionService} from "../../Services/question.service";
 import {QCM} from "../../Modeles/QCM";
 import {Options} from "../../Modeles/OPTIONS";
 import {Option} from "../../Modeles/OPTION";
+import {NotificationService} from "../../Services/notification.service";
 
 @Component({
   selector: 'app-creation-qcm',
@@ -16,13 +17,14 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
   isNotSaved: boolean = true;
   qcmLocal: QCM|undefined;
   qcmBd: QCM|undefined;
-  constructor(public route:ActivatedRoute,private questionService: QuestionService, private qcmService: QcmService, public router:Router) { }
+  constructor(public route:ActivatedRoute, private notificationService: NotificationService, private questionService: QuestionService, private qcmService: QcmService, public router:Router) { }
 
   ngOnInit(): void {
     this.name = <string>this.route.snapshot.paramMap.get('name');
     this.questionService.QCMActuel.subscribe(res =>{
       this.qcmLocal = res;
       this.questionService.isNotSaved.subscribe(res => {
+        console.log(res);
         this.isNotSaved = res
       });
     });
@@ -44,14 +46,13 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
       else{
         if(this.qcmLocal)
           this.qcmLocal.titre = this.name;
-        console.log("avant"+this.qcmLocal);
         this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
           this.qcmService.getQCMFromId(res).subscribe(r=>{
-            this.questionService.reloadQCM(r);
+            this.questionService.QCMActuel.next(r);
             this.qcmLocal = r;
-            console.log("apres"+res);
           })
         });
+        this.questionService.isNotSaved.next(false);
       }
     }
   }
@@ -59,7 +60,7 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
   deleteQcm() {
     console.log(this.qcmLocal);
     if(this.qcmLocal?.id){
-      this.qcmService.deleteQCM(this.qcmLocal).subscribe(res=>console.log(res));
+      this.qcmService.deleteQCM(this.qcmLocal).subscribe(res=>this.notificationService.successMessage("Le QCM "+this.qcmLocal?.titre+" a bien été supprimé"));
     }
     this.router.navigate(["/"]);
 
