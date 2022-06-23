@@ -22,4 +22,9 @@ export class EtudiantsService {
     }))
   }
 
+  editEtudiant(etudiant: Etudiant) {
+    return this.http.put<Etudiant>('/etudiant',etudiant).pipe(map(r=>{
+      return r;
+    }))
+  }
 }

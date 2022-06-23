@@ -23,16 +23,21 @@ export class ProfilComponent implements OnInit {
   }
 
   modify():void{
-    this.isModifying = true ? this.isModifying==false : this.isModifying = false;
+    this.isModifying = !this.isModifying;
   }
 
   save():void{
-    this.isModifying = true ? this.isModifying==false : this.isModifying = false;
-    this.etudiant.nom = this.nom;
-    this.etudiant.prenom = this.prenom;
-    this.etudiant.noetudiant = this.numero;
-    this.etudiant.classe = this.class;
-    this.etudiant.groupe = this.group;
+    this.isModifying = !this.isModifying;
+    this.etudiantsService.editEtudiant(new Etudiant(this.id,this.class,this.group,this.nom,this.prenom,this.numero)).subscribe(r=>{
+      if(r != null){
+        this.etudiant = r
+      }
+      this.nom = this.etudiant.nom;
+      this.prenom = this.etudiant.prenom;
+      this.numero = this.etudiant.noetudiant;
+      this.class = this.etudiant.classe;
+      this.group = this.etudiant.groupe;
+    })
   }
 
 }
