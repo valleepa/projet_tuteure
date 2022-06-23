@@ -12,6 +12,7 @@ import {Groupe} from "../../../Modeles/GROUPE";
 import {Classe} from "../../../Modeles/CLASSE";
 import {MatSelectChange} from "@angular/material/select";
 import {FormControl} from "@angular/forms";
+import {CreationQCMComponent} from "../../../Pages/creation-qcm/creation-qcm.component";
 
 @Component({
   selector: 'app-creation-editions',
@@ -31,7 +32,7 @@ export class CreationEditionsComponent implements OnInit {
   groupesForm = new FormControl('');
   public errormessage: string = "";
 
-  constructor(public sanitizer:DomSanitizer, public questionService:QuestionService, public qcmService:QcmService, public classeService:ClasseService,public groupeService : GroupeService) {
+  constructor(public sanitizer:DomSanitizer, public questionService:QuestionService, public qcmService:QcmService, public classeService:ClasseService,public groupeService : GroupeService, public creationQCMComponent :CreationQCMComponent) {
     if(this.id != null){
       this.classeService.getClassesFromUser(<number>this.id).subscribe(r=>{
         r.forEach(classe=>{
@@ -54,49 +55,57 @@ export class CreationEditionsComponent implements OnInit {
     this.questionService.QCMActuel.subscribe(r=>{
       this.qcm =r;
     });
-    this.qcmService.getPDFFromIdAndId(this.qcm?.idcreateur,this.qcm?.id).then(r=>{
-        if(r.size != 0){
-          let url = window.URL.createObjectURL(r);
-          this.pdf = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-          this.isGenerate = true;
+    if(!this.questionService.isNotSaved.value)
+      this.qcmService.getPDFFromIdAndId(this.qcm?.idcreateur,this.qcm?.id).then(r=>{
+          if(r.size != 0){
+            let url = window.URL.createObjectURL(r);
+            this.pdf = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+            this.isGenerate = true;
+          }
+          else{
+            this.isGenerate = false;
+            this.pdf = null;
+          }
         }
-        else{
-          this.isGenerate = false;
-          this.pdf = null;
-        }
-      }
-    )
+      )
   }
 
   generateQCM() {
     let requ;
-    if (this.qcm != undefined) {
-      if (this.selectedClasse != undefined) {
-        if (this.selectedGroupe != undefined) {
-          requ = this.qcmService.generateNewQCM(this.qcm, this.selectedClasse.id, this.selectedGroupe.id);
+    if(!this.questionService.isNotSaved.value){
+      if (this.qcm != undefined) {
+        if (this.selectedClasse != undefined) {
+          if (this.selectedGroupe != undefined) {
+            requ = this.qcmService.generateNewQCM(this.qcm, this.selectedClasse.id, this.selectedGroupe.id);
+          }
+          else{
+            requ = this.qcmService.generateNewQCM(this.qcm, this.selectedClasse.id, null);
+          }
+          this.isGenerating = true;
+          requ.subscribe(r => {
+            if (r != null) {
+              this.isGenerate = true;
+              this.qcmService.getPDFFromIdAndId(this.qcm?.idcreateur, this.qcm?.id).then(r => {
+                  this.pdf = r;
+                  let url = window.URL.createObjectURL(r);
+                  this.pdf = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+                }
+              )
+            } else {
+              this.isGenerate = false;
+              this.pdf = null;
+            }
+            this.isGenerating = false;
+          });
         }
         else{
-          requ = this.qcmService.generateNewQCM(this.qcm, this.selectedClasse.id, null);
+          this.errormessage = "Merci de sélectionner une classe et éventuellement un groupe avant de générer un QCM";
         }
-          requ.subscribe(r => {
-          if (r != null) {
-            this.isGenerate = true;
-            this.qcmService.getPDFFromIdAndId(this.qcm?.idcreateur, this.qcm?.id).then(r => {
-                this.pdf = r;
-                let url = window.URL.createObjectURL(r);
-                this.pdf = this.sanitizer.bypassSecurityTrustResourceUrl(url);
-              }
-            )
-          } else {
-            this.isGenerate = false;
-            this.pdf = null;
-          }
-        });
+        this.isGenerate = false;
       }
-      else{
-        this.errormessage = "Merci de sélectionner une classe et éventuellement un groupe avant de générer un QCM";
-      }
-      this.isGenerate = false;
+    }
+    else{
+      this.errormessage = "Merci de sauvegarder le QCM avant de le générer"
     }
   }
 

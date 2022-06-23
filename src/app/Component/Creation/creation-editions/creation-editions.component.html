@@ -1,32 +1,4 @@
-<!--
-<iframe [src]="pdf" title="testPdf" height="400rem" width="800rem"></iframe>
--->
-<div class="wrapper-bouton">
-  <app-bouton class="bouton curseur" name="Générer le QCM" (click)="generateQCM()"></app-bouton>
-  <app-bouton *ngIf="isGenerate" class="bouton curseur" name="Télécharger"></app-bouton>
-</div>
-<mat-form-field appearance="fill">
-  <mat-label>Classe</mat-label>
-  <mat-select [formControl]="classesForm" (selectionChange)="onClasseChange($event)">
-    <mat-option *ngFor="let classe of classesList" [value]="classe">{{classe}}</mat-option>
-  </mat-select>
-</mat-form-field>
 
-
-<mat-form-field appearance="fill">
-  <mat-label>Groupe</mat-label>
-  <mat-select [formControl]="classesForm" (selectionChange)="onGroupeChange($event)">
-    <mat-option *ngFor="let groupe of groupesList" [value]="groupe">{{groupe}}</mat-option>
-  </mat-select>
-</mat-form-field>
-<div class="wrapper-main" *ngIf="errormessage !== ''">{{errormessage}}</div>
-<div *ngIf="!isGenerate"class="wrapper-main">
-  <p>Aucun PDF n'a été généré pour le moment, appuyez sur <b>Générer le QCM</b></p>
-  <img src="assets/img/generate.svg" alt="image pdf qcm absent"/>
-</div>
-<div *ngIf="isGenerate"class="wrapper-main">
-  <iframe [src]="pdf" title="testPdf" height="800rem" width="800rem"></iframe>
-</div>
 <div class="wrapper">
   <div class="overlay" *ngIf="isGenerating">
     <div class="spinner-wrapper">
@@ -35,18 +7,32 @@
   </div>
 
   <div class="loaded-content" [class.blurred]="isGenerating">
-    </div>
-    <div class="wrapper-bouton">
-      <app-bouton class="bouton curseur" name="Générer le QCM" (click)="generateQCM()"></app-bouton>
-      <app-bouton *ngIf="isGenerate" class="bouton curseur" name="Télécharger" (click)="telechargerPdf()"></app-bouton>
-    </div>
-    <div *ngIf="!isGenerate"class="wrapper-main">
-      <p>Aucun PDF n'a été généré pour le moment, appuyez sur <b>Générer le QCM</b></p>
-      <img src="assets/img/generate.svg" alt="image pdf qcm absent"/>
-    </div>
-    <div *ngIf="isGenerate"class="wrapper-main">
-      <iframe [src]="pdf" title="testPdf" height="800rem" width="800rem"></iframe>
-    </div>
   </div>
+  <div class="wrapper-bouton">
+    <app-bouton class="bouton curseur" name="Générer le QCM" (click)="generateQCM()"></app-bouton>
+    <app-bouton *ngIf="isGenerate" class="bouton curseur" name="Télécharger" (click)="telechargerPdf()"></app-bouton>
+  </div>
+  <mat-form-field appearance="fill">
+    <mat-label>Classe</mat-label>
+    <mat-select [formControl]="classesForm" (selectionChange)="onClasseChange($event)">
+      <mat-option *ngFor="let classe of classesList" [value]="classe">{{classe}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 
+
+  <mat-form-field appearance="fill">
+    <mat-label>Groupe</mat-label>
+    <mat-select [formControl]="classesForm" (selectionChange)="onGroupeChange($event)">
+      <mat-option *ngFor="let groupe of groupesList" [value]="groupe">{{groupe}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="wrapper-main" *ngIf="errormessage !== ''">{{errormessage}}</div>
+  <div *ngIf="!isGenerate"class="wrapper-main">
+    <p>Aucun PDF n'a été généré pour le moment, appuyez sur <b>Générer le QCM</b></p>
+    <img src="assets/img/generate.svg" alt="image pdf qcm absent"/>
+  </div>
+  <div *ngIf="isGenerate"class="wrapper-main">
+    <iframe [src]="pdf" title="testPdf" height="800rem" width="800rem"></iframe>
+  </div>
+</div>
 
