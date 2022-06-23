@@ -110,5 +110,33 @@ export class CreationEditionsComponent implements OnInit {
   telechargerPdf() {
     window.open(this.url);
   }
+
+
+  onClasseChange($event: MatSelectChange) {
+    for(let i = 0 ; i < this.classes.length ; i++ ){
+      if(this.classes[i].nomClasse == $event.value){
+        this.selectedClasse = this.classes[i];
+      }
+    }
+
+    this.groupesList = []
+    if(this.selectedClasse != undefined){
+      this.groupeService.getGroupesFromUser(this.id,this.selectedClasse.id).subscribe(r => {
+
+        this.groupes = r;
+        for(let i = 0 ; i < r.length ; i++){
+          this.groupesList.push(r[i].nomGroupe)
+        }
+      })
+    }
+  }
+
+  onGroupeChange($event: MatSelectChange) {
+    for(let i = 0 ; i<this.groupes.length ; i++){
+      if(this.groupes[i].nomGroupe == $event.value){
+        this.selectedGroupe = this.groupes[i];
+      }
+    }
+  }
 }
 
