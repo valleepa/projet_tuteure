@@ -19,8 +19,8 @@ export class ClassegroupesComponent implements OnInit {
   groupes: IGroupe[] = [];
   user: User | null= new User('','','','','',false,null);
   dataSource!: MatTableDataSource<IClasse>;
-  displayedColumns: string[] = ['name', 'partOf', 'join','groupes'];
-  displayedColumnsGroupes: string[] = ['name', 'partOf', 'join'];
+  displayedColumns: string[] = ['name', 'partOf', 'groupes','join','unownclass'];
+  displayedColumnsGroupes: string[] = ['name', 'partOf', 'join','unowngroup'];
   constructor(private classeService: ClasseService, private groupeService: GroupeService, private userService:GestionUsersService) {}
 
   ngOnInit(): void {
@@ -68,7 +68,6 @@ export class ClassegroupesComponent implements OnInit {
     if(this.user != null){
       classe.professeurs.push(this.user);
     }
-    console.log(this.user);
     this.classeService.ownClasse(classe).subscribe((r) => {
       classe.estmaclasse = r != null;
     })
@@ -82,9 +81,24 @@ export class ClassegroupesComponent implements OnInit {
     if(this.user != null){
       groupe.professeurs.push(this.user);
     }
-    console.log(this.user);
     this.groupeService.ownGroupe(groupe).subscribe((r) => {
       groupe.estmongroupe = r != null;
     })
+  }
+
+  removeClasse(classe:Classe) {
+    if(this.user != null){
+      this.classeService.deleteFromProfesseurs(this.user,classe).subscribe(r=>{
+        classe.estmaclasse = !r;
+      })
+    }
+  }
+
+  removeGroupe(groupe:Groupe) {
+    if(this.user != null){
+      this.groupeService.deleteFromProfesseurs(this.user,groupe).subscribe(r=>{
+        groupe.estmongroupe = !r;
+      })
+    }
   }
 }

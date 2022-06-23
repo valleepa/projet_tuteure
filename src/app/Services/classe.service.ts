@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Classe} from "../Modeles/CLASSE";
 import {map} from "rxjs/operators";
+import {User} from "../Modeles/USER";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +27,11 @@ export class ClasseService {
     return this.httpClient.put<Classe>(`/classe/${classe.id}`,classe).pipe((map((r)=>{
       return r;
     })))
+  }
+
+  deleteFromProfesseurs(user: User, classe: Classe) {
+    return this.httpClient.delete<Boolean>(`/classe/${user.id}/${classe.id}`).pipe(map(r=>{
+      return r;
+    }))
   }
 }

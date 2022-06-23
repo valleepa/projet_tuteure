@@ -43,6 +43,15 @@ export class DialogCreateComponent implements OnInit {
         this.classesList.push(r[i].nomClasse)
       }
     })
+
+    this.groupeService.getAllGroupesOwnedByUser(<number><unknown>this.id).subscribe(r=>{
+      r.forEach(groupe=>{
+        this.classes.push(groupe.classe);
+        this.classes = [...new Set(this.classes)];
+        this.classesList.push(groupe.classe.nomClasse)
+        this.classesList = [...new Set(this.classesList)];
+      })
+    })
   }
 
   createEtudiant() {
