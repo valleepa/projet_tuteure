@@ -46,6 +46,8 @@ export class CreationEditionsComponent implements OnInit {
 
   pdf : SafeResourceUrl | null= null;
   isGenerate: boolean = false;
+  isGenerating: boolean = false;
+  url: any;
 
 
   ngOnInit(): void {
@@ -123,6 +125,10 @@ export class CreationEditionsComponent implements OnInit {
         this.selectedGroupe = this.groupes[i];
       }
     }
+  }
+
+  telechargerPdf() {
+    window.open(this.url);
   }
 }
 

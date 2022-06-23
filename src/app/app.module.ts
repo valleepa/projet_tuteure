@@ -65,6 +65,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NotesComponent } from './Component/notes/notes.component';
 import { ClassegroupesComponent } from './Component/classegroupes/classegroupes.component';
 import { MatSnackBarModule} from "@angular/material/snack-bar";
+import {DialogDeleteComponent} from "./Component/dialog-delete/dialog-delete.component";
 
 
 // import {SweetAlert2Module} from "@sweetalert2/ngx-sweetalert2";
@@ -111,6 +112,7 @@ import { MatSnackBarModule} from "@angular/material/snack-bar";
     DragAndDropDirective,
     NotesComponent,
     ClassegroupesComponent,
+    DialogDeleteComponent
   ],
   imports: [
     BrowserModule,
