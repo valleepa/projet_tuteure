@@ -26,7 +26,6 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
     this.questionService.QCMActuel.subscribe(res =>{
       this.qcmLocal = res;
       this.questionService.isNotSaved.subscribe(res => {
-        console.log(res);
         this.isNotSaved = res
       });
     });
@@ -41,21 +40,19 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
             question.options = new Options(question.typeDeQuestion,[]);
           })
         })
-        this.qcmService.modifyQCM(this.qcmLocal).subscribe(r=>{
-          console.log(r);
+        this.qcmService.modifyQCM(this.qcmLocal).subscribe(res=>{
+          this.notificationService.successMessage(this.qcmLocal?.titre+" SAUVEGARDÉ AVEC SUCCÈS");
         });
         this.questionService.isNotSaved.next(false);
       }
       else{
         if(this.qcmLocal)
           this.qcmLocal.titre = this.name;
-        console.log("avant"+this.qcmLocal);
         this.qcmService.createNewQCM(this.qcmLocal!).subscribe(res => {
           this.notificationService.successMessage(this.qcmLocal?.titre+" CRÉÉ AVEC SUCCÈS")
           this.qcmService.getQCMFromId(res).subscribe(r=>{
             this.questionService.reloadQCM(r);
             this.qcmLocal = r;
-            console.log("apres"+res);
           })
         });
         this.questionService.isNotSaved.next(false);

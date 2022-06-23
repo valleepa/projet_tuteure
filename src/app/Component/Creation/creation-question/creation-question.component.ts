@@ -32,16 +32,6 @@ choix: Choix[] = [
 ];
 
   constructor(public dialog: MatDialog, private questionService: QuestionService) {
-
-    this.questionService.questionActuel.subscribe(val =>{
-      if(val.typeDeQuestion !== 'UNIQUE' && val.typeDeQuestion !== 'MULTIPLE'){
-        this.selected = val.typeDeQuestion;
-      }
-      else{
-        this.selected ='defaut';
-      }
-      this.question = val;
-    })
   }
 
 
@@ -50,6 +40,18 @@ choix: Choix[] = [
       this.QCM = value;
       this.questionService.categorieActuel.subscribe(val =>{
         this.categorie = val;
+        this.questionService.questionActuel.subscribe(val =>{
+          if(val.typeDeQuestion === 'UNIQUE' || val.typeDeQuestion === 'MULTIPLE'){
+            this.selected = 'defaut';
+          }
+          else if(val.typeDeQuestion ==='OUVERTE'){
+            this.selected ='ouverte';
+          }
+          else{
+            this.selected='numerique';
+          }
+          this.question = val;
+        })
         this.QCM.categories.forEach(x=>{
           if(x.nom === this.categorie.nom){
             x.questions.forEach(y=>{
@@ -59,10 +61,9 @@ choix: Choix[] = [
                 });
           }
         });
+        })
       });
-    });
-
-  }
+    };
 
   modifyName() {
     const dialogRef = this.dialog.open(InputDialogComponent, {
@@ -85,7 +86,6 @@ choix: Choix[] = [
     this.questionService.questionActuel.next(this.question);
     this.questionService.reloadQCM(this.QCM);
   }
-
   setType() {
     if(this.selected==="defaut"){
       let compt = 0;
@@ -107,7 +107,6 @@ choix: Choix[] = [
     else{
       this.question.typeDeQuestion = 'OUVERTE';
     }
-    console.log(this.question.typeDeQuestion);
     this.questionService.reloadQCM(this.QCM);
   }
 

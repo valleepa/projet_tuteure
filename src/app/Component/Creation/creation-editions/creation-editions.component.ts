@@ -50,7 +50,6 @@ export class CreationEditionsComponent implements OnInit {
   isGenerating: boolean = false;
   url: any;
 
-
   ngOnInit(): void {
     this.questionService.QCMActuel.subscribe(r=>{
       this.qcm =r;
@@ -100,38 +99,10 @@ export class CreationEditionsComponent implements OnInit {
         }
         else{
           this.errormessage = "Merci de sélectionner une classe et éventuellement un groupe avant de générer un QCM";
+          this.isGenerate = false;
+          this.pdf = null;
         }
         this.isGenerate = false;
-      }
-    }
-    else{
-      this.errormessage = "Merci de sauvegarder le QCM avant de le générer"
-    }
-  }
-
-  onClasseChange($event: MatSelectChange) {
-    for(let i = 0 ; i < this.classes.length ; i++ ){
-      if(this.classes[i].nomClasse == $event.value){
-        this.selectedClasse = this.classes[i];
-      }
-    }
-
-    this.groupesList = []
-    if(this.selectedClasse != undefined){
-      this.groupeService.getGroupesFromUser(this.id,this.selectedClasse.id).subscribe(r => {
-
-        this.groupes = r;
-        for(let i = 0 ; i < r.length ; i++){
-          this.groupesList.push(r[i].nomGroupe)
-        }
-      })
-    }
-  }
-
-  onGroupeChange($event: MatSelectChange) {
-    for(let i = 0 ; i<this.groupes.length ; i++){
-      if(this.groupes[i].nomGroupe == $event.value){
-        this.selectedGroupe = this.groupes[i];
       }
     }
   }

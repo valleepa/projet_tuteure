@@ -64,7 +64,6 @@ export class QcmService {
     .then(r=>
       r.blob()
     ).then(r =>{
-      console.log("log");
       const file = new Blob([r],{type:'application/pdf'});
       return file;
     } )
