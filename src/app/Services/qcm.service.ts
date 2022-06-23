@@ -28,8 +28,12 @@ export class QcmService {
       return res
     }))
   }
-  generateNewQCM(QCM: QCM): Observable<QCM>{
-    return this.http.post<QCM>(`/qcm/${QCM.id}/generate`,'', this.httpOptions);
+
+  generateNewQCM(QCM: QCM, classe: any, groupe:any): Observable<QCM>{
+    if(groupe == null){
+      return this.http.post<QCM>(`/qcm/${QCM.id}/generate/${classe}`,'', this.httpOptions);
+    }
+    return this.http.post<QCM>(`/qcm/${QCM.id}/generate/${classe}/${groupe}`,'', this.httpOptions);
   }
 
   getQCMFromId(id:number): Observable<QCM>{
