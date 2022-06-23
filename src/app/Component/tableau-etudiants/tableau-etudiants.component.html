@@ -48,11 +48,14 @@
   </table>
   <button type="button" class="add" (click)="openDialog()"><mat-icon> add </mat-icon></button>
 </mat-card>
-<br>
-<div class="Block">
+
+<div>
   <form>
+    <mat-card>
+      <h2>Ajout d'étudiants par csv</h2>
       <input type='file' accept=".csv" (change)="fileChanged($event)">
-      <button type="button" class="add" (click)="onCSVSubmit()">Ajouter</button>
+    </mat-card>
+      <button type="button" [ngClass]="isFileHere?'add':'unselected'" (click)="onCSVSubmit()">Ajouter</button>
   </form>
   <h3 *ngIf="added > -1"><b>{{added}}</b> étudiants importés</h3>
 </div>

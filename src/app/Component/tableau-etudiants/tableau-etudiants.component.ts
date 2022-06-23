@@ -26,6 +26,7 @@ export class TableauEtudiantsComponent implements OnInit {
   classesAndGroupes = {} as IDictionary;
   displayedColumns: string[] = ['name','surname','numetu', 'class', 'group', 'profil'];
   added: number = -1;
+  isFileHere: boolean = false;
 
   constructor(public dialog: MatDialog, private router: Router, private etudiantsService: EtudiantsService, private groupeService: GroupeService, private classeService:ClasseService) { }
 
@@ -82,7 +83,8 @@ export class TableauEtudiantsComponent implements OnInit {
 
   file:any;
   fileChanged($event:any) {
-    this.file = $event.target.files[0]
+    this.file = $event.target.files[0];
+    this.isFileHere = true;
   }
 
   uploadDocument(file:any) {
