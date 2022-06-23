@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Question} from "../Modeles/QUESTION";
-import {BehaviorSubject, Observable} from "rxjs";
+import {BehaviorSubject, Observable, range} from "rxjs";
 import {Categorie} from "../Modeles/CATEGORIE";
 import {QCM} from "../Modeles/QCM";
 import {Options} from "../Modeles/OPTIONS";
@@ -21,7 +21,6 @@ export class QuestionService {
       this.QCMActuel.next(new QCM([],'',false,'null','null'));
     }
     this.QCMActuel.subscribe(res => {
-      console.log(res);
       if(res.titre!=='null'){
         localStorage.setItem("QCM",JSON.stringify(res));
       }

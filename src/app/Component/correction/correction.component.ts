@@ -89,7 +89,6 @@ export class CorrectionComponent implements OnInit {
 
   onCorriger()
   {
-    console.log("corriger");
     let formData:any = new FormData();
     this.files.forEach(file=>{
       formData.append('files',file)

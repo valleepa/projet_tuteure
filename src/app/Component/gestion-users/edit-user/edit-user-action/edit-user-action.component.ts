@@ -36,7 +36,6 @@ export class EditUserActionComponent implements OnInit {
 
   onChange($event: any) {
     this.selectedField = $event
-    console.log(this.user)
   }
 
   editUser() {

@@ -82,7 +82,6 @@ export class ClassegroupesComponent implements OnInit {
     if(this.user != null){
       groupe.professeurs.push(this.user);
     }
-    console.log(this.user);
     this.groupeService.ownGroupe(groupe).subscribe((r) => {
       groupe.estmongroupe = r != null;
     })

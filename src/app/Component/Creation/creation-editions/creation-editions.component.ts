@@ -29,7 +29,6 @@ export class CreationEditionsComponent implements OnInit {
 
   generateQCM() {
     if(this.qcm != undefined){
-      console.log("GENERATE")
       this.isGenerating = true;
       this.qcmService.generateNewQCM(this.qcm).subscribe(r=>{
         if(r != null){

@@ -39,7 +39,7 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
                     this.reponseNum = '';
                   }
                   if(this.question.options){
-                    this.notationNum = this.question.options.optionsset[0].valeur;
+                    //this.notationNum = this.question.options.optionsset[0].valeur;
                   }
                   else{
                     this.notationNum = '';
