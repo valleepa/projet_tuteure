@@ -1,0 +1,6 @@
+<p>{{data.title}}</p>
+<p>{{data.text}}</p>
+<div class="bottom">
+    <button mat-raised-button color="warn" class="valider" cdkFocusInitial [mat-dialog-close]="true" >{{data.button}}</button>
+    <button mat-raised-button (click)="onNoClick()">Annuler</button>
+</div>

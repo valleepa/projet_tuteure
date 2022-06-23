@@ -6,6 +6,8 @@ import {QCM} from "../../Modeles/QCM";
 import {Options} from "../../Modeles/OPTIONS";
 import {Option} from "../../Modeles/OPTION";
 import {NotificationService} from "../../Services/notification.service";
+import {DialogDeleteComponent} from "../../Component/dialog-delete/dialog-delete.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-creation-qcm',
@@ -17,7 +19,7 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
   isNotSaved: boolean = true;
   qcmLocal: QCM|undefined;
   qcmBd: QCM|undefined;
-  constructor(public route:ActivatedRoute, private notificationService: NotificationService, private questionService: QuestionService, private qcmService: QcmService, public router:Router) { }
+  constructor(private dialog:MatDialog, public route:ActivatedRoute, private notificationService: NotificationService, private questionService: QuestionService, private qcmService: QcmService, public router:Router) { }
 
   ngOnInit(): void {
     this.name = <string>this.route.snapshot.paramMap.get('name');
@@ -62,12 +64,22 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
   }
 
   deleteQcm() {
-    console.log(this.qcmLocal);
-    if(this.qcmLocal?.id){
-      this.qcmService.deleteQCM(this.qcmLocal).subscribe(res=>this.notificationService.successMessage("Le QCM "+this.qcmLocal?.titre+" a bien été supprimé"));
-    }
-    this.router.navigate(["/"]);
-
+    const dialogRef = this.dialog.open(DialogDeleteComponent, {
+      data: {
+        title: 'Supprimer de façon permanente cette application?',
+        text: 'Attention vous êtes sur le point de supprimer définitivement un QCM ainsi que ses données du serveur !',
+        button: 'Supprimer',
+      },
+      disableClose: true
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        if (this.qcmLocal?.id) {
+          this.qcmService.deleteQCM(this.qcmLocal).subscribe(res => this.notificationService.successMessage("Le QCM " + this.qcmLocal?.titre + " a bien été supprimé"));
+        }
+        this.router.navigate(["/"]);
+      }
+        });
   }
 
   ngAfterViewInit(): void {

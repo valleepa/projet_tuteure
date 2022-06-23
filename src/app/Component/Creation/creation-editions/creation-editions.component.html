@@ -1,16 +1,26 @@
 <!--
 <iframe [src]="pdf" title="testPdf" height="400rem" width="800rem"></iframe>
 -->
-<div class="wrapper-bouton">
-  <app-bouton class="bouton curseur" name="Générer le QCM" (click)="generateQCM()"></app-bouton>
-  <app-bouton *ngIf="isGenerate" class="bouton curseur" name="Télécharger"></app-bouton>
-</div>
-<div *ngIf="!isGenerate"class="wrapper-main">
-  <p>Aucun PDF n'a été généré pour le moment, appuyez sur <b>Générer le QCM</b></p>
-  <img src="assets/img/generate.svg" alt="image pdf qcm absent"/>
-</div>
-<div *ngIf="isGenerate"class="wrapper-main">
-  <iframe [src]="pdf" title="testPdf" height="800rem" width="800rem"></iframe>
-</div>
+<div class="wrapper">
+  <div class="overlay" *ngIf="isGenerating">
+    <div class="spinner-wrapper">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+
+  <div class="loaded-content" [class.blurred]="isGenerating">
+    </div>
+    <div class="wrapper-bouton">
+      <app-bouton class="bouton curseur" name="Générer le QCM" (click)="generateQCM()"></app-bouton>
+      <app-bouton *ngIf="isGenerate" class="bouton curseur" name="Télécharger" (click)="telechargerPdf()"></app-bouton>
+    </div>
+    <div *ngIf="!isGenerate"class="wrapper-main">
+      <p>Aucun PDF n'a été généré pour le moment, appuyez sur <b>Générer le QCM</b></p>
+      <img src="assets/img/generate.svg" alt="image pdf qcm absent"/>
+    </div>
+    <div *ngIf="isGenerate"class="wrapper-main">
+      <iframe [src]="pdf" title="testPdf" height="800rem" width="800rem"></iframe>
+    </div>
+  </div>
 
 

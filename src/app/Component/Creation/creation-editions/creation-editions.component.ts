@@ -18,6 +18,8 @@ export class CreationEditionsComponent implements OnInit {
 
   pdf : SafeResourceUrl | null= null;
   isGenerate: boolean = false;
+  isGenerating: boolean = false;
+  url: any;
 
   ngOnInit(): void {
     this.questionService.QCMActuel.subscribe(r=>{
@@ -28,13 +30,15 @@ export class CreationEditionsComponent implements OnInit {
   generateQCM() {
     if(this.qcm != undefined){
       console.log("GENERATE")
+      this.isGenerating = true;
       this.qcmService.generateNewQCM(this.qcm).subscribe(r=>{
         if(r != null){
           this.isGenerate = true;
           this.qcmService.getPDFFromIdAndId(this.qcm?.idcreateur,this.qcm?.id).then(r=>{
               this.pdf = r;
-              let url = window.URL.createObjectURL(r);
-              this.pdf = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+              this.url = window.URL.createObjectURL(r);
+              this.pdf = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+              this.isGenerating=false;
             }
           )
         }
@@ -45,6 +49,10 @@ export class CreationEditionsComponent implements OnInit {
       });
       this.isGenerate = false;
     }
+  }
+
+  telechargerPdf() {
+    window.open(this.url);
   }
 }
 
