@@ -41,8 +41,6 @@ export class CreationEditionsComponent implements OnInit {
         })
       })
     }
-
-
   }
 
   pdf : SafeResourceUrl | null= null;

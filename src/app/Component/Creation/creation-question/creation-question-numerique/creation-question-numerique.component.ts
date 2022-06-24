@@ -64,11 +64,14 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
     if(this.isNumber(value)){
       if(this.question.reponses.length>0){
         this.question.reponses[0].texte = value;
+        this.question.reponses = [new Reponse(value,true)];
       }
       else{
-        this.question.reponses[0] = new Reponse(value,true);
+        this.question.reponses = [new Reponse(value,true)];
       }
+      console.log(this.question.reponses)
       this.reponseNum = this.question.reponses[0].texte;
+      console.log(this.question.reponses)
       this.questionService.reloadQCM(this.QCM);
     }
     else{
