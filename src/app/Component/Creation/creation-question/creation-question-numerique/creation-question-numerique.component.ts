@@ -69,9 +69,7 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
       else{
         this.question.reponses = [new Reponse(value,true)];
       }
-      console.log(this.question.reponses)
       this.reponseNum = this.question.reponses[0].texte;
-      console.log(this.question.reponses)
       this.questionService.reloadQCM(this.QCM);
     }
     else{
