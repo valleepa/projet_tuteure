@@ -63,10 +63,15 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
   modifyReponse(value: string) {
     if(this.isNumber(value)){
       if(this.question.reponses.length>0){
-        this.question.reponses[0].texte = value;
+        for(let i = 0 ; i < this.question.options.optionsset.length ; i++){
+          if(this.question.options.optionsset[i].typeOption == "BONNEREPONSE"){
+            this.question.options.optionsset.splice(i);
+          }
+        }
+        this.question.options.optionsset.push(new Option("BONNEREPONSE",value))
       }
       else{
-        this.question.reponses[0] = new Reponse(value,true);
+        this.question.options.optionsset.push(new Option("BONNEREPONSE",value))
       }
       this.reponseNum = this.question.reponses[0].texte;
       this.questionService.reloadQCM(this.QCM);

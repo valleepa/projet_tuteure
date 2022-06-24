@@ -69,7 +69,6 @@ export class CorrectionComponent implements OnInit {
       let file : File | null = files.item(i);
       if(file)
       {
-        //TODO: check file size
         if(file?.type == "application/pdf")
         {
           this.files.push(file);
@@ -96,6 +95,9 @@ export class CorrectionComponent implements OnInit {
     this.httpClient.post(`/qcm/${this.qcmId}/uploadcopies`, formData).subscribe(r=>{
       this.worked = true;
       this.uploaded = r;
+      this.httpClient.post(`/qcm/${this.qcmId}/note`, '').subscribe(res=>{
+        console.log(res);
+      })
     })
   }
 
