@@ -17,6 +17,7 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
   question!: Question;
   reponseNum: any;
   notationNum: any;
+  private optionsSet: Option | undefined;
 
   constructor(private questionService: QuestionService) { }
 
@@ -38,10 +39,14 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
                   else{
                     this.reponseNum = '';
                   }
-                  if(this.question.options){
-                    //this.notationNum = this.question.options.optionsset[0].valeur;
-                  }
-                  else{
+                  this.question.options.optionsset.forEach(val=>{
+
+                    if(val.typeOption==="BONNEREPONSE"){
+                      this.optionsSet=val;
+                      this.notationNum=val.valeur;
+                    }
+                  });
+                  if(!this.notationNum){
                     this.notationNum = '';
                   }
                 }
@@ -85,15 +90,15 @@ export class CreationQuestionNumeriqueComponent implements OnInit {
 
   modifyNotation(value: string) {
     if(this.isNumber(value)){
-      if(this.question.options && this.question.options.optionsset.length>0){
-        this.question.options.optionsset[0].valeur = value;
+      for(let i = 0; i<this.question.options.optionsset.length;i++) {
+        if (this.question.options.optionsset[i].typeOption === "BONNEREPONSE") {
+          this.question.options.optionsset[i].valeur = value;
+          this.notationNum = this.question.options.optionsset[i].valeur;
+          this.questionService.reloadQCM(this.QCM);
+          return;
+        }
       }
-      else{
-        this.question.options.optionsset = [new Option("BAREME",value)];
-      }
-      // @ts-ignore
-      this.notationNum = this.question.options[0].valeur;
-      this.questionService.reloadQCM(this.QCM);
+      this.question.options.optionsset.push(new Option("BONNEREPONSE",value));
     }
     else{
       // @ts-ignore

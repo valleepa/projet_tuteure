@@ -37,9 +37,11 @@ export class CreationQCMComponent implements OnInit,AfterViewInit {
       if(this.qcmLocal?.id){
         this.qcmLocal.categories.forEach(categorie=>{
           categorie.questions.forEach(question =>{
-            question.options = new Options(question.typeDeQuestion,[]);
+            if(!question.options)
+              question.options = new Options(question.typeDeQuestion,[]);
           })
         })
+
         this.qcmService.modifyQCM(this.qcmLocal).subscribe(res=>{
           this.notificationService.successMessage(this.qcmLocal?.titre+" SAUVEGARDÉ AVEC SUCCÈS");
         });
